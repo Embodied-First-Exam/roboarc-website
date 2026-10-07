@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RoboTangle · Spatial-constraint puzzles for robot manipulation</title>
+  <meta name="description" content="A benchmark of physical puzzles for robots: pieces hooked, threaded, knotted or caged, where only the right sequence of moves gets them apart.">
+  <meta name="theme-color" content="#f4f6f9">
+  <script>
+    // Day or night, and which name the page wears (?name=robobind ...): set before anything paints.
+    (function () {
+      var q = new URLSearchParams(location.search), d = document.documentElement, t = 'light';
+      try { t = (q.get('theme') || localStorage.getItem('site-theme')) === 'dark' ? 'dark' : 'light'; } catch (e) {}
+      d.dataset.theme = t;
+      window.BRANDS = {
+        robotangle: ['RoboTangle', 'Can your robot get untangled?'],
+        robobind: ['RoboBind', 'Can your robot get out of a bind?'],
+        robounstuck: ['RoboUnstuck', 'Can your robot get unstuck?'],
+        robounravel: ['RoboUnravel', 'Can your robot unravel it?'],
+        inabind: ['In a Bind', 'Get your robot out of a bind.'],
+        roboarc: ['RoboARC', 'Spatial reasoning, with robot hands.']
+      };
+      var key = (q.get('name') || 'robotangle').toLowerCase().replace(/[^a-z]/g, '');
+      window.BRAND = window.BRANDS[key] ? key : 'robotangle';
+      document.title = window.BRANDS[window.BRAND][0] + ' · Spatial-constraint puzzles for robot manipulation';
+    })();
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M6 10h12a5 5 0 0 1 0 10H11' fill='none' stroke='%23d2683f' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M26 22H14a5 5 0 0 1 0-10h7' fill='none' stroke='%232f93a6' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script type="importmap">{"imports": {"three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/addons/", "three-mesh-bvh": "./vendor/three-mesh-bvh/index.module.js"}}</script>
+</head>
+<body>
+  <nav class="nav" aria-label="Sections">
+    <a class="wordmark" href="#top"><span class="mark" aria-hidden="true"></span><span data-brand="name">RoboTangle</span></a>
+    <div class="nav-links">
+      <a href="#puzzles">Puzzles</a>
+      <a href="#play">Try it</a>
+      <a href="#modes">Modes</a>
+      <a href="#results">Results</a>
+    </div>
+    <button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch between day and night">
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+    </button>
+  </nav>
+
+  <!-- the opening: a two-arm robot takes the claws apart as the page scrolls -->
+  <section class="hero" id="top" aria-label="Introduction">
+    <div class="hero-sticky">
+      <canvas id="hero-canvas" aria-label="A two-arm robot separating two interlocked claws"></canvas>
+      <div class="hero-copy">
+        <p class="hero-kicker" data-hero="kicker">A benchmark of spatial-constraint puzzles for robot manipulation</p>
+        <p class="hero-line" data-hero="l1">Two claws, hooked through each other.</p>
+        <p class="hero-line" data-hero="l2">Pulling only jams them. They come apart when turned in the right order.</p>
+        <p class="hero-line" data-hero="l3">Here two robot arms do it in simulation, replaying the motion they planned.</p>
+        <div class="hero-title" data-hero="title">
+          <h1 data-brand="name">RoboTangle</h1>
+          <p class="hero-tagline" data-brand="tagline">Can your robot get untangled?</p>
+          <p class="hero-sub">Thirteen physical puzzles where the pieces are hooked, threaded, knotted or caged, and only the right sequence of moves gets them apart.</p>
+          <div class="cta">
+            <a class="btn primary" href="#play">Try one yourself</a>
+            <a class="btn" href="#puzzles">See the puzzles</a>
+            <a class="btn" href="#results">Results</a>
+            <a class="btn ghost" aria-disabled="true" href="#">Paper <small>soon</small></a>
+            <a class="btn ghost" aria-disabled="true" href="#">Code <small>soon</small></a>
+          </div>
+        </div>
+        <p class="scroll-cue" data-hero="cue">Scroll</p>
+      </div>
+      <div class="hero-hud" aria-hidden="true">
+        <span>replay</span><span class="sep">/</span><span>two-arm disentanglement</span>
+        <span class="hud-bar"><i id="hero-progress"></i></span><span id="hero-clock">0:00</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section intro" id="about" aria-label="About">
+    <p class="lead reveal"><span data-brand="name">RoboTangle</span> is a benchmark of physical puzzles for robots: interlocked
+      claws, cast-metal brainteasers, a caged hedgehog, a lock, a buzz wire, knots, threaded rope, fibers and a blanket.</p>
+    <div class="intro-cols reveal">
+      <p>Every puzzle comes in three tiers, easy, medium and hard, and every tier is a frozen simulation instance that always
+        starts from the same state. An agent gets six hours and drives a simulated robot, a two-arm ALOHA or a Franka arm, by writing
+        code. An attempt counts only if its recorded motion solves the puzzle again when it is replayed in a fresh simulator.</p>
+      <dl class="figures">
+        <div><dt>13</dt><dd>puzzle families</dd></div>
+        <div><dt>39</dt><dd>frozen instances, three tiers each</dd></div>
+        <div><dt>2</dt><dd>evaluation modes</dd></div>
+        <div><dt>6 h</dt><dd>per attempt</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 01 puzzles -->
+  <section class="section" id="puzzles">
+    <header class="sec-head reveal">
+      <span class="sec-index">01</span>
+      <div class="sec-title">
+        <h2>Puzzles</h2>
+        <p>Each card plays the reference solution: the oracle's trajectory, replayed by the verifier in a fresh simulator,
+          sped up. Switch tiers on a card to see how the puzzle tightens.</p>
+      </div>
+      <div class="filters" id="filters" role="toolbar" aria-label="Filter puzzles"></div>
+    </header>
+    <div class="wall" id="wall"></div>
+  </section>
+
+  <!-- 02 try it -->
+  <section class="section band" id="play">
+    <header class="sec-head reveal">
+      <span class="sec-index">02</span>
+      <div class="sec-title">
+        <h2>Try one yourself</h2>
+        <p>Each rigid puzzle comes two ways. Play it: move or turn the highlighted piece with the handle, and it stops
+          wherever it would pass through another piece. Or watch the oracle: its whole run in 3D, every piece where the
+          simulator had it. The ropes are simulated live and shown solving themselves.</p>
+      </div>
+    </header>
+    <div class="picker reveal" id="play-picker" role="tablist" aria-label="Choose a puzzle"></div>
+    <div class="studio reveal">
+      <div class="play-stage frame">
+        <canvas id="play-canvas" aria-label="Interactive 3D puzzle"></canvas>
+        <div class="play-hud">
+          <span class="pill">moves <b id="hud-moves">0</b></span>
+          <span class="pill">time <b id="hud-time">0:00</b></span>
+          <span class="pill demo" id="hud-demo" hidden>demo</span>
+          <span class="pill blocked" id="hud-blocked">blocked · the pieces touch</span>
+        </div>
+        <div class="freedom">
+          <div class="freedom-label"><span id="hud-from">locked</span><span id="hud-to">apart</span></div>
+          <div class="freedom-track"><i id="hud-freedom"></i></div>
+        </div>
+        <div class="play-win" id="play-win" role="dialog" aria-live="polite">
+          <div>
+            <h3 id="win-title">Solved</h3>
+            <p id="win-text"></p>
+            <button class="btn primary" id="win-again">Play again</button>
+          </div>
+        </div>
+      </div>
+      <aside class="play-panel">
+        <div class="goal">
+          <div class="label" id="play-name"></div>
+          <p id="play-goal"></p>
+        </div>
+        <div class="seg modebar" id="play-modes" role="group" aria-label="Play or watch" hidden>
+          <button data-mode="play" class="on">Play it</button>
+          <button data-mode="watch">Watch the oracle</button>
+        </div>
+        <div class="tierbar" id="play-tiers" role="group" aria-label="Tier" hidden></div>
+        <div id="ctl-rigid">
+          <div class="label">Moving the <span id="play-mover"></span></div>
+          <div class="seg" role="group" aria-label="Manipulation mode">
+            <button id="mode-move" class="on">Move <kbd>W</kbd></button>
+            <button id="mode-rotate">Turn <kbd>E</kbd></button>
+          </div>
+        </div>
+        <ul class="tips" id="play-tips"></ul>
+        <div class="panel-actions">
+          <button class="btn" id="btn-solution">Show me how</button>
+          <button class="btn" id="btn-reset">Reset</button>
+        </div>
+        <p class="fineprint" id="no-solution" hidden>No recorded solution for this puzzle yet.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 03 modes -->
+  <section class="section" id="modes">
+    <header class="sec-head reveal">
+      <span class="sec-index">03</span>
+      <div class="sec-title">
+        <h2>Two modes</h2>
+        <p>Every instance is posed twice. In both, the agent's recorded motion is replayed in a fresh simulator, and only a
+          replay that solves the puzzle counts.</p>
+      </div>
+    </header>
+    <div class="modes reveal">
+      <article class="mode frame">
+        <div class="mode-head"><span class="tag-mono">privileged</span><h3>Code with the simulator open</h3></div>
+        <ul>
+          <li>Object poses, contacts and kinematics can be read at any time.</li>
+          <li>Resets and replays are unlimited within the six hours.</li>
+          <li>The agent submits one trajectory; a separate verifier replays it twice.</li>
+        </ul>
+        <pre class="code"><span class="k">from</span> rcb_topogym <span class="k">import</span> Session
+s = Session(<span class="s">"interlocked_claws"</span>, instance=<span class="s">"/app/instance.json"</span>)
+s.reset()                      <span class="c"># back to the frozen start, any time</span>
+s.objects()[<span class="s">"piece_1"</span>]          <span class="c"># poses, bounds, velocity</span>
+s.record_start()
+s.step(action)                 <span class="c"># joints + grippers, one 1/40 s step</span>
+actions = s.record_stop()
+s.save_trajectory(actions, <span class="s">"/app/output/trajectory.npz"</span>)</pre>
+      </article>
+      <article class="mode frame">
+        <div class="mode-head"><span class="tag-mono">standard</span><h3>The robot as a remote service</h3></div>
+        <ul>
+          <li>Camera images (RGB, depth on request) and the robot's joint readings, nothing else.</li>
+          <li>No object poses and no resets: like real hardware.</li>
+          <li>The service records the episode, which is then replayed and graded.</li>
+        </ul>
+        <div class="cams">
+          <figure><img src="assets/media/cams/cam_high.jpg" alt="Overhead camera view of the claw puzzle" loading="lazy"><figcaption>overhead</figcaption></figure>
+          <figure><img src="assets/media/cams/cam_left_wrist.jpg" alt="Left wrist camera view" loading="lazy"><figcaption>left wrist</figcaption></figure>
+          <figure><img src="assets/media/cams/cam_right_wrist.jpg" alt="Right wrist camera view" loading="lazy"><figcaption>right wrist</figcaption></figure>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 04 results -->
+  <section class="section" id="results">
+    <header class="sec-head reveal">
+      <span class="sec-index">04</span>
+      <div class="sec-title">
+        <h2>Results</h2>
+        <p>Each row is one model working inside one harness, the agent program around it, such as Codex CLI or Claude Code.
+          Pick a harness to compare the models run in it. VLA policies, which output robot actions directly, are ranked on
+          their own.</p>
+      </div>
+    </header>
+    <div class="results-grid">
+      <div class="panel frame reveal">
+        <div class="panel-head"><h3>Leaderboard</h3><span class="prelim" id="prelim"></span></div>
+        <div class="board-controls">
+          <div class="tabs" role="tablist" id="board-kind">
+            <button class="tab on" role="tab" aria-selected="true" data-kind="agent">Coding agents <i id="n-agent">0</i></button>
+            <button class="tab" role="tab" aria-selected="false" data-kind="vla">VLA policies <i id="n-vla">0</i></button>
+          </div>
+          <div class="harness" id="board-harness"><span class="label">Harness</span><div class="hchips" id="harness-chips"></div></div>
+        </div>
+        <p class="sample-note" id="sample-note" hidden>The rows marked sample only preview the layout with more entries. They are not results.</p>
+        <table class="board" id="board"></table>
+        <p class="board-foot" id="board-foot"></p>
+      </div>
+      <div class="reveal">
+        <div class="panel-head bare"><h3>Agent rollouts</h3><span class="prelim">replays of graded agent trajectories, sped up</span></div>
+        <div class="rollouts" id="rollouts"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <a class="wordmark" href="#top"><span class="mark" aria-hidden="true"></span><span data-brand="name">RoboTangle</span></a>
+        <p>Built on TopoGym, with physics from Genesis and libuipc. The paper, code and full results will be released together.</p>
+      </div>
+      <pre class="code bib" id="bib">@misc{robotangle2026,
+  title  = {RoboTangle: Spatial-Constraint Puzzles for Robot Manipulation},
+  note   = {Paper coming soon},
+  year   = {2026}
+}</pre>
+    </div>
+  </footer>
+
+  <div class="name-switch" id="name-switch" hidden>
+    <span>name</span>
+    <select id="name-select" aria-label="Preview the page under another name"></select>
+  </div>
+
+  <script>
+    // fill in the chosen name before the modules load, so it never flickers
+    (function () {
+      var b = window.BRANDS[window.BRAND];
+      document.querySelectorAll('[data-brand="name"]').forEach(function (el) { el.textContent = b[0]; });
+      document.querySelectorAll('[data-brand="tagline"]').forEach(function (el) { el.textContent = b[1]; });
+      var key = b[0].replace(/\s+/g, '').toLowerCase();
+      document.getElementById('bib').textContent = '@misc{' + key + '2026,\n  title  = {' + b[0] + ': Spatial-Constraint Puzzles for Robot Manipulation},\n  note   = {Paper coming soon},\n  year   = {2026}\n}';
+    })();
+  </script>
+  <script type="module" src="assets/js/site.js"></script>
+</body>
+</html>
