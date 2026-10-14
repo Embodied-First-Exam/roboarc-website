@@ -80,7 +80,7 @@ import('./hero.js')
 function mediaHTML(f, e) {
   if (e.video) return `<video muted loop playsinline preload="none" poster="${e.poster}" src="${e.video}"></video><span class="card-speed">×${e.speed}</span>`;
   if (e.poster) return `<img src="${e.poster}" alt="${f.name} ${e.nn}: the target shape" loading="lazy"><span class="card-badge muted">target shape · video soon</span>`;
-  return `<div class="card-empty">The reference video of this task is still being rendered.</div>`;
+  return `<div class="card-empty">No reference video for this task yet.</div>`;
 }
 async function renderWall() {
   const wall = $('#wall'), filters = $('#filters');
@@ -131,6 +131,21 @@ async function renderWall() {
   });
   wall.querySelectorAll('video').forEach((v) => io.observe(v));
   wall.querySelectorAll('.reveal').forEach((el) => revealer.observe(el));
+  return data;
+}
+
+/* ---------- 02 in 3D: the reference solutions redrawn from their replays ---------- */
+function setupOracle(data) {
+  const ids = ['picker', 'canvas', 'clock', 'loading', 'blocked', 'progress', 'from', 'to', 'bar', 'win', 'win-title', 'win-text', 'again', 'scrubber',
+    'play', 'scrub', 'name', 'goal', 'modes', 'stepper', 'prev', 'step', 'next', 'playctl', 'move', 'turn', 'watchctl', 'speeds', 'robot', 'robot-kind',
+    'tips', 'solution', 'restart', 'base'];
+  const el = Object.fromEntries(ids.map((k) => [k, document.getElementById(`o-${k}`)]));
+  const ui = { ...el, robot: el['robot-kind'], robotToggle: el.robot, winTitle: el['win-title'], winText: el['win-text'] };
+  const tasks = Object.fromEntries(FAMILIES.map((f) => [f.id, (data[f.id] || []).map((e) => ({ ...e, level: LEVEL[e.difficulty], oracle: !!e.video }))]));   // every task with a reference video has its replay
+  import('./oracle.js')
+    .then(({ initOracle }) => initOracle({ section: $('#in3d'), canvas: el.canvas, ui, families: FAMILIES, tasks }))
+    .then((o) => { window.oracle = o; })
+    .catch((err) => { console.error(err); el.loading.hidden = false; el.loading.textContent = '3D needs WebGL'; });
 }
 
 /* ---------- reveal on scroll, the menu, the active link ---------- */
@@ -143,7 +158,7 @@ function setupNav() {
   document.querySelectorAll('.reveal').forEach((el) => revealer.observe(el));
   // the section under the middle of the screen, measured on every scroll (the wall changes height as it loads)
   const links = [...document.querySelectorAll('.nav-links a')];
-  const ids = ['puzzles', 'modes', 'results'];
+  const ids = ['puzzles', 'in3d', 'modes', 'results'];
   let queued = false;
   const spy = () => {
     queued = false;
@@ -157,7 +172,9 @@ function setupNav() {
 }
 
 setupNav();
-renderWall().then(() => { if (focus) document.getElementById(focus)?.scrollIntoView({ behavior: 'instant', block: 'start' }); }).catch((err) => console.error(err));
+const teaser = $('#teaser');                          // the families' reel plays while it is on screen
+new IntersectionObserver(([en]) => { if (en.isIntersecting) teaser.play().catch(() => {}); else teaser.pause(); }, { threshold: 0.3 }).observe(teaser);
+renderWall().then((data) => { setupOracle(data); if (focus) document.getElementById(focus)?.scrollIntoView({ behavior: 'instant', block: 'start' }); }).catch((err) => console.error(err));
 if (focus) {
   const el = document.getElementById(focus);
   if (el) requestAnimationFrame(() => { el.scrollIntoView({ behavior: 'instant', block: 'start' }); document.querySelectorAll('.reveal').forEach((r) => r.classList.add('in')); });

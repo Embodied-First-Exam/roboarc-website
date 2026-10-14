@@ -30,13 +30,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
-  <script type="importmap">{"imports": {"three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/addons/"}}</script>
+  <script type="importmap">{"imports": {"three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/addons/", "three-mesh-bvh": "./vendor/three-mesh-bvh/index.module.js"}}</script>
 </head>
 <body>
   <nav class="nav" aria-label="Sections">
     <a class="wordmark" href="#top"><span class="mark" aria-hidden="true"></span><span data-brand="name">RoboARC</span></a>
     <div class="nav-links">
       <a href="#puzzles">Puzzles</a>
+      <a href="#in3d">In 3D</a>
       <a href="#modes">Modes</a>
       <a href="#results">Results</a>
     </div>
@@ -95,6 +96,10 @@
         <div><dt>3 h</dt><dd>per attempt</dd></div>
       </dl>
     </div>
+    <figure class="teaser reveal">
+      <div class="teaser-frame frame"><video id="teaser" muted loop playsinline preload="none" poster="assets/media/roboarc/teaser.jpg" src="assets/media/roboarc/teaser.mp4" aria-label="Reference solutions of the puzzle families, one after another"></video></div>
+      <figcaption>Reference solutions of the families, one after another, sped up.</figcaption>
+    </figure>
   </section>
 
   <!-- 01 puzzles -->
@@ -111,10 +116,87 @@
     <div class="wall" id="wall"></div>
   </section>
 
+  <!-- 02 in 3D -->
+  <section class="section" id="in3d">
+    <header class="sec-head reveal">
+      <span class="sec-index">02</span>
+      <div class="sec-title">
+        <h2>In 3D</h2>
+        <p>The same reference solutions, redrawn in 3D from the replays the videos show: every piece, the robot, the
+          rope and the cloth where the simulator had them, frame by frame. Turn the view, zoom in, scrub through the run,
+          or hide the robot to see the pieces.</p>
+      </div>
+    </header>
+    <div class="picker reveal" id="o-picker" role="tablist" aria-label="Choose a family"></div>
+    <div class="studio reveal">
+      <div class="play-stage frame">
+        <canvas id="o-canvas" aria-label="A reference solution in 3D"></canvas>
+        <div class="play-hud">
+          <span class="pill">sim <b id="o-clock">0:00</b></span>
+          <span class="pill" id="o-loading">loading</span>
+          <span class="pill blocked" id="o-blocked">blocked · the pieces touch</span>
+        </div>
+        <div class="freedom" id="o-progress" hidden>
+          <div class="freedom-label"><span id="o-from"></span><span id="o-to"></span></div>
+          <div class="freedom-track"><i id="o-bar"></i></div>
+        </div>
+        <div class="play-win" id="o-win" role="dialog" aria-live="polite">
+          <div>
+            <h3 id="o-win-title">Solved</h3>
+            <p id="o-win-text"></p>
+            <button class="btn primary" id="o-again">Play again</button>
+          </div>
+        </div>
+        <div class="scrubber" id="o-scrubber">
+          <button class="pill-btn" id="o-play" type="button">Pause</button>
+          <input type="range" id="o-scrub" min="0" max="1000" value="0" aria-label="Position in the run">
+        </div>
+      </div>
+      <aside class="play-panel">
+        <div class="goal">
+          <div class="label" id="o-name"></div>
+          <p id="o-goal"></p>
+        </div>
+        <div class="seg" id="o-modes" role="group" aria-label="Watch or play" hidden>
+          <button data-mode="watch" class="on">Watch the oracle</button>
+          <button data-mode="play">Play it</button>
+        </div>
+        <div>
+          <div class="label">Task</div>
+          <div class="seg stepper" id="o-stepper" role="group" aria-label="Task">
+            <button id="o-prev" aria-label="Previous task">‹</button>
+            <span id="o-step"></span>
+            <button id="o-next" aria-label="Next task">›</button>
+          </div>
+        </div>
+        <div id="o-playctl" hidden>
+          <div class="label">Moving the highlighted piece</div>
+          <div class="seg" role="group" aria-label="Move or turn">
+            <button id="o-move" class="on">Move <kbd>W</kbd></button>
+            <button id="o-turn">Turn <kbd>E</kbd></button>
+          </div>
+        </div>
+        <div id="o-watchctl">
+          <div class="label">Speed</div>
+          <div class="seg" id="o-speeds" role="group" aria-label="Speed">
+            <button data-speed="0.5">½×</button><button data-speed="1" class="on">1×</button><button data-speed="2">2×</button><button data-speed="4">4×</button>
+          </div>
+        </div>
+        <button class="toggle on" id="o-robot" type="button" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span>Show the robot <span id="o-robot-kind"></span></span></button>
+        <ul class="tips" id="o-tips"></ul>
+        <div class="panel-actions">
+          <button class="btn" id="o-solution" hidden>Show me how</button>
+          <button class="btn" id="o-restart">Restart</button>
+        </div>
+        <p class="fineprint"><span id="o-base"></span></p>
+      </aside>
+    </div>
+  </section>
+
   <!-- 03 modes -->
   <section class="section" id="modes">
     <header class="sec-head reveal">
-      <span class="sec-index">02</span>
+      <span class="sec-index">03</span>
       <div class="sec-title">
         <h2>Two modes</h2>
         <p>Every task is posed twice. In both, the agent's recorded motion is replayed in a fresh simulator, and only a
@@ -155,10 +237,10 @@ s.save_trajectory(actions, <span class="s">"/app/output/trajectory.npz"</span>)<
     </div>
   </section>
 
-  <!-- 03 results -->
+  <!-- 04 results -->
   <section class="section" id="results">
     <header class="sec-head reveal">
-      <span class="sec-index">03</span>
+      <span class="sec-index">04</span>
       <div class="sec-title">
         <h2>Results</h2>
         <p>No results for RoboARC 0.1.0 yet. The first evaluation of coding agents, each model inside its harness, will be
