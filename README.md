@@ -1,7 +1,7 @@
 # RoboARC project page
 
-Live at https://robotangle.embodied-first-exam.ai (GitHub Pages from `main` of
-[Embodied-First-Exam/robotangle-website](https://github.com/Embodied-First-Exam/robotangle-website); `CNAME` holds the
+Live at https://roboarc.embodied-first-exam.ai (GitHub Pages from `main` of
+[Embodied-First-Exam/roboarc-website](https://github.com/Embodied-First-Exam/roboarc-website); `CNAME` holds the
 domain, `.nojekyll` serves the files as they are).
 
 The project page of RoboARC, a benchmark of spatial-constraint puzzles for robot manipulation (release 0.1.0: 94 tasks
