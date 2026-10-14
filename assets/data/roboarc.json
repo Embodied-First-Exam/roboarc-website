@@ -1,0 +1,864 @@
+{
+ "blanket_flatten": [
+  {
+   "base": "roboarc-blanket-flatten-01-i01",
+   "nn": "01",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/blanket-flatten-01-i01.mp4",
+   "poster": "assets/media/roboarc/blanket-flatten-01-i01.jpg",
+   "speed": 3,
+   "sim_seconds": 31.9
+  },
+  {
+   "base": "roboarc-blanket-flatten-02-i01",
+   "nn": "02",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/blanket-flatten-02-i01.mp4",
+   "poster": "assets/media/roboarc/blanket-flatten-02-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 50.1
+  },
+  {
+   "base": "roboarc-blanket-flatten-03-i01",
+   "nn": "03",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/blanket-flatten-03-i01.mp4",
+   "poster": "assets/media/roboarc/blanket-flatten-03-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 59.8
+  },
+  {
+   "base": "roboarc-blanket-flatten-04-i01",
+   "nn": "04",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/blanket-flatten-04-i01.mp4",
+   "poster": "assets/media/roboarc/blanket-flatten-04-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 86.2
+  },
+  {
+   "base": "roboarc-blanket-flatten-05-i01",
+   "nn": "05",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/blanket-flatten-05-i01.mp4",
+   "poster": "assets/media/roboarc/blanket-flatten-05-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 88.8
+  },
+  {
+   "base": "roboarc-blanket-flatten-06-i01",
+   "nn": "06",
+   "difficulty": "hard",
+   "video": null,
+   "poster": null
+  }
+ ],
+ "blanket_fold": [
+  {
+   "base": "roboarc-blanket-fold-01-i01",
+   "nn": "01",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/blanket-fold-01-i01.mp4",
+   "poster": "assets/media/roboarc/blanket-fold-01-i01.jpg",
+   "speed": 3,
+   "sim_seconds": 22.1
+  },
+  {
+   "base": "roboarc-blanket-fold-02-i01",
+   "nn": "02",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/blanket-fold-02-i01.mp4",
+   "poster": "assets/media/roboarc/blanket-fold-02-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 69.9
+  },
+  {
+   "base": "roboarc-blanket-fold-03-i01",
+   "nn": "03",
+   "difficulty": "easy",
+   "video": null,
+   "poster": "assets/media/roboarc/blanket-fold-03-i01.jpg",
+   "still": "target"
+  },
+  {
+   "base": "roboarc-blanket-fold-04-i01",
+   "nn": "04",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/blanket-fold-04-i01.mp4",
+   "poster": "assets/media/roboarc/blanket-fold-04-i01.jpg",
+   "speed": 12,
+   "sim_seconds": 191.3
+  },
+  {
+   "base": "roboarc-blanket-fold-05-i01",
+   "nn": "05",
+   "difficulty": "hard",
+   "video": null,
+   "poster": "assets/media/roboarc/blanket-fold-05-i01.jpg",
+   "still": "target"
+  }
+ ],
+ "buzz_wire_3d": [
+  {
+   "base": "roboarc-buzz-wire-3d-01-i01",
+   "nn": "01",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/buzz-wire-3d-01-i01.mp4",
+   "poster": "assets/media/roboarc/buzz-wire-3d-01-i01.jpg",
+   "speed": 15,
+   "sim_seconds": 261.6
+  },
+  {
+   "base": "roboarc-buzz-wire-3d-02-i01",
+   "nn": "02",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/buzz-wire-3d-02-i01.mp4",
+   "poster": "assets/media/roboarc/buzz-wire-3d-02-i01.jpg",
+   "speed": 18,
+   "sim_seconds": 327.4
+  },
+  {
+   "base": "roboarc-buzz-wire-3d-03-i01",
+   "nn": "03",
+   "difficulty": "easy",
+   "video": null,
+   "poster": null
+  },
+  {
+   "base": "roboarc-buzz-wire-3d-04-i01",
+   "nn": "04",
+   "difficulty": "medium",
+   "video": null,
+   "poster": null
+  },
+  {
+   "base": "roboarc-buzz-wire-3d-05-i01",
+   "nn": "05",
+   "difficulty": "hard",
+   "video": null,
+   "poster": null
+  },
+  {
+   "base": "roboarc-buzz-wire-3d-06-i01",
+   "nn": "06",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/buzz-wire-3d-06-i01.mp4",
+   "poster": "assets/media/roboarc/buzz-wire-3d-06-i01.jpg",
+   "speed": 15,
+   "sim_seconds": 260.6
+  },
+  {
+   "base": "roboarc-buzz-wire-3d-07-i01",
+   "nn": "07",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/buzz-wire-3d-07-i01.mp4",
+   "poster": "assets/media/roboarc/buzz-wire-3d-07-i01.jpg",
+   "speed": 24,
+   "sim_seconds": 432.9
+  },
+  {
+   "base": "roboarc-buzz-wire-3d-08-i01",
+   "nn": "08",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/buzz-wire-3d-08-i01.mp4",
+   "poster": "assets/media/roboarc/buzz-wire-3d-08-i01.jpg",
+   "speed": 21,
+   "sim_seconds": 369.9
+  },
+  {
+   "base": "roboarc-buzz-wire-3d-09-i01",
+   "nn": "09",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/buzz-wire-3d-09-i01.mp4",
+   "poster": "assets/media/roboarc/buzz-wire-3d-09-i01.jpg",
+   "speed": 24,
+   "sim_seconds": 450.6
+  },
+  {
+   "base": "roboarc-buzz-wire-3d-10-i01",
+   "nn": "10",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/buzz-wire-3d-10-i01.mp4",
+   "poster": "assets/media/roboarc/buzz-wire-3d-10-i01.jpg",
+   "speed": 24,
+   "sim_seconds": 457.9
+  }
+ ],
+ "cast_coil": [
+  {
+   "base": "roboarc-cast-coil-01-i01",
+   "nn": "01",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/cast-coil-01-i01.mp4",
+   "poster": "assets/media/roboarc/cast-coil-01-i01.jpg",
+   "speed": 3,
+   "sim_seconds": 39.9
+  },
+  {
+   "base": "roboarc-cast-coil-02-i01",
+   "nn": "02",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/cast-coil-02-i01.mp4",
+   "poster": "assets/media/roboarc/cast-coil-02-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 53.4
+  },
+  {
+   "base": "roboarc-cast-coil-03-i01",
+   "nn": "03",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/cast-coil-03-i01.mp4",
+   "poster": "assets/media/roboarc/cast-coil-03-i01.jpg",
+   "speed": 12,
+   "sim_seconds": 219.1
+  },
+  {
+   "base": "roboarc-cast-coil-04-i01",
+   "nn": "04",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/cast-coil-04-i01.mp4",
+   "poster": "assets/media/roboarc/cast-coil-04-i01.jpg",
+   "speed": 12,
+   "sim_seconds": 224.3
+  },
+  {
+   "base": "roboarc-cast-coil-05-i01",
+   "nn": "05",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/cast-coil-05-i01.mp4",
+   "poster": "assets/media/roboarc/cast-coil-05-i01.jpg",
+   "speed": 12,
+   "sim_seconds": 220.8
+  },
+  {
+   "base": "roboarc-cast-coil-06-i01",
+   "nn": "06",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/cast-coil-06-i01.mp4",
+   "poster": "assets/media/roboarc/cast-coil-06-i01.jpg",
+   "speed": 12,
+   "sim_seconds": 217.2
+  },
+  {
+   "base": "roboarc-cast-coil-07-i01",
+   "nn": "07",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/cast-coil-07-i01.mp4",
+   "poster": "assets/media/roboarc/cast-coil-07-i01.jpg",
+   "speed": 36,
+   "sim_seconds": 700.9
+  },
+  {
+   "base": "roboarc-cast-coil-08-i01",
+   "nn": "08",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/cast-coil-08-i01.mp4",
+   "poster": "assets/media/roboarc/cast-coil-08-i01.jpg",
+   "speed": 42,
+   "sim_seconds": 824.2
+  }
+ ],
+ "cast_keyhole": [
+  {
+   "base": "roboarc-cast-keyhole-01-i01",
+   "nn": "01",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/cast-keyhole-01-i01.mp4",
+   "poster": "assets/media/roboarc/cast-keyhole-01-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 127.4
+  },
+  {
+   "base": "roboarc-cast-keyhole-02-i01",
+   "nn": "02",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/cast-keyhole-02-i01.mp4",
+   "poster": "assets/media/roboarc/cast-keyhole-02-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 147.2
+  },
+  {
+   "base": "roboarc-cast-keyhole-03-i01",
+   "nn": "03",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/cast-keyhole-03-i01.mp4",
+   "poster": "assets/media/roboarc/cast-keyhole-03-i01.jpg",
+   "speed": 18,
+   "sim_seconds": 305.1
+  },
+  {
+   "base": "roboarc-cast-keyhole-04-i01",
+   "nn": "04",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/cast-keyhole-04-i01.mp4",
+   "poster": "assets/media/roboarc/cast-keyhole-04-i01.jpg",
+   "speed": 15,
+   "sim_seconds": 270.1
+  },
+  {
+   "base": "roboarc-cast-keyhole-05-i01",
+   "nn": "05",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/cast-keyhole-05-i01.mp4",
+   "poster": "assets/media/roboarc/cast-keyhole-05-i01.jpg",
+   "speed": 21,
+   "sim_seconds": 364.7
+  },
+  {
+   "base": "roboarc-cast-keyhole-06-i01",
+   "nn": "06",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/cast-keyhole-06-i01.mp4",
+   "poster": "assets/media/roboarc/cast-keyhole-06-i01.jpg",
+   "speed": 12,
+   "sim_seconds": 202.1
+  }
+ ],
+ "fiber_bundling": [
+  {
+   "base": "roboarc-fiber-bundling-01-i01",
+   "nn": "01",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/fiber-bundling-01-i01.mp4",
+   "poster": "assets/media/roboarc/fiber-bundling-01-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 93.0
+  },
+  {
+   "base": "roboarc-fiber-bundling-02-i01",
+   "nn": "02",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/fiber-bundling-02-i01.mp4",
+   "poster": "assets/media/roboarc/fiber-bundling-02-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 90.2
+  },
+  {
+   "base": "roboarc-fiber-bundling-03-i01",
+   "nn": "03",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/fiber-bundling-03-i01.mp4",
+   "poster": "assets/media/roboarc/fiber-bundling-03-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 125.2
+  },
+  {
+   "base": "roboarc-fiber-bundling-04-i01",
+   "nn": "04",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/fiber-bundling-04-i01.mp4",
+   "poster": "assets/media/roboarc/fiber-bundling-04-i01.jpg",
+   "speed": 12,
+   "sim_seconds": 202.9
+  },
+  {
+   "base": "roboarc-fiber-bundling-05-i01",
+   "nn": "05",
+   "difficulty": "hard",
+   "video": null,
+   "poster": null
+  },
+  {
+   "base": "roboarc-fiber-bundling-06-i01",
+   "nn": "06",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/fiber-bundling-06-i01.mp4",
+   "poster": "assets/media/roboarc/fiber-bundling-06-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 161.6
+  },
+  {
+   "base": "roboarc-fiber-bundling-07-i01",
+   "nn": "07",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/fiber-bundling-07-i01.mp4",
+   "poster": "assets/media/roboarc/fiber-bundling-07-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 164.2
+  },
+  {
+   "base": "roboarc-fiber-bundling-08-i01",
+   "nn": "08",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/fiber-bundling-08-i01.mp4",
+   "poster": "assets/media/roboarc/fiber-bundling-08-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 154.5
+  },
+  {
+   "base": "roboarc-fiber-bundling-09-i01",
+   "nn": "09",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/fiber-bundling-09-i01.mp4",
+   "poster": "assets/media/roboarc/fiber-bundling-09-i01.jpg",
+   "speed": 21,
+   "sim_seconds": 362.9
+  },
+  {
+   "base": "roboarc-fiber-bundling-10-i01",
+   "nn": "10",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/fiber-bundling-10-i01.mp4",
+   "poster": "assets/media/roboarc/fiber-bundling-10-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 154.9
+  }
+ ],
+ "hedgehog_in_cage": [
+  {
+   "base": "roboarc-hedgehog-in-cage-01-i01",
+   "nn": "01",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/hedgehog-in-cage-01-i01.mp4",
+   "poster": "assets/media/roboarc/hedgehog-in-cage-01-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 48.1
+  },
+  {
+   "base": "roboarc-hedgehog-in-cage-02-i01",
+   "nn": "02",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/hedgehog-in-cage-02-i01.mp4",
+   "poster": "assets/media/roboarc/hedgehog-in-cage-02-i01.jpg",
+   "speed": 3,
+   "sim_seconds": 47.0
+  },
+  {
+   "base": "roboarc-hedgehog-in-cage-03-i01",
+   "nn": "03",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/hedgehog-in-cage-03-i01.mp4",
+   "poster": "assets/media/roboarc/hedgehog-in-cage-03-i01.jpg",
+   "speed": 12,
+   "sim_seconds": 206.4
+  },
+  {
+   "base": "roboarc-hedgehog-in-cage-04-i01",
+   "nn": "04",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/hedgehog-in-cage-04-i01.mp4",
+   "poster": "assets/media/roboarc/hedgehog-in-cage-04-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 65.0
+  },
+  {
+   "base": "roboarc-hedgehog-in-cage-05-i01",
+   "nn": "05",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/hedgehog-in-cage-05-i01.mp4",
+   "poster": "assets/media/roboarc/hedgehog-in-cage-05-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 156.0
+  },
+  {
+   "base": "roboarc-hedgehog-in-cage-06-i01",
+   "nn": "06",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/hedgehog-in-cage-06-i01.mp4",
+   "poster": "assets/media/roboarc/hedgehog-in-cage-06-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 71.6
+  },
+  {
+   "base": "roboarc-hedgehog-in-cage-07-i01",
+   "nn": "07",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/hedgehog-in-cage-07-i01.mp4",
+   "poster": "assets/media/roboarc/hedgehog-in-cage-07-i01.jpg",
+   "speed": 12,
+   "sim_seconds": 180.6
+  },
+  {
+   "base": "roboarc-hedgehog-in-cage-08-i01",
+   "nn": "08",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/hedgehog-in-cage-08-i01.mp4",
+   "poster": "assets/media/roboarc/hedgehog-in-cage-08-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 74.0
+  }
+ ],
+ "horseshoe_ring": [
+  {
+   "base": "roboarc-horseshoe-ring-01-i01",
+   "nn": "01",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/horseshoe-ring-01-i01.mp4",
+   "poster": "assets/media/roboarc/horseshoe-ring-01-i01.jpg",
+   "speed": 18,
+   "sim_seconds": 288.0
+  },
+  {
+   "base": "roboarc-horseshoe-ring-02-i01",
+   "nn": "02",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/horseshoe-ring-02-i01.mp4",
+   "poster": "assets/media/roboarc/horseshoe-ring-02-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 132.1
+  },
+  {
+   "base": "roboarc-horseshoe-ring-03-i01",
+   "nn": "03",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/horseshoe-ring-03-i01.mp4",
+   "poster": "assets/media/roboarc/horseshoe-ring-03-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 144.8
+  },
+  {
+   "base": "roboarc-horseshoe-ring-04-i01",
+   "nn": "04",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/horseshoe-ring-04-i01.mp4",
+   "poster": "assets/media/roboarc/horseshoe-ring-04-i01.jpg",
+   "speed": 18,
+   "sim_seconds": 325.8
+  },
+  {
+   "base": "roboarc-horseshoe-ring-05-i01",
+   "nn": "05",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/horseshoe-ring-05-i01.mp4",
+   "poster": "assets/media/roboarc/horseshoe-ring-05-i01.jpg",
+   "speed": 12,
+   "sim_seconds": 195.4
+  }
+ ],
+ "interlocked_claws": [
+  {
+   "base": "roboarc-interlocked-claws-01-i01",
+   "nn": "01",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/interlocked-claws-01-i01.mp4",
+   "poster": "assets/media/roboarc/interlocked-claws-01-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 109.2
+  },
+  {
+   "base": "roboarc-interlocked-claws-02-i01",
+   "nn": "02",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/interlocked-claws-02-i01.mp4",
+   "poster": "assets/media/roboarc/interlocked-claws-02-i01.jpg",
+   "speed": 27,
+   "sim_seconds": 502.8
+  },
+  {
+   "base": "roboarc-interlocked-claws-03-i01",
+   "nn": "03",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/interlocked-claws-03-i01.mp4",
+   "poster": "assets/media/roboarc/interlocked-claws-03-i01.jpg",
+   "speed": 3,
+   "sim_seconds": 20.3
+  },
+  {
+   "base": "roboarc-interlocked-claws-04-i01",
+   "nn": "04",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/interlocked-claws-04-i01.mp4",
+   "poster": "assets/media/roboarc/interlocked-claws-04-i01.jpg",
+   "speed": 3,
+   "sim_seconds": 36.0
+  },
+  {
+   "base": "roboarc-interlocked-claws-05-i01",
+   "nn": "05",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/interlocked-claws-05-i01.mp4",
+   "poster": "assets/media/roboarc/interlocked-claws-05-i01.jpg",
+   "speed": 21,
+   "sim_seconds": 405.6
+  },
+  {
+   "base": "roboarc-interlocked-claws-06-i01",
+   "nn": "06",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/interlocked-claws-06-i01.mp4",
+   "poster": "assets/media/roboarc/interlocked-claws-06-i01.jpg",
+   "speed": 3,
+   "sim_seconds": 45.0
+  },
+  {
+   "base": "roboarc-interlocked-claws-07-i01",
+   "nn": "07",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/interlocked-claws-07-i01.mp4",
+   "poster": "assets/media/roboarc/interlocked-claws-07-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 82.6
+  },
+  {
+   "base": "roboarc-interlocked-claws-08-i01",
+   "nn": "08",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/interlocked-claws-08-i01.mp4",
+   "poster": "assets/media/roboarc/interlocked-claws-08-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 106.9
+  },
+  {
+   "base": "roboarc-interlocked-claws-09-i01",
+   "nn": "09",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/interlocked-claws-09-i01.mp4",
+   "poster": "assets/media/roboarc/interlocked-claws-09-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 119.5
+  },
+  {
+   "base": "roboarc-interlocked-claws-10-i01",
+   "nn": "10",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/interlocked-claws-10-i01.mp4",
+   "poster": "assets/media/roboarc/interlocked-claws-10-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 155.3
+  },
+  {
+   "base": "roboarc-interlocked-claws-11-i01",
+   "nn": "11",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/interlocked-claws-11-i01.mp4",
+   "poster": "assets/media/roboarc/interlocked-claws-11-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 149.5
+  },
+  {
+   "base": "roboarc-interlocked-claws-12-i01",
+   "nn": "12",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/interlocked-claws-12-i01.mp4",
+   "poster": "assets/media/roboarc/interlocked-claws-12-i01.jpg",
+   "speed": 27,
+   "sim_seconds": 527.9
+  }
+ ],
+ "knot_untying": [
+  {
+   "base": "roboarc-knot-untying-01-i01",
+   "nn": "01",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/knot-untying-01-i01.mp4",
+   "poster": "assets/media/roboarc/knot-untying-01-i01.jpg",
+   "speed": 3,
+   "sim_seconds": 30.2
+  },
+  {
+   "base": "roboarc-knot-untying-02-i01",
+   "nn": "02",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/knot-untying-02-i01.mp4",
+   "poster": "assets/media/roboarc/knot-untying-02-i01.jpg",
+   "speed": 3,
+   "sim_seconds": 26.8
+  },
+  {
+   "base": "roboarc-knot-untying-03-i01",
+   "nn": "03",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/knot-untying-03-i01.mp4",
+   "poster": "assets/media/roboarc/knot-untying-03-i01.jpg",
+   "speed": 3,
+   "sim_seconds": 18.8
+  },
+  {
+   "base": "roboarc-knot-untying-04-i01",
+   "nn": "04",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/knot-untying-04-i01.mp4",
+   "poster": "assets/media/roboarc/knot-untying-04-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 48.5
+  },
+  {
+   "base": "roboarc-knot-untying-05-i01",
+   "nn": "05",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/knot-untying-05-i01.mp4",
+   "poster": "assets/media/roboarc/knot-untying-05-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 59.8
+  }
+ ],
+ "lock_picking": [
+  {
+   "base": "roboarc-lock-picking-01-i01",
+   "nn": "01",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/lock-picking-01-i01.mp4",
+   "poster": "assets/media/roboarc/lock-picking-01-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 106.9
+  },
+  {
+   "base": "roboarc-lock-picking-02-i01",
+   "nn": "02",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/lock-picking-02-i01.mp4",
+   "poster": "assets/media/roboarc/lock-picking-02-i01.jpg",
+   "speed": 12,
+   "sim_seconds": 194.2
+  },
+  {
+   "base": "roboarc-lock-picking-03-i01",
+   "nn": "03",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/lock-picking-03-i01.mp4",
+   "poster": "assets/media/roboarc/lock-picking-03-i01.jpg",
+   "speed": 21,
+   "sim_seconds": 407.3
+  },
+  {
+   "base": "roboarc-lock-picking-04-i01",
+   "nn": "04",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/lock-picking-04-i01.mp4",
+   "poster": "assets/media/roboarc/lock-picking-04-i01.jpg",
+   "speed": 27,
+   "sim_seconds": 478.9
+  },
+  {
+   "base": "roboarc-lock-picking-05-i01",
+   "nn": "05",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/lock-picking-05-i01.mp4",
+   "poster": "assets/media/roboarc/lock-picking-05-i01.jpg",
+   "speed": 45,
+   "sim_seconds": 881.8
+  }
+ ],
+ "orbits": [
+  {
+   "base": "roboarc-orbits-01-i01",
+   "nn": "01",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/orbits-01-i01.mp4",
+   "poster": "assets/media/roboarc/orbits-01-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 83.2
+  }
+ ],
+ "rope_threading": [
+  {
+   "base": "roboarc-rope-threading-01-i01",
+   "nn": "01",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/rope-threading-01-i01.mp4",
+   "poster": "assets/media/roboarc/rope-threading-01-i01.jpg",
+   "speed": 6,
+   "sim_seconds": 107.0
+  },
+  {
+   "base": "roboarc-rope-threading-02-i01",
+   "nn": "02",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/rope-threading-02-i01.mp4",
+   "poster": "assets/media/roboarc/rope-threading-02-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 134.6
+  },
+  {
+   "base": "roboarc-rope-threading-03-i01",
+   "nn": "03",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/rope-threading-03-i01.mp4",
+   "poster": "assets/media/roboarc/rope-threading-03-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 133.8
+  },
+  {
+   "base": "roboarc-rope-threading-04-i01",
+   "nn": "04",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/rope-threading-04-i01.mp4",
+   "poster": "assets/media/roboarc/rope-threading-04-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 148.6
+  },
+  {
+   "base": "roboarc-rope-threading-05-i01",
+   "nn": "05",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/rope-threading-05-i01.mp4",
+   "poster": "assets/media/roboarc/rope-threading-05-i01.jpg",
+   "speed": 9,
+   "sim_seconds": 151.1
+  },
+  {
+   "base": "roboarc-rope-threading-06-i01",
+   "nn": "06",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/rope-threading-06-i01.mp4",
+   "poster": "assets/media/roboarc/rope-threading-06-i01.jpg",
+   "speed": 12,
+   "sim_seconds": 221.7
+  },
+  {
+   "base": "roboarc-rope-threading-07-i01",
+   "nn": "07",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/rope-threading-07-i01.mp4",
+   "poster": "assets/media/roboarc/rope-threading-07-i01.jpg",
+   "speed": 12,
+   "sim_seconds": 187.4
+  },
+  {
+   "base": "roboarc-rope-threading-08-i01",
+   "nn": "08",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/rope-threading-08-i01.mp4",
+   "poster": "assets/media/roboarc/rope-threading-08-i01.jpg",
+   "speed": 15,
+   "sim_seconds": 242.2
+  }
+ ],
+ "slotted_post_ring": [
+  {
+   "base": "roboarc-slotted-post-ring-01-i01",
+   "nn": "01",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/slotted-post-ring-01-i01.mp4",
+   "poster": "assets/media/roboarc/slotted-post-ring-01-i01.jpg",
+   "speed": 3,
+   "sim_seconds": 10.9
+  },
+  {
+   "base": "roboarc-slotted-post-ring-02-i01",
+   "nn": "02",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/slotted-post-ring-02-i01.mp4",
+   "poster": "assets/media/roboarc/slotted-post-ring-02-i01.jpg",
+   "speed": 3,
+   "sim_seconds": 24.2
+  },
+  {
+   "base": "roboarc-slotted-post-ring-03-i01",
+   "nn": "03",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/slotted-post-ring-03-i01.mp4",
+   "poster": "assets/media/roboarc/slotted-post-ring-03-i01.jpg",
+   "speed": 15,
+   "sim_seconds": 229.8
+  },
+  {
+   "base": "roboarc-slotted-post-ring-04-i01",
+   "nn": "04",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/slotted-post-ring-04-i01.mp4",
+   "poster": "assets/media/roboarc/slotted-post-ring-04-i01.jpg",
+   "speed": 15,
+   "sim_seconds": 264.5
+  },
+  {
+   "base": "roboarc-slotted-post-ring-05-i01",
+   "nn": "05",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/slotted-post-ring-05-i01.mp4",
+   "poster": "assets/media/roboarc/slotted-post-ring-05-i01.jpg",
+   "speed": 15,
+   "sim_seconds": 235.2
+  }
+ ]
+}
