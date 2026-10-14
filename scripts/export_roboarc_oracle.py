@@ -131,10 +131,19 @@ def urdf_parts(path, missing):
 
 
 _written = {}
+FALLBACKS = []                     # meshes that kept more faces than their target, to stay whole
+
+
+def faithful(a, b):
+    """Whether decimated `b` still covers `a`: the same box (within 0.5 mm + 1 %) and 90-110 % of its area. Quadric
+    decimation can drop whole pieces of a mesh that is not one closed surface (it took the ALOHA finger blades)."""
+    size = np.maximum(a.bounds[1] - a.bounds[0], 1e-9)
+    box = np.abs(np.asarray(b.bounds) - np.asarray(a.bounds)).max() <= 0.0005 + 0.01 * size.max()
+    return bool(len(b.faces)) and box and 0.9 <= b.area / max(a.area, 1e-12) <= 1.1
 
 
 def write_mesh(m, robot):
-    """Decimate, split normals at creases, quantize; returns the library id (content hash)."""
+    """Decimate (only as far as the shape survives), split normals at creases, quantize; returns the library id."""
     key = (hashlib.sha1(np.ascontiguousarray(m.vertices, np.float64).tobytes() + np.ascontiguousarray(m.faces, np.int64).tobytes()).hexdigest(), robot)
     if key in _written:
         return _written[key]
@@ -143,8 +152,16 @@ def write_mesh(m, robot):
     target = FACES_ROBOT if robot else FACES_PART
     if len(m.faces) > target:
         import fast_simplification
-        v, f = fast_simplification.simplify(np.asarray(m.vertices, np.float32), np.asarray(m.faces, np.int32), target_reduction=1 - target / len(m.faces))
-        m = trimesh.Trimesh(v, f, process=True)
+        for t in (target, 2 * target, 4 * target, 8 * target):
+            if t >= len(m.faces):
+                break
+            v, f = fast_simplification.simplify(np.asarray(m.vertices, np.float32), np.asarray(m.faces, np.int32), target_reduction=1 - t / len(m.faces))
+            d = trimesh.Trimesh(v, f, process=True)
+            if faithful(m, d):
+                m = d
+                break
+        if len(m.faces) > target:
+            FALLBACKS.append(len(m.faces))
     m = trimesh.graph.smooth_shade(m, angle=math.radians(35)) if len(m.faces) else m
     v = np.asarray(m.vertices, float); f = np.asarray(m.faces, np.int64); n = np.asarray(m.vertex_normals, float)
     lo, hi = v.min(0), v.max(0)
@@ -364,4 +381,4 @@ for base, rec in sorted(json.load(open(REL))["bases"].items()):
     r = export(base, rec["family"], difficulty[base])
     print(f"{base:28s} parts {r['parts']:4d} groups {r['groups']:4d} step {r['step']:2d} {r['kb']:6d} KB deform {r['deform']} missing {r['missing']}", flush=True)
 lib = sum(p.stat().st_size for p in (OUT / "m").iterdir())
-print(f"mesh library: {len(list((OUT / 'm').iterdir()))} meshes, {lib / 1e6:.1f} MB")
+print(f"mesh library: {len(list((OUT / 'm').iterdir()))} meshes, {lib / 1e6:.1f} MB; kept above target to stay whole: {len(FALLBACKS)} {sorted(FALLBACKS)[-8:]}")

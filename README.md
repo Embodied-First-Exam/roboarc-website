@@ -54,7 +54,7 @@ toggle.
   release teaser (`teaser.mp4`, 1280x720). Tasks without a reference video show a note.
 - `assets/oracle/`: `scripts/export_roboarc_oracle.py` from the same replays' recorded poses (every drawn piece at every
   video frame, z-up) and meshes: per task `<base>.json` (parts, timing, framing) and `<base>.bin` (int16 tracks, rope
-  centrelines from the surface by arc length, cloth grids by UV), and a shared library of decimated meshes `m/<id>.bin`.
+  centrelines from the surface by arc length, cloth grids by UV), and a shared library of meshes `m/<id>.bin`, decimated only as far as each keeps its box and area.
   The lock's rotor discs are carried with their own bodies (exported as static by the renders).
 - `assets/media/cams/`: the three agent cameras of a Cast Keyhole task at its frozen start.
 - `assets/data/robot/`: `scripts/prepare_robot.py`, the opening's robot (the kinematic tree, the arms' meshes, the claw
