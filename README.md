@@ -48,10 +48,10 @@ toggle.
 6. **04 Results.** None yet for 0.1.0; the first evaluation will be posted here.
 
 ## Data
-- `assets/data/roboarc.json` and `assets/media/roboarc/`: `scripts/make_roboarc_media.py` from the high-quality renders
-  of the release's reference solutions (path-traced; each draws a fresh-process replay that ends on the release's
-  expected final state), cut to 960x540 loops of at most 20 s, plus each task's difficulty from its `task.toml`, and the
-  release teaser (`teaser.mp4`, 1280x720). Tasks without a reference video show a note.
+- `assets/data/roboarc.json` and `assets/media/roboarc/`: `scripts/make_roboarc_media.py` from the studio renders of
+  the release's reference solutions (Blender Cycles; each draws the states of a fresh-process replay that ends on the
+  release's expected final state), cut to 1280x720 loops of at most 20 s, plus each task's difficulty from its
+  `task.toml`, and the release teaser (`teaser.mp4`, 1920x1080). Tasks without a reference video show a note.
 - `assets/oracle/`: `scripts/export_roboarc_oracle.py` from the same replays' recorded poses (every drawn piece at every
   video frame, z-up) and meshes: per task `<base>.json` (parts, timing, framing) and `<base>.bin` (int16 tracks, rope
   centrelines from the surface by arc length, cloth grids by UV), and a shared library of meshes `m/<id>.bin`, decimated only as far as each keeps its box and area.
@@ -61,6 +61,5 @@ toggle.
   pieces and the recorded joint motion).
 
 ## Open items
-- Reference videos for the tasks that have none yet (buzz wire 03-05; fiber bundling 05 stays without); the lock cards'
-  videos show the rotor discs still (the 3D view turns them); results; paper and code links, authors, BibTeX.
+- Reference videos for the tasks that have none yet (buzz wire 03-05; fiber bundling 05 stays without); results; paper and code links, authors, BibTeX.
 - The claw meshes of the opening come from a demo whose redistribution licence is not stated upstream.
