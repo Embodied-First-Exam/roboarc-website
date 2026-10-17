@@ -4,7 +4,7 @@ Live at https://roboarc.embodied-first-exam.ai (GitHub Pages from `main` of
 [Embodied-First-Exam/roboarc-website](https://github.com/Embodied-First-Exam/roboarc-website); `CNAME` holds the
 domain, `.nojekyll` serves the files as they are).
 
-The project page of RoboARC, a benchmark of spatial-constraint puzzles for robot manipulation (release 0.1.0: 94 tasks
+The project page of RoboARC, a benchmark of spatial-constraint puzzles for robot manipulation (98 tasks
 in 14 families, each in two modes). It is static: plain HTML, CSS and ES modules, with three.js and three-mesh-bvh
 vendored under `vendor/`. There is no build step.
 
@@ -29,7 +29,7 @@ toggle.
 1. **Opening (scroll-driven, real-time WebGL).** A two-arm ALOHA robot takes two interlocked claws apart, played back
    from its recorded plan (`hero.js`, `robot.js`, `stage.js`). It illustrates the kind of puzzle; it is not one of the
    release's tasks.
-2. **Intro.** One paragraph and the key figures: 14 families, 94 tasks from very easy to hard, two modes (188 tasks in
+2. **Intro.** One paragraph and the key figures: 14 families, 98 tasks from very easy to hard, two modes (196 tasks in
    all), three hours per attempt; then the release's teaser reel (one reference solution per family).
 3. **01 Puzzles.** One card per family, three per row, with group filters (rigid, rope and chain, cloth). Each card plays
    a reference solution of one task, replayed in a fresh simulator and sped up (the factor is on the card); the arrows

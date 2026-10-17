@@ -6,7 +6,8 @@ usage: make_roboarc_media.py <render dir> <release.json> <difficulty.txt> [--out
          [--size 1280x720] [--teaser-size 1920x1080]
 
 Inputs: the renders of the release's reference solutions (<render dir>/out/roboarc-<base>/: the video named by --video,
-the poster image, and meta.json, whose replay.sim_time_s gives the simulated time; --timing takes it from another render
+the poster image, and meta.json, whose replay.sim_time_s (or reference_end_hash.sim_time_s) gives the simulated time;
+--timing takes it from another render
 of the same replays with the same timing). Each render draws the states of a fresh-process replay of the reference that
 ends on the release's expected final state: a time-lapse that slows while the puzzle moves. Also the teaser
 (<render dir>/out/<--teaser>, or <render dir>/<--teaser>), the release's list of bases (family per base) and each base's
@@ -46,7 +47,8 @@ bases = json.load(open(REL))["bases"]
 index = {}
 for base, rec in sorted(bases.items()):
     d = SRC / "out" / f"roboarc-{base}"
-    entry = {"base": f"roboarc-{base}", "nn": base.split("-")[-2], "difficulty": difficulty[base], "video": None, "poster": None}
+    entry = {"base": f"roboarc-{base}", "nn": base.split("-")[-2], "difficulty": difficulty[base], "video": None, "poster": None,
+             "oracle": (ROOT / "assets" / "oracle" / f"roboarc-{base}.json").exists()}
     src = d / VIDEO.format(name=f"roboarc-{base}")
     if src.exists():
         meta = json.load(open(TIMING / "out" / f"roboarc-{base}" / "meta.json"))
@@ -57,7 +59,7 @@ for base, rec in sorted(bases.items()):
             run("-i", str(src), "-an", "-vf", f"setpts=PTS/{factor},fps=30,scale={W}:{H}:flags=lanczos", "-c:v", "libx264",
                 "-preset", "slow", "-crf", "26", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-threads", "8", str(stem.with_suffix(".mp4")))
             run("-i", str(d / POSTER), "-vf", f"scale={W}:{H}:flags=lanczos", "-q:v", "3", str(stem.with_suffix(".jpg")))
-        sim = meta["replay"]["sim_time_s"]
+        sim = meta["replay"]["sim_time_s"] if "replay" in meta else meta["reference_end_hash"]["sim_time_s"]
         entry.update(video=f"assets/media/roboarc/{base}.mp4", poster=f"assets/media/roboarc/{base}.jpg",
                      speed=round(sim / (dur / factor)), sim_seconds=round(sim, 1))
     index.setdefault(rec["family"], []).append(entry)

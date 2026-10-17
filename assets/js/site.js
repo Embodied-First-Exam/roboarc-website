@@ -141,7 +141,7 @@ function setupOracle(data) {
     'tips', 'solution', 'restart', 'base'];
   const el = Object.fromEntries(ids.map((k) => [k, document.getElementById(`o-${k}`)]));
   const ui = { ...el, robot: el['robot-kind'], robotToggle: el.robot, winTitle: el['win-title'], winText: el['win-text'] };
-  const tasks = Object.fromEntries(FAMILIES.map((f) => [f.id, (data[f.id] || []).map((e) => ({ ...e, level: LEVEL[e.difficulty], oracle: !!e.video }))]));   // every task with a reference video has its replay
+  const tasks = Object.fromEntries(FAMILIES.map((f) => [f.id, (data[f.id] || []).map((e) => ({ ...e, level: LEVEL[e.difficulty] }))]));   // e.oracle: its replay is in assets/oracle/
   import('./oracle.js')
     .then(({ initOracle }) => initOracle({ section: $('#in3d'), canvas: el.canvas, ui, families: FAMILIES, tasks }))
     .then((o) => { window.oracle = o; })

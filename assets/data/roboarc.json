@@ -7,7 +7,8 @@
    "video": "assets/media/roboarc/blanket-flatten-01-i01.mp4",
    "poster": "assets/media/roboarc/blanket-flatten-01-i01.jpg",
    "speed": 2,
-   "sim_seconds": 31.9
+   "sim_seconds": 31.9,
+   "oracle": true
   },
   {
    "base": "roboarc-blanket-flatten-02-i01",
@@ -16,7 +17,8 @@
    "video": "assets/media/roboarc/blanket-flatten-02-i01.mp4",
    "poster": "assets/media/roboarc/blanket-flatten-02-i01.jpg",
    "speed": 3,
-   "sim_seconds": 50.1
+   "sim_seconds": 50.1,
+   "oracle": true
   },
   {
    "base": "roboarc-blanket-flatten-03-i01",
@@ -25,7 +27,8 @@
    "video": "assets/media/roboarc/blanket-flatten-03-i01.mp4",
    "poster": "assets/media/roboarc/blanket-flatten-03-i01.jpg",
    "speed": 3,
-   "sim_seconds": 59.8
+   "sim_seconds": 59.8,
+   "oracle": true
   },
   {
    "base": "roboarc-blanket-flatten-04-i01",
@@ -34,7 +37,8 @@
    "video": "assets/media/roboarc/blanket-flatten-04-i01.mp4",
    "poster": "assets/media/roboarc/blanket-flatten-04-i01.jpg",
    "speed": 5,
-   "sim_seconds": 86.2
+   "sim_seconds": 86.2,
+   "oracle": true
   },
   {
    "base": "roboarc-blanket-flatten-05-i01",
@@ -43,7 +47,8 @@
    "video": "assets/media/roboarc/blanket-flatten-05-i01.mp4",
    "poster": "assets/media/roboarc/blanket-flatten-05-i01.jpg",
    "speed": 5,
-   "sim_seconds": 88.8
+   "sim_seconds": 88.8,
+   "oracle": true
   },
   {
    "base": "roboarc-blanket-flatten-06-i01",
@@ -52,7 +57,28 @@
    "video": "assets/media/roboarc/blanket-flatten-06-i01.mp4",
    "poster": "assets/media/roboarc/blanket-flatten-06-i01.jpg",
    "speed": 15,
-   "sim_seconds": 293.0
+   "sim_seconds": 293.0,
+   "oracle": true
+  },
+  {
+   "base": "roboarc-blanket-flatten-07-i01",
+   "nn": "07",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/blanket-flatten-07-i01.mp4",
+   "poster": "assets/media/roboarc/blanket-flatten-07-i01.jpg",
+   "speed": 2,
+   "sim_seconds": 39.5,
+   "oracle": false
+  },
+  {
+   "base": "roboarc-blanket-flatten-08-i01",
+   "nn": "08",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/blanket-flatten-08-i01.mp4",
+   "poster": "assets/media/roboarc/blanket-flatten-08-i01.jpg",
+   "speed": 2,
+   "sim_seconds": 37.0,
+   "oracle": false
   }
  ],
  "blanket_fold": [
@@ -63,7 +89,8 @@
    "video": "assets/media/roboarc/blanket-fold-01-i01.mp4",
    "poster": "assets/media/roboarc/blanket-fold-01-i01.jpg",
    "speed": 1,
-   "sim_seconds": 22.1
+   "sim_seconds": 22.1,
+   "oracle": true
   },
   {
    "base": "roboarc-blanket-fold-02-i01",
@@ -72,7 +99,8 @@
    "video": "assets/media/roboarc/blanket-fold-02-i01.mp4",
    "poster": "assets/media/roboarc/blanket-fold-02-i01.jpg",
    "speed": 4,
-   "sim_seconds": 69.9
+   "sim_seconds": 69.9,
+   "oracle": true
   },
   {
    "base": "roboarc-blanket-fold-03-i01",
@@ -81,7 +109,8 @@
    "video": "assets/media/roboarc/blanket-fold-03-i01.mp4",
    "poster": "assets/media/roboarc/blanket-fold-03-i01.jpg",
    "speed": 15,
-   "sim_seconds": 239.2
+   "sim_seconds": 239.2,
+   "oracle": true
   },
   {
    "base": "roboarc-blanket-fold-04-i01",
@@ -90,7 +119,8 @@
    "video": "assets/media/roboarc/blanket-fold-04-i01.mp4",
    "poster": "assets/media/roboarc/blanket-fold-04-i01.jpg",
    "speed": 15,
-   "sim_seconds": 191.3
+   "sim_seconds": 191.3,
+   "oracle": true
   },
   {
    "base": "roboarc-blanket-fold-05-i01",
@@ -99,7 +129,8 @@
    "video": "assets/media/roboarc/blanket-fold-05-i01.mp4",
    "poster": "assets/media/roboarc/blanket-fold-05-i01.jpg",
    "speed": 27,
-   "sim_seconds": 381.6
+   "sim_seconds": 381.6,
+   "oracle": true
   }
  ],
  "buzz_wire_3d": [
@@ -110,7 +141,8 @@
    "video": "assets/media/roboarc/buzz-wire-3d-01-i01.mp4",
    "poster": "assets/media/roboarc/buzz-wire-3d-01-i01.jpg",
    "speed": 15,
-   "sim_seconds": 261.6
+   "sim_seconds": 261.6,
+   "oracle": true
   },
   {
    "base": "roboarc-buzz-wire-3d-02-i01",
@@ -119,28 +151,32 @@
    "video": "assets/media/roboarc/buzz-wire-3d-02-i01.mp4",
    "poster": "assets/media/roboarc/buzz-wire-3d-02-i01.jpg",
    "speed": 23,
-   "sim_seconds": 327.4
+   "sim_seconds": 327.4,
+   "oracle": true
   },
   {
    "base": "roboarc-buzz-wire-3d-03-i01",
    "nn": "03",
    "difficulty": "easy",
    "video": null,
-   "poster": null
+   "poster": null,
+   "oracle": false
   },
   {
    "base": "roboarc-buzz-wire-3d-04-i01",
    "nn": "04",
    "difficulty": "medium",
    "video": null,
-   "poster": null
+   "poster": null,
+   "oracle": false
   },
   {
    "base": "roboarc-buzz-wire-3d-05-i01",
    "nn": "05",
    "difficulty": "hard",
    "video": null,
-   "poster": null
+   "poster": null,
+   "oracle": false
   },
   {
    "base": "roboarc-buzz-wire-3d-06-i01",
@@ -149,7 +185,8 @@
    "video": "assets/media/roboarc/buzz-wire-3d-06-i01.mp4",
    "poster": "assets/media/roboarc/buzz-wire-3d-06-i01.jpg",
    "speed": 15,
-   "sim_seconds": 260.6
+   "sim_seconds": 260.6,
+   "oracle": true
   },
   {
    "base": "roboarc-buzz-wire-3d-07-i01",
@@ -158,7 +195,8 @@
    "video": "assets/media/roboarc/buzz-wire-3d-07-i01.mp4",
    "poster": "assets/media/roboarc/buzz-wire-3d-07-i01.jpg",
    "speed": 31,
-   "sim_seconds": 432.9
+   "sim_seconds": 432.9,
+   "oracle": true
   },
   {
    "base": "roboarc-buzz-wire-3d-08-i01",
@@ -167,7 +205,8 @@
    "video": "assets/media/roboarc/buzz-wire-3d-08-i01.mp4",
    "poster": "assets/media/roboarc/buzz-wire-3d-08-i01.jpg",
    "speed": 26,
-   "sim_seconds": 369.9
+   "sim_seconds": 369.9,
+   "oracle": true
   },
   {
    "base": "roboarc-buzz-wire-3d-09-i01",
@@ -176,7 +215,8 @@
    "video": "assets/media/roboarc/buzz-wire-3d-09-i01.mp4",
    "poster": "assets/media/roboarc/buzz-wire-3d-09-i01.jpg",
    "speed": 32,
-   "sim_seconds": 450.6
+   "sim_seconds": 450.6,
+   "oracle": true
   },
   {
    "base": "roboarc-buzz-wire-3d-10-i01",
@@ -185,7 +225,8 @@
    "video": "assets/media/roboarc/buzz-wire-3d-10-i01.mp4",
    "poster": "assets/media/roboarc/buzz-wire-3d-10-i01.jpg",
    "speed": 32,
-   "sim_seconds": 457.9
+   "sim_seconds": 457.9,
+   "oracle": true
   }
  ],
  "cast_coil": [
@@ -196,7 +237,8 @@
    "video": "assets/media/roboarc/cast-coil-01-i01.mp4",
    "poster": "assets/media/roboarc/cast-coil-01-i01.jpg",
    "speed": 2,
-   "sim_seconds": 39.9
+   "sim_seconds": 39.9,
+   "oracle": true
   },
   {
    "base": "roboarc-cast-coil-02-i01",
@@ -205,7 +247,8 @@
    "video": "assets/media/roboarc/cast-coil-02-i01.mp4",
    "poster": "assets/media/roboarc/cast-coil-02-i01.jpg",
    "speed": 3,
-   "sim_seconds": 53.4
+   "sim_seconds": 53.4,
+   "oracle": true
   },
   {
    "base": "roboarc-cast-coil-03-i01",
@@ -214,7 +257,8 @@
    "video": "assets/media/roboarc/cast-coil-03-i01.mp4",
    "poster": "assets/media/roboarc/cast-coil-03-i01.jpg",
    "speed": 15,
-   "sim_seconds": 219.1
+   "sim_seconds": 219.1,
+   "oracle": true
   },
   {
    "base": "roboarc-cast-coil-04-i01",
@@ -223,7 +267,8 @@
    "video": "assets/media/roboarc/cast-coil-04-i01.mp4",
    "poster": "assets/media/roboarc/cast-coil-04-i01.jpg",
    "speed": 15,
-   "sim_seconds": 224.3
+   "sim_seconds": 224.3,
+   "oracle": true
   },
   {
    "base": "roboarc-cast-coil-05-i01",
@@ -232,7 +277,8 @@
    "video": "assets/media/roboarc/cast-coil-05-i01.mp4",
    "poster": "assets/media/roboarc/cast-coil-05-i01.jpg",
    "speed": 15,
-   "sim_seconds": 220.8
+   "sim_seconds": 220.8,
+   "oracle": true
   },
   {
    "base": "roboarc-cast-coil-06-i01",
@@ -241,7 +287,8 @@
    "video": "assets/media/roboarc/cast-coil-06-i01.mp4",
    "poster": "assets/media/roboarc/cast-coil-06-i01.jpg",
    "speed": 15,
-   "sim_seconds": 217.2
+   "sim_seconds": 217.2,
+   "oracle": true
   },
   {
    "base": "roboarc-cast-coil-07-i01",
@@ -250,7 +297,8 @@
    "video": "assets/media/roboarc/cast-coil-07-i01.mp4",
    "poster": "assets/media/roboarc/cast-coil-07-i01.jpg",
    "speed": 50,
-   "sim_seconds": 700.9
+   "sim_seconds": 700.9,
+   "oracle": true
   },
   {
    "base": "roboarc-cast-coil-08-i01",
@@ -259,7 +307,8 @@
    "video": "assets/media/roboarc/cast-coil-08-i01.mp4",
    "poster": "assets/media/roboarc/cast-coil-08-i01.jpg",
    "speed": 58,
-   "sim_seconds": 824.2
+   "sim_seconds": 824.2,
+   "oracle": true
   }
  ],
  "cast_keyhole": [
@@ -270,7 +319,8 @@
    "video": "assets/media/roboarc/cast-keyhole-01-i01.mp4",
    "poster": "assets/media/roboarc/cast-keyhole-01-i01.jpg",
    "speed": 7,
-   "sim_seconds": 127.4
+   "sim_seconds": 127.4,
+   "oracle": true
   },
   {
    "base": "roboarc-cast-keyhole-02-i01",
@@ -279,7 +329,8 @@
    "video": "assets/media/roboarc/cast-keyhole-02-i01.mp4",
    "poster": "assets/media/roboarc/cast-keyhole-02-i01.jpg",
    "speed": 14,
-   "sim_seconds": 147.2
+   "sim_seconds": 147.2,
+   "oracle": true
   },
   {
    "base": "roboarc-cast-keyhole-03-i01",
@@ -288,7 +339,8 @@
    "video": "assets/media/roboarc/cast-keyhole-03-i01.mp4",
    "poster": "assets/media/roboarc/cast-keyhole-03-i01.jpg",
    "speed": 23,
-   "sim_seconds": 305.1
+   "sim_seconds": 305.1,
+   "oracle": true
   },
   {
    "base": "roboarc-cast-keyhole-04-i01",
@@ -297,7 +349,8 @@
    "video": "assets/media/roboarc/cast-keyhole-04-i01.mp4",
    "poster": "assets/media/roboarc/cast-keyhole-04-i01.jpg",
    "speed": 15,
-   "sim_seconds": 270.1
+   "sim_seconds": 270.1,
+   "oracle": true
   },
   {
    "base": "roboarc-cast-keyhole-05-i01",
@@ -306,7 +359,8 @@
    "video": "assets/media/roboarc/cast-keyhole-05-i01.mp4",
    "poster": "assets/media/roboarc/cast-keyhole-05-i01.jpg",
    "speed": 26,
-   "sim_seconds": 364.7
+   "sim_seconds": 364.7,
+   "oracle": true
   },
   {
    "base": "roboarc-cast-keyhole-06-i01",
@@ -315,7 +369,8 @@
    "video": "assets/media/roboarc/cast-keyhole-06-i01.mp4",
    "poster": "assets/media/roboarc/cast-keyhole-06-i01.jpg",
    "speed": 15,
-   "sim_seconds": 202.1
+   "sim_seconds": 202.1,
+   "oracle": true
   }
  ],
  "fiber_bundling": [
@@ -326,7 +381,8 @@
    "video": "assets/media/roboarc/fiber-bundling-01-i01.mp4",
    "poster": "assets/media/roboarc/fiber-bundling-01-i01.jpg",
    "speed": 5,
-   "sim_seconds": 93.0
+   "sim_seconds": 93.0,
+   "oracle": true
   },
   {
    "base": "roboarc-fiber-bundling-02-i01",
@@ -335,7 +391,8 @@
    "video": "assets/media/roboarc/fiber-bundling-02-i01.mp4",
    "poster": "assets/media/roboarc/fiber-bundling-02-i01.jpg",
    "speed": 5,
-   "sim_seconds": 90.2
+   "sim_seconds": 90.2,
+   "oracle": true
   },
   {
    "base": "roboarc-fiber-bundling-03-i01",
@@ -344,7 +401,8 @@
    "video": "assets/media/roboarc/fiber-bundling-03-i01.mp4",
    "poster": "assets/media/roboarc/fiber-bundling-03-i01.jpg",
    "speed": 7,
-   "sim_seconds": 125.2
+   "sim_seconds": 125.2,
+   "oracle": true
   },
   {
    "base": "roboarc-fiber-bundling-04-i01",
@@ -353,14 +411,16 @@
    "video": "assets/media/roboarc/fiber-bundling-04-i01.mp4",
    "poster": "assets/media/roboarc/fiber-bundling-04-i01.jpg",
    "speed": 15,
-   "sim_seconds": 202.9
+   "sim_seconds": 202.9,
+   "oracle": true
   },
   {
    "base": "roboarc-fiber-bundling-05-i01",
    "nn": "05",
    "difficulty": "hard",
    "video": null,
-   "poster": null
+   "poster": null,
+   "oracle": false
   },
   {
    "base": "roboarc-fiber-bundling-06-i01",
@@ -369,7 +429,8 @@
    "video": "assets/media/roboarc/fiber-bundling-06-i01.mp4",
    "poster": "assets/media/roboarc/fiber-bundling-06-i01.jpg",
    "speed": 14,
-   "sim_seconds": 161.6
+   "sim_seconds": 161.6,
+   "oracle": true
   },
   {
    "base": "roboarc-fiber-bundling-07-i01",
@@ -378,7 +439,8 @@
    "video": "assets/media/roboarc/fiber-bundling-07-i01.mp4",
    "poster": "assets/media/roboarc/fiber-bundling-07-i01.jpg",
    "speed": 14,
-   "sim_seconds": 164.2
+   "sim_seconds": 164.2,
+   "oracle": true
   },
   {
    "base": "roboarc-fiber-bundling-08-i01",
@@ -387,7 +449,8 @@
    "video": "assets/media/roboarc/fiber-bundling-08-i01.mp4",
    "poster": "assets/media/roboarc/fiber-bundling-08-i01.jpg",
    "speed": 14,
-   "sim_seconds": 154.5
+   "sim_seconds": 154.5,
+   "oracle": true
   },
   {
    "base": "roboarc-fiber-bundling-09-i01",
@@ -396,7 +459,8 @@
    "video": "assets/media/roboarc/fiber-bundling-09-i01.mp4",
    "poster": "assets/media/roboarc/fiber-bundling-09-i01.jpg",
    "speed": 26,
-   "sim_seconds": 362.9
+   "sim_seconds": 362.9,
+   "oracle": true
   },
   {
    "base": "roboarc-fiber-bundling-10-i01",
@@ -405,7 +469,8 @@
    "video": "assets/media/roboarc/fiber-bundling-10-i01.mp4",
    "poster": "assets/media/roboarc/fiber-bundling-10-i01.jpg",
    "speed": 14,
-   "sim_seconds": 154.9
+   "sim_seconds": 154.9,
+   "oracle": true
   }
  ],
  "hedgehog_in_cage": [
@@ -416,7 +481,8 @@
    "video": "assets/media/roboarc/hedgehog-in-cage-01-i01.mp4",
    "poster": "assets/media/roboarc/hedgehog-in-cage-01-i01.jpg",
    "speed": 3,
-   "sim_seconds": 48.1
+   "sim_seconds": 48.1,
+   "oracle": true
   },
   {
    "base": "roboarc-hedgehog-in-cage-02-i01",
@@ -425,7 +491,8 @@
    "video": "assets/media/roboarc/hedgehog-in-cage-02-i01.mp4",
    "poster": "assets/media/roboarc/hedgehog-in-cage-02-i01.jpg",
    "speed": 3,
-   "sim_seconds": 47.0
+   "sim_seconds": 47.0,
+   "oracle": true
   },
   {
    "base": "roboarc-hedgehog-in-cage-03-i01",
@@ -434,7 +501,8 @@
    "video": "assets/media/roboarc/hedgehog-in-cage-03-i01.mp4",
    "poster": "assets/media/roboarc/hedgehog-in-cage-03-i01.jpg",
    "speed": 15,
-   "sim_seconds": 206.4
+   "sim_seconds": 206.4,
+   "oracle": true
   },
   {
    "base": "roboarc-hedgehog-in-cage-04-i01",
@@ -443,7 +511,8 @@
    "video": "assets/media/roboarc/hedgehog-in-cage-04-i01.mp4",
    "poster": "assets/media/roboarc/hedgehog-in-cage-04-i01.jpg",
    "speed": 4,
-   "sim_seconds": 65.0
+   "sim_seconds": 65.0,
+   "oracle": true
   },
   {
    "base": "roboarc-hedgehog-in-cage-05-i01",
@@ -452,7 +521,8 @@
    "video": "assets/media/roboarc/hedgehog-in-cage-05-i01.mp4",
    "poster": "assets/media/roboarc/hedgehog-in-cage-05-i01.jpg",
    "speed": 14,
-   "sim_seconds": 156.0
+   "sim_seconds": 156.0,
+   "oracle": true
   },
   {
    "base": "roboarc-hedgehog-in-cage-06-i01",
@@ -461,7 +531,8 @@
    "video": "assets/media/roboarc/hedgehog-in-cage-06-i01.mp4",
    "poster": "assets/media/roboarc/hedgehog-in-cage-06-i01.jpg",
    "speed": 4,
-   "sim_seconds": 71.6
+   "sim_seconds": 71.6,
+   "oracle": true
   },
   {
    "base": "roboarc-hedgehog-in-cage-07-i01",
@@ -470,7 +541,8 @@
    "video": "assets/media/roboarc/hedgehog-in-cage-07-i01.mp4",
    "poster": "assets/media/roboarc/hedgehog-in-cage-07-i01.jpg",
    "speed": 14,
-   "sim_seconds": 180.6
+   "sim_seconds": 180.6,
+   "oracle": true
   },
   {
    "base": "roboarc-hedgehog-in-cage-08-i01",
@@ -479,7 +551,8 @@
    "video": "assets/media/roboarc/hedgehog-in-cage-08-i01.mp4",
    "poster": "assets/media/roboarc/hedgehog-in-cage-08-i01.jpg",
    "speed": 4,
-   "sim_seconds": 74.0
+   "sim_seconds": 74.0,
+   "oracle": true
   }
  ],
  "horseshoe_ring": [
@@ -490,7 +563,8 @@
    "video": "assets/media/roboarc/horseshoe-ring-01-i01.mp4",
    "poster": "assets/media/roboarc/horseshoe-ring-01-i01.jpg",
    "speed": 15,
-   "sim_seconds": 288.0
+   "sim_seconds": 288.0,
+   "oracle": true
   },
   {
    "base": "roboarc-horseshoe-ring-02-i01",
@@ -499,7 +573,8 @@
    "video": "assets/media/roboarc/horseshoe-ring-02-i01.mp4",
    "poster": "assets/media/roboarc/horseshoe-ring-02-i01.jpg",
    "speed": 7,
-   "sim_seconds": 132.1
+   "sim_seconds": 132.1,
+   "oracle": true
   },
   {
    "base": "roboarc-horseshoe-ring-03-i01",
@@ -508,7 +583,8 @@
    "video": "assets/media/roboarc/horseshoe-ring-03-i01.mp4",
    "poster": "assets/media/roboarc/horseshoe-ring-03-i01.jpg",
    "speed": 14,
-   "sim_seconds": 144.8
+   "sim_seconds": 144.8,
+   "oracle": true
   },
   {
    "base": "roboarc-horseshoe-ring-04-i01",
@@ -517,7 +593,8 @@
    "video": "assets/media/roboarc/horseshoe-ring-04-i01.mp4",
    "poster": "assets/media/roboarc/horseshoe-ring-04-i01.jpg",
    "speed": 23,
-   "sim_seconds": 325.8
+   "sim_seconds": 325.8,
+   "oracle": true
   },
   {
    "base": "roboarc-horseshoe-ring-05-i01",
@@ -526,7 +603,8 @@
    "video": "assets/media/roboarc/horseshoe-ring-05-i01.mp4",
    "poster": "assets/media/roboarc/horseshoe-ring-05-i01.jpg",
    "speed": 15,
-   "sim_seconds": 195.4
+   "sim_seconds": 195.4,
+   "oracle": true
   }
  ],
  "interlocked_claws": [
@@ -537,7 +615,8 @@
    "video": "assets/media/roboarc/interlocked-claws-01-i01.mp4",
    "poster": "assets/media/roboarc/interlocked-claws-01-i01.jpg",
    "speed": 6,
-   "sim_seconds": 109.2
+   "sim_seconds": 109.2,
+   "oracle": true
   },
   {
    "base": "roboarc-interlocked-claws-02-i01",
@@ -546,7 +625,8 @@
    "video": "assets/media/roboarc/interlocked-claws-02-i01.mp4",
    "poster": "assets/media/roboarc/interlocked-claws-02-i01.jpg",
    "speed": 36,
-   "sim_seconds": 502.8
+   "sim_seconds": 502.8,
+   "oracle": true
   },
   {
    "base": "roboarc-interlocked-claws-03-i01",
@@ -555,7 +635,8 @@
    "video": "assets/media/roboarc/interlocked-claws-03-i01.mp4",
    "poster": "assets/media/roboarc/interlocked-claws-03-i01.jpg",
    "speed": 1,
-   "sim_seconds": 20.3
+   "sim_seconds": 20.3,
+   "oracle": true
   },
   {
    "base": "roboarc-interlocked-claws-04-i01",
@@ -564,7 +645,8 @@
    "video": "assets/media/roboarc/interlocked-claws-04-i01.mp4",
    "poster": "assets/media/roboarc/interlocked-claws-04-i01.jpg",
    "speed": 2,
-   "sim_seconds": 36.0
+   "sim_seconds": 36.0,
+   "oracle": true
   },
   {
    "base": "roboarc-interlocked-claws-05-i01",
@@ -573,7 +655,8 @@
    "video": "assets/media/roboarc/interlocked-claws-05-i01.mp4",
    "poster": "assets/media/roboarc/interlocked-claws-05-i01.jpg",
    "speed": 29,
-   "sim_seconds": 405.6
+   "sim_seconds": 405.6,
+   "oracle": true
   },
   {
    "base": "roboarc-interlocked-claws-06-i01",
@@ -582,7 +665,8 @@
    "video": "assets/media/roboarc/interlocked-claws-06-i01.mp4",
    "poster": "assets/media/roboarc/interlocked-claws-06-i01.jpg",
    "speed": 3,
-   "sim_seconds": 45.0
+   "sim_seconds": 45.0,
+   "oracle": true
   },
   {
    "base": "roboarc-interlocked-claws-07-i01",
@@ -591,7 +675,8 @@
    "video": "assets/media/roboarc/interlocked-claws-07-i01.mp4",
    "poster": "assets/media/roboarc/interlocked-claws-07-i01.jpg",
    "speed": 5,
-   "sim_seconds": 82.6
+   "sim_seconds": 82.6,
+   "oracle": true
   },
   {
    "base": "roboarc-interlocked-claws-08-i01",
@@ -600,7 +685,8 @@
    "video": "assets/media/roboarc/interlocked-claws-08-i01.mp4",
    "poster": "assets/media/roboarc/interlocked-claws-08-i01.jpg",
    "speed": 6,
-   "sim_seconds": 106.9
+   "sim_seconds": 106.9,
+   "oracle": true
   },
   {
    "base": "roboarc-interlocked-claws-09-i01",
@@ -609,7 +695,8 @@
    "video": "assets/media/roboarc/interlocked-claws-09-i01.mp4",
    "poster": "assets/media/roboarc/interlocked-claws-09-i01.jpg",
    "speed": 7,
-   "sim_seconds": 119.5
+   "sim_seconds": 119.5,
+   "oracle": true
   },
   {
    "base": "roboarc-interlocked-claws-10-i01",
@@ -618,7 +705,8 @@
    "video": "assets/media/roboarc/interlocked-claws-10-i01.mp4",
    "poster": "assets/media/roboarc/interlocked-claws-10-i01.jpg",
    "speed": 14,
-   "sim_seconds": 155.3
+   "sim_seconds": 155.3,
+   "oracle": true
   },
   {
    "base": "roboarc-interlocked-claws-11-i01",
@@ -627,7 +715,8 @@
    "video": "assets/media/roboarc/interlocked-claws-11-i01.mp4",
    "poster": "assets/media/roboarc/interlocked-claws-11-i01.jpg",
    "speed": 14,
-   "sim_seconds": 149.5
+   "sim_seconds": 149.5,
+   "oracle": true
   },
   {
    "base": "roboarc-interlocked-claws-12-i01",
@@ -636,7 +725,8 @@
    "video": "assets/media/roboarc/interlocked-claws-12-i01.mp4",
    "poster": "assets/media/roboarc/interlocked-claws-12-i01.jpg",
    "speed": 37,
-   "sim_seconds": 527.9
+   "sim_seconds": 527.9,
+   "oracle": true
   }
  ],
  "knot_untying": [
@@ -647,7 +737,8 @@
    "video": "assets/media/roboarc/knot-untying-01-i01.mp4",
    "poster": "assets/media/roboarc/knot-untying-01-i01.jpg",
    "speed": 2,
-   "sim_seconds": 30.2
+   "sim_seconds": 30.2,
+   "oracle": true
   },
   {
    "base": "roboarc-knot-untying-02-i01",
@@ -656,7 +747,8 @@
    "video": "assets/media/roboarc/knot-untying-02-i01.mp4",
    "poster": "assets/media/roboarc/knot-untying-02-i01.jpg",
    "speed": 2,
-   "sim_seconds": 26.8
+   "sim_seconds": 26.8,
+   "oracle": true
   },
   {
    "base": "roboarc-knot-untying-03-i01",
@@ -665,7 +757,8 @@
    "video": "assets/media/roboarc/knot-untying-03-i01.mp4",
    "poster": "assets/media/roboarc/knot-untying-03-i01.jpg",
    "speed": 1,
-   "sim_seconds": 18.8
+   "sim_seconds": 18.8,
+   "oracle": true
   },
   {
    "base": "roboarc-knot-untying-04-i01",
@@ -674,7 +767,8 @@
    "video": "assets/media/roboarc/knot-untying-04-i01.mp4",
    "poster": "assets/media/roboarc/knot-untying-04-i01.jpg",
    "speed": 3,
-   "sim_seconds": 48.5
+   "sim_seconds": 48.5,
+   "oracle": true
   },
   {
    "base": "roboarc-knot-untying-05-i01",
@@ -683,7 +777,28 @@
    "video": "assets/media/roboarc/knot-untying-05-i01.mp4",
    "poster": "assets/media/roboarc/knot-untying-05-i01.jpg",
    "speed": 3,
-   "sim_seconds": 59.8
+   "sim_seconds": 59.8,
+   "oracle": true
+  },
+  {
+   "base": "roboarc-knot-untying-06-i01",
+   "nn": "06",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/knot-untying-06-i01.mp4",
+   "poster": "assets/media/roboarc/knot-untying-06-i01.jpg",
+   "speed": 7,
+   "sim_seconds": 120.2,
+   "oracle": false
+  },
+  {
+   "base": "roboarc-knot-untying-09-i01",
+   "nn": "09",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/knot-untying-09-i01.mp4",
+   "poster": "assets/media/roboarc/knot-untying-09-i01.jpg",
+   "speed": 15,
+   "sim_seconds": 264.0,
+   "oracle": false
   }
  ],
  "lock_picking": [
@@ -694,7 +809,8 @@
    "video": "assets/media/roboarc/lock-picking-01-i01.mp4",
    "poster": "assets/media/roboarc/lock-picking-01-i01.jpg",
    "speed": 6,
-   "sim_seconds": 106.9
+   "sim_seconds": 106.9,
+   "oracle": true
   },
   {
    "base": "roboarc-lock-picking-02-i01",
@@ -703,7 +819,8 @@
    "video": "assets/media/roboarc/lock-picking-02-i01.mp4",
    "poster": "assets/media/roboarc/lock-picking-02-i01.jpg",
    "speed": 15,
-   "sim_seconds": 194.2
+   "sim_seconds": 194.2,
+   "oracle": true
   },
   {
    "base": "roboarc-lock-picking-03-i01",
@@ -712,7 +829,8 @@
    "video": "assets/media/roboarc/lock-picking-03-i01.mp4",
    "poster": "assets/media/roboarc/lock-picking-03-i01.jpg",
    "speed": 29,
-   "sim_seconds": 407.3
+   "sim_seconds": 407.3,
+   "oracle": true
   },
   {
    "base": "roboarc-lock-picking-04-i01",
@@ -721,7 +839,8 @@
    "video": "assets/media/roboarc/lock-picking-04-i01.mp4",
    "poster": "assets/media/roboarc/lock-picking-04-i01.jpg",
    "speed": 34,
-   "sim_seconds": 478.9
+   "sim_seconds": 478.9,
+   "oracle": true
   },
   {
    "base": "roboarc-lock-picking-05-i01",
@@ -730,7 +849,8 @@
    "video": "assets/media/roboarc/lock-picking-05-i01.mp4",
    "poster": "assets/media/roboarc/lock-picking-05-i01.jpg",
    "speed": 62,
-   "sim_seconds": 881.8
+   "sim_seconds": 881.8,
+   "oracle": true
   }
  ],
  "orbits": [
@@ -741,7 +861,8 @@
    "video": "assets/media/roboarc/orbits-01-i01.mp4",
    "poster": "assets/media/roboarc/orbits-01-i01.jpg",
    "speed": 5,
-   "sim_seconds": 83.2
+   "sim_seconds": 83.2,
+   "oracle": true
   }
  ],
  "rope_threading": [
@@ -752,7 +873,8 @@
    "video": "assets/media/roboarc/rope-threading-01-i01.mp4",
    "poster": "assets/media/roboarc/rope-threading-01-i01.jpg",
    "speed": 6,
-   "sim_seconds": 107.0
+   "sim_seconds": 107.0,
+   "oracle": true
   },
   {
    "base": "roboarc-rope-threading-02-i01",
@@ -761,7 +883,8 @@
    "video": "assets/media/roboarc/rope-threading-02-i01.mp4",
    "poster": "assets/media/roboarc/rope-threading-02-i01.jpg",
    "speed": 7,
-   "sim_seconds": 134.6
+   "sim_seconds": 134.6,
+   "oracle": true
   },
   {
    "base": "roboarc-rope-threading-03-i01",
@@ -770,7 +893,8 @@
    "video": "assets/media/roboarc/rope-threading-03-i01.mp4",
    "poster": "assets/media/roboarc/rope-threading-03-i01.jpg",
    "speed": 7,
-   "sim_seconds": 133.8
+   "sim_seconds": 133.8,
+   "oracle": true
   },
   {
    "base": "roboarc-rope-threading-04-i01",
@@ -779,7 +903,8 @@
    "video": "assets/media/roboarc/rope-threading-04-i01.mp4",
    "poster": "assets/media/roboarc/rope-threading-04-i01.jpg",
    "speed": 14,
-   "sim_seconds": 148.6
+   "sim_seconds": 148.6,
+   "oracle": true
   },
   {
    "base": "roboarc-rope-threading-05-i01",
@@ -788,7 +913,8 @@
    "video": "assets/media/roboarc/rope-threading-05-i01.mp4",
    "poster": "assets/media/roboarc/rope-threading-05-i01.jpg",
    "speed": 14,
-   "sim_seconds": 151.1
+   "sim_seconds": 151.1,
+   "oracle": true
   },
   {
    "base": "roboarc-rope-threading-06-i01",
@@ -797,7 +923,8 @@
    "video": "assets/media/roboarc/rope-threading-06-i01.mp4",
    "poster": "assets/media/roboarc/rope-threading-06-i01.jpg",
    "speed": 15,
-   "sim_seconds": 221.7
+   "sim_seconds": 221.7,
+   "oracle": true
   },
   {
    "base": "roboarc-rope-threading-07-i01",
@@ -806,7 +933,8 @@
    "video": "assets/media/roboarc/rope-threading-07-i01.mp4",
    "poster": "assets/media/roboarc/rope-threading-07-i01.jpg",
    "speed": 15,
-   "sim_seconds": 187.4
+   "sim_seconds": 187.4,
+   "oracle": true
   },
   {
    "base": "roboarc-rope-threading-08-i01",
@@ -815,7 +943,8 @@
    "video": "assets/media/roboarc/rope-threading-08-i01.mp4",
    "poster": "assets/media/roboarc/rope-threading-08-i01.jpg",
    "speed": 15,
-   "sim_seconds": 242.2
+   "sim_seconds": 242.2,
+   "oracle": true
   }
  ],
  "slotted_post_ring": [
@@ -826,7 +955,8 @@
    "video": "assets/media/roboarc/slotted-post-ring-01-i01.mp4",
    "poster": "assets/media/roboarc/slotted-post-ring-01-i01.jpg",
    "speed": 1,
-   "sim_seconds": 10.9
+   "sim_seconds": 10.9,
+   "oracle": true
   },
   {
    "base": "roboarc-slotted-post-ring-02-i01",
@@ -835,7 +965,8 @@
    "video": "assets/media/roboarc/slotted-post-ring-02-i01.mp4",
    "poster": "assets/media/roboarc/slotted-post-ring-02-i01.jpg",
    "speed": 1,
-   "sim_seconds": 24.2
+   "sim_seconds": 24.2,
+   "oracle": true
   },
   {
    "base": "roboarc-slotted-post-ring-03-i01",
@@ -844,7 +975,8 @@
    "video": "assets/media/roboarc/slotted-post-ring-03-i01.mp4",
    "poster": "assets/media/roboarc/slotted-post-ring-03-i01.jpg",
    "speed": 15,
-   "sim_seconds": 229.8
+   "sim_seconds": 229.8,
+   "oracle": true
   },
   {
    "base": "roboarc-slotted-post-ring-04-i01",
@@ -853,7 +985,8 @@
    "video": "assets/media/roboarc/slotted-post-ring-04-i01.mp4",
    "poster": "assets/media/roboarc/slotted-post-ring-04-i01.jpg",
    "speed": 15,
-   "sim_seconds": 264.5
+   "sim_seconds": 264.5,
+   "oracle": true
   },
   {
    "base": "roboarc-slotted-post-ring-05-i01",
@@ -862,7 +995,8 @@
    "video": "assets/media/roboarc/slotted-post-ring-05-i01.mp4",
    "poster": "assets/media/roboarc/slotted-post-ring-05-i01.jpg",
    "speed": 15,
-   "sim_seconds": 235.2
+   "sim_seconds": 235.2,
+   "oracle": true
   }
  ]
 }
