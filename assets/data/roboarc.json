@@ -68,7 +68,7 @@
    "poster": "assets/media/roboarc/blanket-flatten-07-i01.jpg",
    "speed": 2,
    "sim_seconds": 39.5,
-   "oracle": false
+   "oracle": true
   },
   {
    "base": "roboarc-blanket-flatten-08-i01",
@@ -78,7 +78,7 @@
    "poster": "assets/media/roboarc/blanket-flatten-08-i01.jpg",
    "speed": 2,
    "sim_seconds": 37.0,
-   "oracle": false
+   "oracle": true
   }
  ],
  "blanket_fold": [
@@ -158,25 +158,30 @@
    "base": "roboarc-buzz-wire-3d-03-i01",
    "nn": "03",
    "difficulty": "easy",
-   "video": null,
-   "poster": null,
-   "oracle": false
+   "video": "assets/media/roboarc/buzz-wire-3d-03-i01.mp4",
+   "poster": "assets/media/roboarc/buzz-wire-3d-03-i01.jpg",
+   "oracle": true,
+   "speed": 15,
+   "sim_seconds": 237.5
   },
   {
    "base": "roboarc-buzz-wire-3d-04-i01",
    "nn": "04",
    "difficulty": "medium",
-   "video": null,
-   "poster": null,
-   "oracle": false
+   "video": "assets/media/roboarc/buzz-wire-3d-04-i01.mp4",
+   "poster": "assets/media/roboarc/buzz-wire-3d-04-i01.jpg",
+   "oracle": true,
+   "speed": 15,
+   "sim_seconds": 230.5
   },
   {
    "base": "roboarc-buzz-wire-3d-05-i01",
    "nn": "05",
    "difficulty": "hard",
-   "video": null,
-   "poster": null,
-   "oracle": false
+   "video": "assets/media/roboarc/buzz-wire-3d-05-i01.mp4",
+   "poster": "assets/media/roboarc/buzz-wire-3d-05-i01.jpg",
+   "oracle": false,
+   "orbit": true
   },
   {
    "base": "roboarc-buzz-wire-3d-06-i01",
@@ -418,9 +423,10 @@
    "base": "roboarc-fiber-bundling-05-i01",
    "nn": "05",
    "difficulty": "hard",
-   "video": null,
-   "poster": null,
-   "oracle": false
+   "video": "assets/media/roboarc/fiber-bundling-05-i01.mp4",
+   "poster": "assets/media/roboarc/fiber-bundling-05-i01.jpg",
+   "oracle": false,
+   "orbit": true
   },
   {
    "base": "roboarc-fiber-bundling-06-i01",
@@ -788,7 +794,7 @@
    "poster": "assets/media/roboarc/knot-untying-06-i01.jpg",
    "speed": 7,
    "sim_seconds": 120.2,
-   "oracle": false
+   "oracle": true
   },
   {
    "base": "roboarc-knot-untying-09-i01",
@@ -798,7 +804,7 @@
    "poster": "assets/media/roboarc/knot-untying-09-i01.jpg",
    "speed": 15,
    "sim_seconds": 264.0,
-   "oracle": false
+   "oracle": true
   }
  ],
  "lock_picking": [

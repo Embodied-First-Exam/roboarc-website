@@ -36,22 +36,26 @@ toggle.
    step through the family's tasks in the release's numbering, with each task's difficulty.
 4. **02 In 3D** (`oracle.js`, `play.js`). Every task with a reference video, redrawn in 3D from the replay that video
    shows: every piece, the robot, the rope and the cloth where the simulator had them. Watch the oracle: play, pause,
-   scrub, speed, hide the robot, step through a family's tasks. Play it (23 rigid tasks: claws 01-03 and 11, coil 01-08,
-   hedgehog 01-05, buzz wire 01, 02, 06, 08-10): one piece moves under a gizmo and stops at contact (exact mesh
+   scrub, speed, hide the robot, step through a family's tasks. Play it (24 rigid tasks: claws 01-03 and 11, coil 01-08,
+   hedgehog 01-05, buzz wire 01-03, 06, 08-10): one piece moves under a gizmo and stops at contact (exact mesh
    intersection in sub-steps, the table top too); where the robot moved two pieces, the other holds still and only
    their relative motion counts. "Show me how" plays the reference's own motion of the piece. A task is playable only
    if that motion clears the same check end to end, with at most 1 mm of contact tolerance, and counts as solved
    (`checkPath` in `play.js`, run headless). Watch only: cast keyhole (its pieces overlap at the start), claws 04/05/12,
-   hedgehog 08, buzz wire 07 (blocked at 1 mm), and the puzzles where more than two pieces move.
+   hedgehog 08, buzz wire 04 and 07 (blocked at 1 mm), and the puzzles where more than two pieces move.
 5. **03 Two modes.** Privileged (code with the simulator open) next to standard (the robot as a service: cameras and
    the robot's own state, one episode, no resets).
 6. **04 Results.** None yet for 0.1.0; the first evaluation will be posted here.
+7. **Close.** A PREVIEW pill and "Full benchmark coming soon" in deep gold, as on the RoboPaint page; the same pill and
+   text sit next to the wordmark in the navigation (the text hides below 1100 px).
 
 ## Data
 - `assets/data/roboarc.json` and `assets/media/roboarc/`: `scripts/make_roboarc_media.py` from the studio renders of
   the release's reference solutions (Blender Cycles; each draws the states of a fresh-process replay that ends on the
   release's expected final state), cut to 1280x720 loops of at most 20 s, plus each task's difficulty from its
-  `task.toml`, and the release teaser (`teaser.mp4`, 1920x1080). Tasks without a reference video show a note.
+  `task.toml`, and the release teaser (`teaser.mp4`, 1920x1080). Buzz wire 05 and fiber bundling 05 have no reference
+  solution: their cards circle the puzzle at its start (`orbit`). `oracle` marks the tasks whose 3D replay is in
+  `assets/oracle/`.
 - `assets/oracle/`: `scripts/export_roboarc_oracle.py` from the same replays' recorded poses (every drawn piece at every
   video frame, z-up) and meshes: per task `<base>.json` (parts, timing, framing) and `<base>.bin` (int16 tracks, rope
   centrelines from the surface by arc length, cloth grids by UV), and a shared library of meshes `m/<id>.bin`, decimated only as far as each keeps its box and area.
@@ -61,5 +65,5 @@ toggle.
   pieces and the recorded joint motion).
 
 ## Open items
-- Reference videos for the tasks that have none yet (buzz wire 03-05; fiber bundling 05 stays without); results; paper and code links, authors, BibTeX.
+- Reference solutions for buzz wire 05 and fiber bundling 05; results; paper and code links, authors, BibTeX.
 - The claw meshes of the opening come from a demo whose redistribution licence is not stated upstream.

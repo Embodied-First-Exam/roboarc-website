@@ -78,6 +78,7 @@ import('./hero.js')
 
 /* ---------- 01 the puzzle wall: one card per family, stepping through its tasks ---------- */
 function mediaHTML(f, e) {
+  if (e.video && e.orbit) return `<video muted loop playsinline preload="none" poster="${e.poster}" src="${e.video}"></video><span class="card-badge muted">start state · no reference solution</span>`;
   if (e.video) return `<video muted loop playsinline preload="none" poster="${e.poster}" src="${e.video}"></video><span class="card-speed">×${e.speed}</span>`;
   if (e.poster) return `<img src="${e.poster}" alt="${f.name} ${e.nn}: the target shape" loading="lazy"><span class="card-badge muted">target shape · video soon</span>`;
   return `<div class="card-empty">No reference video for this task yet.</div>`;

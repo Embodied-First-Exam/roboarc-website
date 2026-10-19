@@ -278,6 +278,19 @@ kbd { margin-left: 6px; padding: 2px 5px; border-radius: 4px; border: 1px solid 
 .cams img { width: 100%; aspect-ratio: 282 / 160; object-fit: cover; }
 .cams figcaption { position: absolute; left: 6px; bottom: 5px; font: 500 10px/1 var(--mono); color: #fff; text-shadow: 0 1px 4px #000; }
 
+/* ---------- preview: the tag in the nav, the closing line (deep gold, as on the RoboPaint page) ---------- */
+:root, [data-theme="light"] { --preview: #8a5a12; }
+[data-theme="dark"] { --preview: #e8b964; }
+.preview-note { display: inline-flex; flex: none; align-items: center; gap: 9px; }
+.preview-tag { flex: none; padding: 4px 9px; border: 1.5px solid var(--preview); border-radius: 999px; font: 600 10px/1 var(--mono);
+  letter-spacing: .14em; text-transform: uppercase; color: var(--preview); }
+.preview-text { font: 650 13px/1 var(--display); letter-spacing: -.005em; color: var(--preview); white-space: nowrap; }
+@media (max-width: 1100px) { .preview-text { display: none; } }
+.coming { padding-top: clamp(40px, 6vw, 72px); padding-bottom: clamp(72px, 9vw, 120px); text-align: center; }
+.coming-line { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px 22px; margin: 0;
+  font: 700 clamp(26px, 3.2vw, 40px)/1.1 var(--display); letter-spacing: -.02em; color: var(--preview); }
+.coming-line .preview-tag { padding: 8px 18px; border-width: 2.5px; font-size: clamp(16px, 1.7vw, 22px); letter-spacing: .16em; }
+
 /* ---------- footer ---------- */
 .footer { border-top: 1px solid var(--line); padding: 48px var(--gutter) 56px; }
 .footer-grid { max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }

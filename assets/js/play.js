@@ -16,9 +16,9 @@ export const RULES = {
   lock_picking: { goal: 'reach', from: 'Out', to: 'Through' },
   buzz_wire_3d: { goal: 'rail', from: 'Start', to: 'Finish' },
 };
-// The tasks whose reference motion clears the check end to end (checkPath, headless Chrome, 2026-10-14), with the
+// The tasks whose reference motion clears the check end to end (checkPath, headless Chrome, 2026-10-14; buzz 03 on 10-17), with the
 // contact tolerance it needed (m): the robot slides pieces along each other, so the moving piece is checked shrunk by
-// that much. Left out: claws 04/05/12, hedgehog 08, buzz 07 (still blocked at 1 mm), cast keyhole (its pieces already
+// that much. Left out: claws 04/05/12, hedgehog 08, buzz 04 and 07 (still blocked at 1 mm), cast keyhole (its pieces already
 // overlap at the start, on the drawn and on the simulated shapes), claws 06-10, hedgehog 06/07, horseshoe and the lock
 // (more than two pieces move).
 export const PLAYABLE = {
@@ -29,7 +29,7 @@ export const PLAYABLE = {
   'roboarc-cast-coil-07-i01': 0.00025, 'roboarc-cast-coil-08-i01': 0.00025,
   'roboarc-hedgehog-in-cage-01-i01': 0.00025, 'roboarc-hedgehog-in-cage-02-i01': 0.00025, 'roboarc-hedgehog-in-cage-03-i01': 0.00025,
   'roboarc-hedgehog-in-cage-04-i01': 0.0005, 'roboarc-hedgehog-in-cage-05-i01': 0.00025,
-  'roboarc-buzz-wire-3d-01-i01': 0.0005, 'roboarc-buzz-wire-3d-02-i01': 0.001, 'roboarc-buzz-wire-3d-06-i01': 0.00025,
+  'roboarc-buzz-wire-3d-01-i01': 0.0005, 'roboarc-buzz-wire-3d-02-i01': 0.001, 'roboarc-buzz-wire-3d-03-i01': 0.0005, 'roboarc-buzz-wire-3d-06-i01': 0.00025,
   'roboarc-buzz-wire-3d-08-i01': 0.0005, 'roboarc-buzz-wire-3d-09-i01': 0.0005, 'roboarc-buzz-wire-3d-10-i01': 0.001,
 };
 

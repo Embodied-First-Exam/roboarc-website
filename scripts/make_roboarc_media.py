@@ -60,10 +60,13 @@ for base, rec in sorted(bases.items()):
                 "-preset", "slow", "-crf", "26", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-threads", "8", str(stem.with_suffix(".mp4")))
             run("-i", str(d / POSTER), "-vf", f"scale={W}:{H}:flags=lanczos", "-q:v", "3", str(stem.with_suffix(".jpg")))
         sim = meta["replay"]["sim_time_s"] if "replay" in meta else meta["reference_end_hash"]["sim_time_s"]
-        entry.update(video=f"assets/media/roboarc/{base}.mp4", poster=f"assets/media/roboarc/{base}.jpg",
-                     speed=round(sim / (dur / factor)), sim_seconds=round(sim, 1))
+        entry.update(video=f"assets/media/roboarc/{base}.mp4", poster=f"assets/media/roboarc/{base}.jpg")
+        if meta.get("source_kind") == "scene-orbit":      # no reference solution: the camera circles the puzzle at its start
+            entry["orbit"] = True
+        else:
+            entry.update(speed=round(sim / (dur / factor)), sim_seconds=round(sim, 1))
     index.setdefault(rec["family"], []).append(entry)
-    print(f"{base:28s} {difficulty[base]:10s} {'x%d' % entry['speed'] if entry['video'] else 'no reference video'}", flush=True)
+    print(f"{base:28s} {difficulty[base]:10s} {'orbit' if entry.get('orbit') else 'x%d' % entry['speed'] if entry['video'] else 'no reference video'}", flush=True)
 
 teaser = next((p for p in (SRC / "out" / TEASER, SRC / TEASER) if p.exists()), SRC / TEASER)
 if teaser.exists() and not (OUT / "teaser.mp4").exists():
