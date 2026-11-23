@@ -1,4 +1,68 @@
 {
+ "battery_replacement": [
+  {
+   "base": "roboarc-battery-replacement-01-i01",
+   "nn": "01",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/battery-replacement-01-i01.mp4",
+   "poster": "assets/media/roboarc/battery-replacement-01-i01.jpg",
+   "oracle": true,
+   "speed": 14,
+   "sim_seconds": 175.7
+  }
+ ],
+ "bed_bolt": [
+  {
+   "base": "roboarc-bed-bolt-01-i01",
+   "nn": "01",
+   "difficulty": "medium",
+   "video": "assets/media/roboarc/bed-bolt-01-i01.mp4",
+   "poster": "assets/media/roboarc/bed-bolt-01-i01.jpg",
+   "oracle": true,
+   "speed": 45,
+   "sim_seconds": 633.1
+  },
+  {
+   "base": "roboarc-bed-bolt-02-i01",
+   "nn": "02",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/bed-bolt-02-i01.mp4",
+   "poster": "assets/media/roboarc/bed-bolt-02-i01.jpg",
+   "oracle": true,
+   "speed": 45,
+   "sim_seconds": 631.9
+  },
+  {
+   "base": "roboarc-bed-bolt-03-i01",
+   "nn": "03",
+   "difficulty": "very_easy",
+   "video": "assets/media/roboarc/bed-bolt-03-i01.mp4",
+   "poster": "assets/media/roboarc/bed-bolt-03-i01.jpg",
+   "oracle": true,
+   "speed": 27,
+   "sim_seconds": 388.5
+  },
+  {
+   "base": "roboarc-bed-bolt-04-i01",
+   "nn": "04",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/bed-bolt-04-i01.mp4",
+   "poster": "assets/media/roboarc/bed-bolt-04-i01.jpg",
+   "oracle": true,
+   "speed": 27,
+   "sim_seconds": 388.4
+  },
+  {
+   "base": "roboarc-bed-bolt-05-i01",
+   "nn": "05",
+   "difficulty": "easy",
+   "video": "assets/media/roboarc/bed-bolt-05-i01.mp4",
+   "poster": "assets/media/roboarc/bed-bolt-05-i01.jpg",
+   "oracle": true,
+   "speed": 27,
+   "sim_seconds": 382.8
+  }
+ ],
  "blanket_flatten": [
   {
    "base": "roboarc-blanket-flatten-01-i01",
@@ -128,9 +192,9 @@
    "difficulty": "hard",
    "video": "assets/media/roboarc/blanket-fold-05-i01.mp4",
    "poster": "assets/media/roboarc/blanket-fold-05-i01.jpg",
-   "speed": 27,
-   "sim_seconds": 381.6,
-   "oracle": true
+   "oracle": true,
+   "speed": 15,
+   "sim_seconds": 254.9
   }
  ],
  "buzz_wire_3d": [
@@ -232,6 +296,18 @@
    "speed": 32,
    "sim_seconds": 457.9,
    "oracle": true
+  }
+ ],
+ "caliper_sorting": [
+  {
+   "base": "roboarc-caliper-sorting-01-i01",
+   "nn": "01",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/caliper-sorting-01-i01.mp4",
+   "poster": "assets/media/roboarc/caliper-sorting-01-i01.jpg",
+   "oracle": true,
+   "speed": 41,
+   "sim_seconds": 574.0
   }
  ],
  "cast_coil": [
@@ -378,6 +454,18 @@
    "oracle": true
   }
  ],
+ "clock_assembling": [
+  {
+   "base": "roboarc-clock-assembling-01-i01",
+   "nn": "01",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/clock-assembling-01-i01.mp4",
+   "poster": "assets/media/roboarc/clock-assembling-01-i01.jpg",
+   "oracle": true,
+   "speed": 15,
+   "sim_seconds": 201.2
+  }
+ ],
  "fiber_bundling": [
   {
    "base": "roboarc-fiber-bundling-01-i01",
@@ -425,8 +513,9 @@
    "difficulty": "hard",
    "video": "assets/media/roboarc/fiber-bundling-05-i01.mp4",
    "poster": "assets/media/roboarc/fiber-bundling-05-i01.jpg",
-   "oracle": false,
-   "orbit": true
+   "oracle": true,
+   "speed": 15,
+   "sim_seconds": 247.9
   },
   {
    "base": "roboarc-fiber-bundling-06-i01",
@@ -733,6 +822,16 @@
    "speed": 37,
    "sim_seconds": 527.9,
    "oracle": true
+  },
+  {
+   "base": "roboarc-interlocked-claws-13-i01",
+   "nn": "13",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/interlocked-claws-13-i01.mp4",
+   "poster": "assets/media/roboarc/interlocked-claws-13-i01.jpg",
+   "oracle": true,
+   "speed": 15,
+   "sim_seconds": 239.9
   }
  ],
  "knot_untying": [
@@ -795,6 +894,16 @@
    "speed": 7,
    "sim_seconds": 120.2,
    "oracle": true
+  },
+  {
+   "base": "roboarc-knot-untying-07-i01",
+   "nn": "07",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/knot-untying-07-i01.mp4",
+   "poster": "assets/media/roboarc/knot-untying-07-i01.jpg",
+   "oracle": true,
+   "speed": 14,
+   "sim_seconds": 185.5
   },
   {
    "base": "roboarc-knot-untying-09-i01",
@@ -869,6 +978,16 @@
    "speed": 5,
    "sim_seconds": 83.2,
    "oracle": true
+  },
+  {
+   "base": "roboarc-orbits-02-i01",
+   "nn": "02",
+   "difficulty": "easier",
+   "video": "assets/media/roboarc/orbits-02-i01.mp4",
+   "poster": "assets/media/roboarc/orbits-02-i01.jpg",
+   "oracle": true,
+   "speed": 15,
+   "sim_seconds": 197.9
   }
  ],
  "rope_threading": [
@@ -1003,6 +1122,18 @@
    "speed": 15,
    "sim_seconds": 235.2,
    "oracle": true
+  }
+ ],
+ "wire_splicing": [
+  {
+   "base": "roboarc-wire-splicing-01-i01",
+   "nn": "01",
+   "difficulty": "hard",
+   "video": "assets/media/roboarc/wire-splicing-01-i01.mp4",
+   "poster": "assets/media/roboarc/wire-splicing-01-i01.jpg",
+   "oracle": true,
+   "speed": 26,
+   "sim_seconds": 372.1
   }
  ]
 }

@@ -114,12 +114,18 @@ heading, no abstract, no figure caption and no difficulty rating (`scripts/check
 - `assets/data/roboarc.json` and `assets/media/roboarc/`: `scripts/make_roboarc_media.py` from the studio renders of
   the reference solutions (Blender Cycles; each draws the states of a fresh-process replay that ends on the expected
   final state), cut to 1280x720 loops of at most 20 s, and the teaser reel (`teaser.mp4`, 1920x1080; not on the page at
-  present). `oracle` marks the tasks whose 3D replay is in `assets/oracle/`. The index lists 98 tasks of October 2026;
-  the page shows those that are among the paper's 90.
-- `assets/media/roboarc/ikea-<scene>-i00.{mp4,jpg}`: eight IKEA scenes, copies of `site/roboarc/ikea_<scene>.{mp4,jpg}`
-  of the public dataset `MLL-Lab/embodied-exam-data` on Hugging Face (1280x720, the same studio look).
-- `assets/oracle/`: `scripts/export_roboarc_oracle.py` from the same replays' recorded poses (every drawn piece at every
-  video frame, z-up) and meshes: per task `<base>.json` (parts, timing, framing) and `<base>.bin` (int16 tracks, rope
+  present). `oracle` marks the tasks whose 3D replay is in `assets/oracle/`. The index lists 98 tasks of October 2026
+  and the 12 tasks added later (bed bolt 01-05, clock assembling 01, battery replacement 01, caliper sorting 01, wire
+  splicing 01, interlocked claws 13, knot untying 07, orbits 02); the page shows those that are among the paper's 90.
+  Those 12, and blanket fold 05 and fiber bundling 05, whose reference solutions changed, were rendered on 2026-11-22 from
+  the code release's reference solutions (2.2.1) in the same studio look and timing, at 1280x720 and only the frames
+  the loop keeps; their entries were written into `roboarc.json`.
+- `assets/media/roboarc/ikea-<scene>-i00.{mp4,jpg}`: the 12 IKEA scenes in the same studio look (1280x720): SVALLET a
+  copy of `site/roboarc/ikea_svallet.{mp4,jpg}` of the public dataset `MLL-Lab/embodied-exam-data` on Hugging Face, the
+  other 11 rendered on 2026-11-22 from the code release's reference solutions.
+- `assets/oracle/`: `scripts/export_from_scenes.py` from the scenes the clips were rendered from (earlier
+  `scripts/export_roboarc_oracle.py` from the same replays' recorded poses; every drawn piece at every video frame, z-up)
+  and meshes: per task `<base>.json` (parts, timing, framing) and `<base>.bin` (int16 tracks, rope
   centrelines from the surface by arc length, cloth grids by UV), and a shared library of meshes `m/<id>.bin`, decimated only as far as each keeps its box and area.
   The lock's rotor discs are carried with their own bodies (exported as static by the renders).
 - `assets/media/cams/`: the three agent cameras of a Cast Keyhole task at its frozen start (not on the page at present).
@@ -130,11 +136,5 @@ heading, no abstract, no figure caption and no difficulty rating (`scripts/check
 - The arXiv link and the BibTeX entry's `eprint`: when the paper has its arXiv identifier (`ARXIV LINK` in
   `index.html`, three places: the two buttons and the page metadata), and the same address in `llms.txt` and
   `llms-full.txt`.
-- Clips for 16 tasks that have none: bed bolt 01-05, clock assembling 01, battery replacement 01, caliper sorting 01,
-  wire splicing 01, the IKEA scenes BURVIK, KYRRE, STENERIK and UPPSTÅ, interlocked claws 13, knot untying 07,
-  orbits 02. Fiber bundling 05 shows its start state (an orbit) and needs a clip of its reference solution.
-- New clips for the eight tasks whose clip shows an earlier reference solution (`superseded` in `suite.json`): blanket
-  fold 05 (its 3D replay too) and the IKEA scenes EKET, GLADOM, IKEA 365+, LACK, STEGESUND, VARIERA and VESKEN.
 - No IKEA scene has a 3D replay.
-- Clips and 3D replays of tasks outside the paper's 90, and the eight superseded clips, are still in `assets/` and are
-  no longer referenced.
+- Clips and 3D replays of tasks outside the paper's 90 are still in `assets/` and are no longer referenced.

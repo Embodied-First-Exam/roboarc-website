@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Rebuild the page's 3D replays (assets/oracle/) from the scenes the reference videos were rendered from.
 
-usage: export_from_scenes.py <scenes dir> <site root> [--only BASE ...] [--out DIR]
+usage: export_from_scenes.py <scenes dir> <site root> [--only BASE ...] [--out DIR] [--difficulty FILE]
 
 <scenes dir>/<base>/scene.{json,npz}: written by the studio render batch's export_scene.py (2026-10-14 Cycles batch). They
 hold, per part, the mesh the video drew (one model file per part, so parts that shared a file name no longer overwrite
@@ -10,7 +10,9 @@ every moving group's world pose (z-up, metres); ropes and cloth. export_roboarc_
 folder instead, where e.g. the two claws of claws-05 or the keyhole's gold and silver plates shared one file.
 
 The output format is the one assets/js/oracle.js reads (see export_roboarc_oracle.py). The family, difficulty and the
-task list come from the current assets/oracle/<base>.json, so only bases already on the page are rewritten.
+task list come from the current assets/oracle/<base>.json, so only bases already on the page are rewritten, and the bases
+named with --only that have no replay yet are added: their family from scene.json, their difficulty from
+--difficulty FILE ("<base> <difficulty>" per line, the release's task.toml).
 """
 import hashlib, json, math, sys
 from pathlib import Path
@@ -23,6 +25,7 @@ SCENES, SITE = Path(sys.argv[1]), Path(sys.argv[2])
 arg = lambda k, d=None: sys.argv[sys.argv.index(k) + 1] if k in sys.argv else d
 ONLY = [a for a in sys.argv[sys.argv.index("--only") + 1:] if not a.startswith("--")] if "--only" in sys.argv else None
 OUT = Path(arg("--out", SITE)) / "assets" / "oracle"
+DIFF = dict(l.split()[:2] for l in Path(arg("--difficulty")).read_text().splitlines() if l.strip()) if arg("--difficulty") else {}
 (OUT / "m").mkdir(parents=True, exist_ok=True)
 
 TRACK_BYTES, DEFORM_BYTES = 1_200_000, 2_400_000
@@ -169,14 +172,20 @@ def export(base, old):
                 sim=meta["sim_seconds"], old_sim=old["sim_seconds"], kb=round((len(track) + len(dbin)) / 1024))
 
 
-for f in sorted((SITE / "assets" / "oracle").glob("roboarc-*.json")):
-    base = f.stem
+have = {f.stem for f in (SITE / "assets" / "oracle").glob("roboarc-*.json")}
+new = sorted({b if b.startswith("roboarc-") else f"roboarc-{b}" for b in ONLY or []} - have)
+for base in sorted(have) + new:
+    f = SITE / "assets" / "oracle" / f"{base}.json"
     if ONLY and base not in ONLY and base.removeprefix("roboarc-") not in ONLY:
         continue
     if not (SCENES / base / "scene.npz").exists():
         print(f"{base:36s} no scene: left as it is", flush=True)
         continue
-    old = json.loads(f.read_text())
+    if f.exists():
+        old = json.loads(f.read_text())
+    else:                                                # a base new to the page
+        sc = json.loads((SCENES / base / "scene.json").read_text())
+        old = dict(family=sc["family"], difficulty=DIFF[base], track=dict(groups=0), frames=0, sim_seconds=0)
     r = export(base, old)
     flag = "" if (r["groups"], r["frames"], r["sim"]) == (r["old_groups"], r["old_frames"], r["old_sim"]) else "  <-- differs from the old replay"
     print(f"{base:36s} parts {r['parts']:4d} groups {r['groups']}/{r['old_groups']} frames {r['frames']}/{r['old_frames']} sim {r['sim']}/{r['old_sim']} {r['kb']} KB{flag}", flush=True)

@@ -93,13 +93,14 @@ import('./hero.js')
 
 /* ---------- 01 the puzzle wall: one card per family with a clip, stepping through its tasks ---------- */
 const stepLabel = (e) => e.label || e.nn;             // a task's number; an IKEA scene's name
+const VER = '2026-11-22-clips';                       // new clips under the same file names: bump it with the other ?v= values
 function mediaHTML(e) {
-  const video = `<video muted loop playsinline preload="none" poster="${e.poster}" src="${e.video}"></video>`;
+  const video = `<video muted loop playsinline preload="none" poster="${e.poster}?v=${VER}" src="${e.video}?v=${VER}"></video>`;
   return e.orbit ? `${video}<span class="card-badge muted">start state</span>` : video;
 }
 async function renderWall() {
   const wall = $('#wall'), filters = $('#filters');
-  const suite = await (await fetch('assets/data/suite.json')).json();
+  const suite = await (await fetch(`assets/data/suite.json?v=${VER}`)).json();
   const typeOf = Object.fromEntries(suite.types.flatMap((t) => t.families.map((id) => [id, t])));
   const clips = (id) => suite.families[id].tasks.filter((e) => e.video);
   const shown = FAMILIES.filter((f) => clips(f.id).length);              // a family joins the wall once it has a clip
@@ -189,7 +190,7 @@ function board(el, settings, rowsOf) {
   draw();
 }
 async function renderResults() {
-  const [r, { makerMark }] = await Promise.all([fetch('assets/data/results.json?v=2026-11-22-scenes2').then((x) => x.json()), import('./makers.js?v=2026-11-22-scenes2')]);
+  const [r, { makerMark }] = await Promise.all([fetch('assets/data/results.json?v=2026-11-22-clips').then((x) => x.json()), import('./makers.js?v=2026-11-22-clips')]);
   // coding agents: Standard or Privileged, the mean over the runs, ± its s.d.
   board($('#lb-agents'), REGIMES, (regime) => ({
     n: `${r.tasks ?? 90} tasks`,
@@ -240,7 +241,7 @@ function setupOracle(data) {
   const el = Object.fromEntries(ids.map((k) => [k, document.getElementById(`o-${k}`)]));
   const ui = { ...el, robot: el['robot-kind'], robotToggle: el.robot, winTitle: el['win-title'], winText: el['win-text'] };
   const tasks = Object.fromEntries(FAMILIES.map((f) => [f.id, data.families[f.id].tasks]));   // e.oracle: its replay is in assets/oracle/
-  import('./oracle.js?v=2026-11-22-scenes2')
+  import('./oracle.js?v=2026-11-22-clips')
     .then(({ initOracle }) => initOracle({ section: $('#in3d'), canvas: el.canvas, ui, families: FAMILIES, tasks, robots: ROBOT }))
     .then((o) => { window.oracle = o; })
     .catch((err) => { console.error(err); el.loading.hidden = false; el.loading.textContent = '3D needs WebGL'; });

@@ -123,11 +123,11 @@ Four VLA policies were run zero-shot in the Standard regime, as a reference, on 
 
 ## Where can I see what the agents did?
 
-Every coding-agent run behind the results table is on https://roboarc.embodied-first-exam.ai/runs/ : 3,780 runs, 7 coding agents on the 90 tasks in the Standard and Privileged regimes, 3 runs each. Each run can be read step by step: what the agent wrote, ran and saw, how long it took, the robot commands it sent, and what the verifier decided, with the verifier's replay of the final trajectory. The runs are also a public dataset on Hugging Face: https://huggingface.co/datasets/RoboARC/RoboARC-runs
+Every coding-agent run behind the results table is on https://roboarc.embodied-first-exam.ai/runs/ : 3,780 runs, 7 coding agents on the 90 tasks in the Standard and Privileged regimes, 3 runs each. Each run can be read step by step: what the agent wrote, ran and saw, how long it took, the robot commands it sent, and what the verifier decided, with the verifier's replay of the final trajectory where the trial recorded one (3,462 runs). The runs are also a public dataset on Hugging Face: https://huggingface.co/datasets/RoboARC/RoboARC-runs
 
 ## Can I watch the reference solutions?
 
-Yes. The project page shows a clip of the reference solution for each puzzle family that has one, and redraws the reference solutions of 64 tasks in 3D in the browser from their replays: every piece, the robot, the rope and the cloth where the simulator had them. In some rigid tasks a visitor can also move a piece by hand, and it stops at contact.
+Yes. The project page shows a clip of the reference solution of each of the 90 tasks, one card per family, and redraws the reference solutions of the 78 puzzles in 3D in the browser from their replays: every piece, the robot, the rope and the cloth where the simulator had them. In some rigid tasks a visitor can also move a piece by hand, and it stops at contact.
 
 ## How do I run RoboARC?
 
@@ -136,7 +136,8 @@ Install:
 ```bash
 git clone https://github.com/mll-lab-nu/RoboARC.git
 cd RoboARC
-pip install -e .
+uv venv --python 3.12 && source .venv/bin/activate
+uv pip install -e .
 uv tool install harbor
 ```
 

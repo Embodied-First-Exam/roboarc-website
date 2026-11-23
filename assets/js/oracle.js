@@ -10,7 +10,7 @@ import { createStage } from './stage.js';
 import { PLAYABLE, makePuzzle } from './play.js';
 
 const BASE = new URL('../oracle/', import.meta.url);
-const VER = '2026-11-22-scenes2';                      // new data under the same file names: bump it, a browser may keep the old files
+const VER = '2026-11-22-clips';                      // new data under the same file names: bump it, a browser may keep the old files
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const meshCache = new Map();
 
@@ -393,7 +393,7 @@ export async function initOracle({ section, canvas, ui, families, tasks, robots 
   ui.picker.innerHTML = families.filter((x) => playable(x.id).length).map((x) => {
     const e = playable(x.id).find((t) => t.poster) || {};
     const n = playable(x.id).filter((t) => PLAYABLE[t.base] !== undefined).length;
-    return `<button class="pick" data-fam="${x.id}" role="tab"><img src="${e.poster || ''}" alt="" loading="lazy">${n ? '<em class="pick-tag">Play</em>' : ''}<span>${x.name}</span></button>`;
+    return `<button class="pick" data-fam="${x.id}" role="tab"><img src="${e.poster ? `${e.poster}?v=${VER}` : ''}" alt="" loading="lazy">${n ? '<em class="pick-tag">Play</em>' : ''}<span>${x.name}</span></button>`;
   }).join('');
   ui.picker.addEventListener('click', (ev) => { const b = ev.target.closest('[data-fam]'); if (b) select(b.dataset.fam); });
   ui.prev.addEventListener('click', () => fam && select(fam.id, index - 1, true));
