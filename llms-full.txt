@@ -1,0 +1,175 @@
+# RoboARC: questions and answers
+
+> RoboARC is a benchmark of 90 physical puzzles for robotic manipulation under spatial constraints, from the paper "RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints" (2026; arXiv version coming soon). Project page: https://roboarc.embodied-first-exam.ai/ . Code: https://github.com/mll-lab-nu/RoboARC
+
+## What is RoboARC?
+
+RoboARC is a benchmark of 90 physical puzzles for robotic manipulation under spatial constraints: 78 puzzles in 19 families and 12 IKEA furniture scenes, in six constraint types over rigid and soft materials, on three robots simulated in MuJoCo. Every task can be run in two regimes, Standard and Privileged, by coding agents; VLA policies are evaluated on part of the puzzles as a reference. One grader replays the physics of every run.
+
+## What question does RoboARC ask?
+
+When manipulation hinges on spatial constraints, can robots reason out the right motions? A typical task: two claws are hooked through each other. Pulling only jams them; they come apart when turned in the right order. The project page opens with two robot arms doing this in simulation, replaying the motion they planned.
+
+## What are the six constraint types?
+
+Three over rigid materials and three over soft materials:
+
+- Interlocking (rigid, 23 tasks): interlocked claws, cast keyhole, cast coil, horseshoe ring.
+- Narrow passage (rigid, 13 tasks): hedgehog in cage, 3D buzz wire, lock picking.
+- Assembly (rigid, 20 tasks): bed bolt, clock assembling, battery replacement, caliper sorting, and 12 IKEA furniture scenes.
+- Untangling (soft, 13 tasks): knot untying, slotted post ring, orbits.
+- Threading (soft, 11 tasks): rope threading, fiber bundling, wire splicing.
+- Shape control (soft, 10 tasks): blanket flatten, blanket fold.
+
+## Which tasks are in RoboARC?
+
+Each family with its robot, its tasks and its goal:
+
+Interlocking (rigid, 23 tasks)
+- Interlocked claws (ALOHA 2; tasks 02, 05, 08, 09, 10, 11, 12, 13): Unhook one claw piece from the other and place it inside the goal region.
+- Cast keyhole (ALOHA 2; tasks 02, 03, 04, 05, 06): Free the silver keyhole piece from the gold one and place it inside the goal region.
+- Cast coil (ALOHA 2; tasks 04, 05, 06, 07, 08): Assemble the gold and silver pieces into a cube with flush outer faces, then let go.
+- Horseshoe ring (ALOHA 2; tasks 01, 02, 03, 04, 05): Take the ring off two horseshoes joined by chains, and place it inside the goal region.
+
+Narrow passage (rigid, 13 tasks)
+- Hedgehog in cage (Franka arm with a Robotiq 2F-85 gripper; tasks 02, 03, 06, 07, 08): Bring the spiky ball out between the bars and place it, every spike, inside the goal region.
+- 3D buzz wire (Franka arm with a Robotiq 2F-85 gripper; tasks 02, 04, 06, 07, 10): Guide the metal loop along the whole wire without touching it, then set the tool on the finish support.
+- Lock picking (Franka arm with a Robotiq 2F-85 gripper; tasks 03, 04, 05): Pick up a tabbed key and push it through the rotor plates and the end plate, following their slots and stops.
+
+Assembly (rigid, 20 tasks)
+- Bed bolt (ALOHA 2; tasks 01, 02, 03, 04, 05): Drive a bed frame's corner bolt into its threaded hole with an L-shaped key.
+- Clock assembling (ALOHA 2; task 01): Assemble a watch movement's gear train, screw down its bridge, wind it and let it run.
+- Battery replacement (ALOHA 2; task 01): Swap a game controller's two AA cells: pry the old ones out, seat new ones with the right polarity, latch the cover.
+- Caliper sorting (ALOHA 2; task 01): Measure look-alike sleeves with a vernier caliper and sort them into labelled bins.
+- IKEA furniture (two Franka Pandas; 12 scenes: BURVIK, EKET, GLADOM, IKEA 365+, KYRRE, LACK, STEGESUND, STENERIK, SVALLET, UPPSTÅ, VARIERA, VESKEN): Assemble a piece of IKEA furniture from its parts: frames crossed, screws driven, shelves snapped on.
+
+Untangling (soft, 13 tasks)
+- Knot untying (ALOHA 2; tasks 02, 04, 05, 06, 07, 09): Untie the rope and spread it so that, seen from above, it crosses itself nowhere.
+- Slotted post ring (ALOHA 2; tasks 01, 02, 03, 04, 05): Get the metal ring off the slotted post, past the cord and its beads, into the goal region.
+- Orbits (ALOHA 2; tasks 01, 02): Free the cord and its wooden handle from the post and stopper, and place both inside the goal region.
+
+Threading (soft, 11 tasks)
+- Rope threading (ALOHA 2; tasks 04, 05, 06, 07, 08): Thread the rope through the rings in order, each one the way it faces.
+- Fiber bundling (Franka arm with a Robotiq 2F-85 gripper; tasks 02, 04, 05, 08, 09): Pass every fine fiber and the front sheath through a copper ring while the rear terminal stays anchored.
+- Wire splicing (ALOHA 2; task 01): Splice two stiff wires: an eye round a rod, the other wire threaded and wound round it.
+
+Shape control (soft, 10 tasks)
+- Blanket flatten (ALOHA 2; tasks 03, 04, 06, 07, 08): Unfold a crumpled blanket and spread it flat without overlaps, then let go and withdraw.
+- Blanket fold (ALOHA 2; tasks 01, 02, 03, 04, 05): Fold a flat blanket into a target shape, such as a half fold, then let go and withdraw.
+
+## Which robots and which simulator does RoboARC use?
+
+Three robots, simulated in MuJoCo: ALOHA 2, a two-arm robot (most families); a Franka arm with a Robotiq 2F-85 gripper (hedgehog in cage, 3D buzz wire, lock picking, fiber bundling); and two Franka Pandas (the IKEA furniture scenes).
+
+## What are the Standard and Privileged regimes?
+
+They are the two ways a coding agent can work on a RoboARC task. Standard: the agent sends action chunks and receives RGB-D images, joint readings and the instruction, without resets. Privileged: the agent sends actions, may reset, and receives the full simulator state. VLA policies send action chunks and receive RGB images, joint readings and the instruction. One grader replays the physics of every run, whatever the regime.
+
+## How well do coding agents solve RoboARC?
+
+Success rates on all 90 tasks from the paper's main table, as the mean of 3 runs ± standard deviation (270 trials per agent and regime). Harness and reasoning effort in brackets.
+
+Standard regime:
+- GPT-6 Astra (Codex, xhigh): 42.6% ± 5.1
+- GPT-6.1 Sol (Codex, xhigh): 34.8% ± 5.0
+- Gemini 4 Argon (Antigravity, high): 30.7% ± 4.6
+- Claude Opus 5.5 (Claude Code, xhigh): 29.3% ± 1.7
+- Kimi 3.1 Pro (Kimi Code, max): 7.0% ± 1.7
+- DeepSeek v4.1 Flash (DeepSeek Harness, high): 5.6% ± 1.9
+- GLM 5.3 Flash (Claude Code, high): 4.1% ± 2.8
+
+Privileged regime:
+- GPT-6 Astra (Codex, xhigh): 85.6% ± 4.4
+- GPT-6.1 Sol (Codex, xhigh): 81.1% ± 1.1
+- Claude Opus 5.5 (Claude Code, xhigh): 80.7% ± 0.6
+- Gemini 4 Argon (Antigravity, high): 73.3% ± 4.0
+- Kimi 3.1 Pro (Kimi Code, max): 31.5% ± 3.6
+- DeepSeek v4.1 Flash (DeepSeek Harness, high): 10.7% ± 1.3
+- GLM 5.3 Flash (Claude Code, high): 4.4% ± 2.2
+
+Leaderboard on the project page: https://roboarc.embodied-first-exam.ai/#results
+
+## How do coding agents do per constraint type?
+
+Success rates in %, per constraint type and over all 90 tasks (mean of 3 runs ± s.d.), from the paper's main table. The first four agents are proprietary models, the last three open-weight models.
+
+Standard regime:
+
+| Agent | Harness (effort) | Interlocking | Narrow passage | Assembly | Untangling | Threading | Shape control | All 90 tasks |
+|---|---|---|---|---|---|---|---|---|
+| GPT-6 Astra | Codex (xhigh) | 59.4 | 56.4 | 10.0 | 51.3 | 30.3 | 53.3 | 42.6 ± 5.1 |
+| GPT-6.1 Sol | Codex (xhigh) | 52.2 | 51.3 | 8.3 | 46.2 | 15.2 | 33.3 | 34.8 ± 5.0 |
+| Claude Opus 5.5 | Claude Code (xhigh) | 44.9 | 38.5 | 1.7 | 51.3 | 12.1 | 26.7 | 29.3 ± 1.7 |
+| Gemini 4 Argon | Antigravity (high) | 37.7 | 43.6 | 1.7 | 53.8 | 12.1 | 46.7 | 30.7 ± 4.6 |
+| Kimi 3.1 Pro | Kimi Code (max) | 8.7 | 2.6 | 0 | 20.5 | 3.0 | 10.0 | 7.0 ± 1.7 |
+| DeepSeek v4.1 Flash | DeepSeek Harness (high) | 11.6 | 0 | 0 | 15.4 | 0 | 3.3 | 5.6 ± 1.9 |
+| GLM 5.3 Flash | Claude Code (high) | 5.8 | 2.6 | 0 | 7.7 | 0 | 10.0 | 4.1 ± 2.8 |
+
+Privileged regime:
+
+| Agent | Harness (effort) | Interlocking | Narrow passage | Assembly | Untangling | Threading | Shape control | All 90 tasks |
+|---|---|---|---|---|---|---|---|---|
+| GPT-6 Astra | Codex (xhigh) | 94.2 | 84.6 | 85.0 | 61.5 | 87.9 | 96.7 | 85.6 ± 4.4 |
+| GPT-6.1 Sol | Codex (xhigh) | 91.3 | 94.9 | 68.3 | 64.1 | 75.8 | 93.3 | 81.1 ± 1.1 |
+| Claude Opus 5.5 | Claude Code (xhigh) | 95.7 | 84.6 | 61.7 | 66.7 | 81.8 | 96.7 | 80.7 ± 0.6 |
+| Gemini 4 Argon | Antigravity (high) | 88.4 | 61.5 | 50.0 | 64.1 | 84.8 | 100.0 | 73.3 ± 4.0 |
+| Kimi 3.1 Pro | Kimi Code (max) | 42.0 | 25.6 | 16.7 | 38.5 | 3.0 | 66.7 | 31.5 ± 3.6 |
+| DeepSeek v4.1 Flash | DeepSeek Harness (high) | 15.9 | 7.7 | 1.7 | 17.9 | 0 | 23.3 | 10.7 ± 1.3 |
+| GLM 5.3 Flash | Claude Code (high) | 5.8 | 0 | 5.0 | 5.1 | 0 | 10.0 | 4.4 ± 2.2 |
+
+## How do VLA policies do on RoboARC?
+
+Four VLA policies were run zero-shot in the Standard regime, as a reference, on their own 18 puzzles (13 narrow passage, 5 threading), 3 runs per puzzle. None of them solved a puzzle. The share of episodes in which the gripper touched the task object: π0.5 33.3%, MolmoAct2 35.2%, GR00T N1.7 31.5%, Cosmos3-Nano-Policy 61.1%.
+
+## Where can I see what the agents did?
+
+Every coding-agent run behind the results table is on https://roboarc.embodied-first-exam.ai/runs/ : 3,780 runs, 7 coding agents on the 90 tasks in the Standard and Privileged regimes, 3 runs each. Each run can be read step by step: what the agent wrote, ran and saw, how long it took, the robot commands it sent, and what the verifier decided, with the verifier's replay of the final trajectory. The runs are also a public dataset on Hugging Face: https://huggingface.co/datasets/RoboARC/RoboARC-runs
+
+## Can I watch the reference solutions?
+
+Yes. The project page shows a clip of the reference solution for each puzzle family that has one, and redraws the reference solutions of 64 tasks in 3D in the browser from their replays: every piece, the robot, the rope and the cloth where the simulator had them. In some rigid tasks a visitor can also move a piece by hand, and it stops at contact.
+
+## How do I run RoboARC?
+
+Install:
+
+```bash
+git clone https://github.com/mll-lab-nu/RoboARC.git
+cd RoboARC
+pip install -e .
+uv tool install harbor
+```
+
+Pull the images:
+
+```bash
+roboarc doctor
+roboarc images pull --accept-licences
+```
+
+Evaluate an agent:
+
+```bash
+cp .env.example .env
+roboarc eval mybatch orbits-02 cast-coil-06 --agent codex --model openai/<model> --effort high --env-file .env
+roboarc results summary mybatch
+```
+
+The full guide is in the code release's README: https://github.com/mll-lab-nu/RoboARC#readme
+
+## Who made RoboARC?
+
+Qineng Wang*, Jianwen Lyu*, Pingyue Zhang*, Reuben Tan†, Xiaoyu Huang†, Tonghe Zhang†, Kangrui Wang, Yelong Shen, Jianfeng Gao, Guanya Shi, Ruohan Zhang and Manling Li, from Northwestern University (Qineng Wang, Jianwen Lyu, Pingyue Zhang, Kangrui Wang, Ruohan Zhang, Manling Li), Microsoft (Reuben Tan, Yelong Shen, Jianfeng Gao), UC Berkeley (Xiaoyu Huang) and Carnegie Mellon University (Tonghe Zhang, Guanya Shi). * Equal contribution; † Core contributor.
+
+## How do I cite RoboARC?
+
+```bibtex
+@misc{wang2026roboarc,
+  title  = {RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints},
+  author = {Wang, Qineng and Lyu, Jianwen and Zhang, Pingyue and Tan, Reuben and Huang, Xiaoyu
+            and Zhang, Tonghe and Wang, Kangrui and Shen, Yelong and Gao, Jianfeng
+            and Shi, Guanya and Zhang, Ruohan and Li, Manling},
+  year   = {2026},
+  url    = {https://roboarc.embodied-first-exam.ai}
+}
+```

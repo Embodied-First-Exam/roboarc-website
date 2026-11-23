@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints</title>
-  <meta name="description" content="RoboARC is a benchmark of 90 physical puzzles for robotic manipulation under spatial constraints: six constraint types over rigid and soft materials, on three robots in MuJoCo.">
+  <title>RoboARC: Physical Puzzles for Robotic Manipulation</title>
+  <meta name="description" content="A benchmark of 90 physical puzzles for robotic manipulation under spatial constraints: six constraint types, rigid and soft materials, three robots in MuJoCo.">
   <meta name="theme-color" content="#f4f6f9">
   <script>
     // Day or night, and which name the page wears (?name=robobind ...): set before anything paints.
@@ -22,7 +22,7 @@
       };
       var key = (q.get('name') || 'roboarc').toLowerCase().replace(/[^a-z]/g, '');
       window.BRAND = window.BRANDS[key] ? key : 'roboarc';
-      document.title = window.BRANDS[window.BRAND][0] + ': Physical Puzzles for Robotic Manipulation under Spatial Constraints';
+      document.title = window.BRANDS[window.BRAND][0] + ': Physical Puzzles for Robotic Manipulation';   // as <title>: at most 70 characters
     })();
   </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M6 10h12a5 5 0 0 1 0 10H11' fill='none' stroke='%23d2683f' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M26 22H14a5 5 0 0 1 0-10h7' fill='none' stroke='%232f93a6' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E">
@@ -32,6 +32,40 @@
   <!-- ?v=: raise it with every release, so no visitor pairs a new page with a cached stylesheet or script -->
   <link rel="stylesheet" href="assets/css/site.css?v=2026-11-22-scenes2">
   <script type="importmap">{"imports": {"three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/addons/", "three-mesh-bvh": "./vendor/three-mesh-bvh/index.module.js"}}</script>
+  <!-- page metadata: the page's address, its preview where the link is shared, the paper for reference managers.
+       ARXIV LINK: once the paper has its arXiv identifier, add citation_arxiv_id and citation_pdf_url here, the arXiv
+       address as "sameAs" of the paper in the JSON-LD, and the same address in llms.txt and llms-full.txt. -->
+  <link rel="canonical" href="https://roboarc.embodied-first-exam.ai/">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RoboARC">
+  <meta property="og:url" content="https://roboarc.embodied-first-exam.ai/">
+  <meta property="og:title" content="RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints">
+  <meta property="og:description" content="RoboARC is a benchmark of 90 physical puzzles for robotic manipulation under spatial constraints: six constraint types over rigid and soft materials, on three robots in MuJoCo, each in a Privileged and a Standard regime.">
+  <meta property="og:image" content="https://roboarc.embodied-first-exam.ai/assets/media/roboarc/teaser.jpg">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="A two-arm robot separating two interlocked claws">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints">
+  <meta name="twitter:description" content="RoboARC is a benchmark of 90 physical puzzles for robotic manipulation under spatial constraints: six constraint types over rigid and soft materials, on three robots in MuJoCo, each in a Privileged and a Standard regime.">
+  <meta name="twitter:image" content="https://roboarc.embodied-first-exam.ai/assets/media/roboarc/teaser.jpg">
+  <meta name="twitter:image:alt" content="A two-arm robot separating two interlocked claws">
+  <meta name="citation_title" content="RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints">
+  <meta name="citation_author" content="Qineng Wang">
+  <meta name="citation_author" content="Jianwen Lyu">
+  <meta name="citation_author" content="Pingyue Zhang">
+  <meta name="citation_author" content="Reuben Tan">
+  <meta name="citation_author" content="Xiaoyu Huang">
+  <meta name="citation_author" content="Tonghe Zhang">
+  <meta name="citation_author" content="Kangrui Wang">
+  <meta name="citation_author" content="Yelong Shen">
+  <meta name="citation_author" content="Jianfeng Gao">
+  <meta name="citation_author" content="Guanya Shi">
+  <meta name="citation_author" content="Ruohan Zhang">
+  <meta name="citation_author" content="Manling Li">
+  <meta name="citation_publication_date" content="2026">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://roboarc.embodied-first-exam.ai/#website", "url": "https://roboarc.embodied-first-exam.ai/", "name": "RoboARC", "inLanguage": "en", "about": {"@id": "https://roboarc.embodied-first-exam.ai/#dataset"}}, {"@type": "ScholarlyArticle", "@id": "https://roboarc.embodied-first-exam.ai/#paper", "headline": "RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints", "name": "RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints", "description": "RoboARC is a benchmark of 90 physical puzzles for robotic manipulation under spatial constraints: 78 puzzles in 19 families and 12 IKEA furniture scenes, in six constraint types over rigid materials (interlocking, narrow passage, assembly) and soft materials (untangling, threading, shape control), on three robots (ALOHA 2, a Franka arm with a Robotiq 2F-85 gripper, and two Franka Pandas) in MuJoCo. Each task runs in two regimes. Standard: a coding agent sends action chunks and receives RGB-D images, joint readings and the instruction, without resets. Privileged: it sends actions, may reset, and receives the full simulator state. One grader replays the physics of every run.", "url": "https://roboarc.embodied-first-exam.ai/", "image": "https://roboarc.embodied-first-exam.ai/assets/media/roboarc/teaser.jpg", "inLanguage": "en", "author": [{"@type": "Person", "@id": "https://roboarc.embodied-first-exam.ai/#qineng-wang", "name": "Qineng Wang", "url": "https://qinengwang-aiden.github.io/", "affiliation": {"@type": "Organization", "name": "Northwestern University"}}, {"@type": "Person", "@id": "https://roboarc.embodied-first-exam.ai/#jianwen-lyu", "name": "Jianwen Lyu", "url": "https://www.linkedin.com/in/jianwen-lyu-ba9a11329/", "affiliation": {"@type": "Organization", "name": "Northwestern University"}}, {"@type": "Person", "@id": "https://roboarc.embodied-first-exam.ai/#pingyue-zhang", "name": "Pingyue Zhang", "url": "https://williamzhangsjtu.github.io/", "affiliation": {"@type": "Organization", "name": "Northwestern University"}}, {"@type": "Person", "@id": "https://roboarc.embodied-first-exam.ai/#reuben-tan", "name": "Reuben Tan", "url": "https://www.microsoft.com/en-us/research/people/tanreuben/", "affiliation": {"@type": "Organization", "name": "Microsoft"}}, {"@type": "Person", "@id": "https://roboarc.embodied-first-exam.ai/#xiaoyu-huang", "name": "Xiaoyu Huang", "url": "https://whoknowsssss.github.io/al-folio/", "affiliation": {"@type": "Organization", "name": "UC Berkeley"}}, {"@type": "Person", "@id": "https://roboarc.embodied-first-exam.ai/#tonghe-zhang", "name": "Tonghe Zhang", "url": "https://tonghezhang.com/", "affiliation": {"@type": "Organization", "name": "Carnegie Mellon University"}}, {"@type": "Person", "@id": "https://roboarc.embodied-first-exam.ai/#kangrui-wang", "name": "Kangrui Wang", "url": "https://jameskrw.github.io/", "affiliation": {"@type": "Organization", "name": "Northwestern University"}}, {"@type": "Person", "@id": "https://roboarc.embodied-first-exam.ai/#yelong-shen", "name": "Yelong Shen", "url": "https://scholar.google.com/citations?user=S6OFEFEAAAAJ", "affiliation": {"@type": "Organization", "name": "Microsoft"}}, {"@type": "Person", "@id": "https://roboarc.embodied-first-exam.ai/#jianfeng-gao", "name": "Jianfeng Gao", "url": "https://www.microsoft.com/en-us/research/people/jfgao/", "affiliation": {"@type": "Organization", "name": "Microsoft"}}, {"@type": "Person", "@id": "https://roboarc.embodied-first-exam.ai/#guanya-shi", "name": "Guanya Shi", "url": "https://www.gshi.me/", "affiliation": {"@type": "Organization", "name": "Carnegie Mellon University"}}, {"@type": "Person", "@id": "https://roboarc.embodied-first-exam.ai/#ruohan-zhang", "name": "Ruohan Zhang", "url": "https://ruohanzhang.com/", "affiliation": {"@type": "Organization", "name": "Northwestern University"}}, {"@type": "Person", "@id": "https://roboarc.embodied-first-exam.ai/#manling-li", "name": "Manling Li", "url": "https://limanling.github.io/", "affiliation": {"@type": "Organization", "name": "Northwestern University"}}], "workExample": [{"@id": "https://roboarc.embodied-first-exam.ai/#dataset"}, {"@id": "https://roboarc.embodied-first-exam.ai/#code"}]}, {"@type": "Dataset", "@id": "https://roboarc.embodied-first-exam.ai/#dataset", "name": "RoboARC", "alternateName": "RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints", "description": "RoboARC is a benchmark of 90 physical puzzles for robotic manipulation under spatial constraints: 78 puzzles in 19 families and 12 IKEA furniture scenes, in six constraint types over rigid materials (interlocking, narrow passage, assembly) and soft materials (untangling, threading, shape control), on three robots (ALOHA 2, a Franka arm with a Robotiq 2F-85 gripper, and two Franka Pandas) in MuJoCo. Each task runs in two regimes. Standard: a coding agent sends action chunks and receives RGB-D images, joint readings and the instruction, without resets. Privileged: it sends actions, may reset, and receives the full simulator state. One grader replays the physics of every run.", "url": "https://roboarc.embodied-first-exam.ai/", "image": "https://roboarc.embodied-first-exam.ai/assets/media/roboarc/teaser.jpg", "isAccessibleForFree": true, "variableMeasured": "Success rate", "creator": [{"@id": "https://roboarc.embodied-first-exam.ai/#qineng-wang"}, {"@id": "https://roboarc.embodied-first-exam.ai/#jianwen-lyu"}, {"@id": "https://roboarc.embodied-first-exam.ai/#pingyue-zhang"}, {"@id": "https://roboarc.embodied-first-exam.ai/#reuben-tan"}, {"@id": "https://roboarc.embodied-first-exam.ai/#xiaoyu-huang"}, {"@id": "https://roboarc.embodied-first-exam.ai/#tonghe-zhang"}, {"@id": "https://roboarc.embodied-first-exam.ai/#kangrui-wang"}, {"@id": "https://roboarc.embodied-first-exam.ai/#yelong-shen"}, {"@id": "https://roboarc.embodied-first-exam.ai/#jianfeng-gao"}, {"@id": "https://roboarc.embodied-first-exam.ai/#guanya-shi"}, {"@id": "https://roboarc.embodied-first-exam.ai/#ruohan-zhang"}, {"@id": "https://roboarc.embodied-first-exam.ai/#manling-li"}], "citation": {"@id": "https://roboarc.embodied-first-exam.ai/#paper"}}, {"@type": "SoftwareSourceCode", "@id": "https://roboarc.embodied-first-exam.ai/#code", "name": "RoboARC", "url": "https://github.com/mll-lab-nu/RoboARC", "codeRepository": "https://github.com/mll-lab-nu/RoboARC", "programmingLanguage": "Python", "author": [{"@id": "https://roboarc.embodied-first-exam.ai/#qineng-wang"}, {"@id": "https://roboarc.embodied-first-exam.ai/#jianwen-lyu"}, {"@id": "https://roboarc.embodied-first-exam.ai/#pingyue-zhang"}, {"@id": "https://roboarc.embodied-first-exam.ai/#reuben-tan"}, {"@id": "https://roboarc.embodied-first-exam.ai/#xiaoyu-huang"}, {"@id": "https://roboarc.embodied-first-exam.ai/#tonghe-zhang"}, {"@id": "https://roboarc.embodied-first-exam.ai/#kangrui-wang"}, {"@id": "https://roboarc.embodied-first-exam.ai/#yelong-shen"}, {"@id": "https://roboarc.embodied-first-exam.ai/#jianfeng-gao"}, {"@id": "https://roboarc.embodied-first-exam.ai/#guanya-shi"}, {"@id": "https://roboarc.embodied-first-exam.ai/#ruohan-zhang"}, {"@id": "https://roboarc.embodied-first-exam.ai/#manling-li"}], "about": {"@id": "https://roboarc.embodied-first-exam.ai/#dataset"}}]}</script>
 </head>
 <body>
   <nav class="nav" aria-label="Sections">
@@ -139,9 +173,218 @@
       <div class="sec-title">
         <h2>Puzzles</h2>
       </div>
-      <div class="filters" id="filters" role="toolbar" aria-label="Filter puzzles by constraint type"></div>
+      <div class="filters" id="filters" role="toolbar" aria-label="Filter puzzles by constraint type" data-pre><!--pre:filters--><button class="chip on" data-group="all">All</button><button class="chip" data-group="interlocking">Interlocking</button><button class="chip" data-group="narrow_passage">Narrow passage</button><button class="chip" data-group="assembly">Assembly</button><button class="chip" data-group="untangling">Untangling</button><button class="chip" data-group="threading">Threading</button><button class="chip" data-group="shape_control">Shape control</button><!--/pre:filters--></div>
     </header>
-    <div class="wall" id="wall"></div>
+    <div class="wall" id="wall" data-pre><!--pre:wall--><article class="card reveal" data-group="interlocking" data-id="interlocked_claws" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">05</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Unhook one claw piece from the other and place it inside the goal region.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">01</span><h3 class="card-title">Interlocked claws</h3><span class="card-group">Interlocking</span></div>
+      </div>
+    </article>
+    <article class="card reveal" data-group="interlocking" data-id="cast_keyhole" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">04</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Free the silver keyhole piece from the gold one and place it inside the goal region.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">02</span><h3 class="card-title">Cast keyhole</h3><span class="card-group">Interlocking</span></div>
+      </div>
+    </article>
+    <article class="card reveal" data-group="interlocking" data-id="cast_coil" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">04</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Assemble the gold and silver pieces into a cube with flush outer faces, then let go.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">03</span><h3 class="card-title">Cast coil</h3><span class="card-group">Interlocking</span></div>
+      </div>
+    </article>
+    <article class="card reveal" data-group="interlocking" data-id="horseshoe_ring" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">04</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Take the ring off two horseshoes joined by chains, and place it inside the goal region.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">04</span><h3 class="card-title">Horseshoe ring</h3><span class="card-group">Interlocking</span></div>
+      </div>
+    </article>
+    <article class="card reveal" data-group="narrow_passage" data-id="hedgehog_in_cage" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">02</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Bring the spiky ball out between the bars and place it, every spike, inside the goal region.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">05</span><h3 class="card-title">Hedgehog in cage</h3><span class="card-group">Narrow passage</span></div>
+      </div>
+    </article>
+    <article class="card reveal" data-group="narrow_passage" data-id="buzz_wire_3d" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">04</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Guide the metal loop along the whole wire without touching it, then set the tool on the finish support.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">06</span><h3 class="card-title">3D buzz wire</h3><span class="card-group">Narrow passage</span></div>
+      </div>
+    </article>
+    <article class="card reveal" data-group="narrow_passage" data-id="lock_picking" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">04</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Pick up a tabbed key and push it through the rotor plates and the end plate, following their slots and stops.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">07</span><h3 class="card-title">Lock picking</h3><span class="card-group">Narrow passage</span></div>
+      </div>
+    </article>
+    <article class="card reveal" data-group="assembly" data-id="ikea" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">GLADOM</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Assemble a piece of IKEA furniture from its parts: frames crossed, screws driven, shelves snapped on.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">08</span><h3 class="card-title">IKEA furniture</h3><span class="card-group">Assembly</span></div>
+      </div>
+    </article>
+    <article class="card reveal" data-group="untangling" data-id="knot_untying" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">04</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Untie the rope and spread it so that, seen from above, it crosses itself nowhere.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">09</span><h3 class="card-title">Knot untying</h3><span class="card-group">Untangling</span></div>
+      </div>
+    </article>
+    <article class="card reveal" data-group="untangling" data-id="slotted_post_ring" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">04</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Get the metal ring off the slotted post, past the cord and its beads, into the goal region.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">10</span><h3 class="card-title">Slotted post ring</h3><span class="card-group">Untangling</span></div>
+      </div>
+    </article>
+    <article class="card reveal" data-group="untangling" data-id="orbits" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">01</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Free the cord and its wooden handle from the post and stopper, and place both inside the goal region.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">11</span><h3 class="card-title">Orbits</h3><span class="card-group">Untangling</span></div>
+      </div>
+    </article>
+    <article class="card reveal" data-group="threading" data-id="rope_threading" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">07</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Thread the rope through the rings in order, each one the way it faces.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">12</span><h3 class="card-title">Rope threading</h3><span class="card-group">Threading</span></div>
+      </div>
+    </article>
+    <article class="card reveal" data-group="threading" data-id="fiber_bundling" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">04</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Pass every fine fiber and the front sheath through a copper ring while the rear terminal stays anchored.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">13</span><h3 class="card-title">Fiber bundling</h3><span class="card-group">Threading</span></div>
+      </div>
+    </article>
+    <article class="card reveal" data-group="shape_control" data-id="blanket_flatten" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">08</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Unfold a crumpled blanket and spread it flat without overlaps, then let go and withdraw.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">14</span><h3 class="card-title">Blanket flatten</h3><span class="card-group">Shape control</span></div>
+      </div>
+    </article>
+    <article class="card reveal" data-group="shape_control" data-id="blanket_fold" tabindex="0">
+      <div class="card-media frame">
+        <div class="card-slot"></div>
+        <div class="card-step" role="group" aria-label="Task">
+          <button data-step="-1" aria-label="Previous task">‹</button>
+          <span class="card-step-label">04</span>
+          <button data-step="1" aria-label="Next task">›</button>
+        </div>
+        <p class="card-goal">Fold a flat blanket into a target shape, such as a half fold, then let go and withdraw.</p>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-index">15</span><h3 class="card-title">Blanket fold</h3><span class="card-group">Shape control</span></div>
+      </div>
+    </article><!--/pre:wall--></div>
   </section>
 
   <!-- 02 in 3D -->
@@ -245,11 +488,66 @@
         <button role="tab" data-tab="vla" aria-selected="false">VLA policies · reference</button>
       </div>
     </header>
-    <div class="lbh reveal" id="lb-agents" role="tabpanel" aria-label="Coding agents"></div>
-    <div class="lbh" id="lb-vla" role="tabpanel" aria-label="VLA policies, a reference" hidden></div>
+    <div class="lbh reveal" id="lb-agents" role="tabpanel" aria-label="Coding agents" data-pre><!--pre:lb-agents--><div class="lbh-top"><div class="seg lb-set" role="tablist"><button role="tab" data-set="standard" class="on" aria-selected="true">Standard</button><button role="tab" data-set="privileged" aria-selected="false">Privileged</button></div></div><div class="lbh-chart"><div class="lbh-axis"><span></span><span class="lbh-ticks" aria-hidden="true"><i style="left:0%">0%</i><i style="left:25%">25%</i><i style="left:50%">50%</i><i style="left:75%">75%</i><i style="left:100%">100%</i></span><span class="lbh-n">90 tasks</span></div><div class="lbh-rows"><div class="lbh-row" style="--i:1" title="GPT-6 Astra, standard: 42.6 % ± 5.1 (mean ± s.d. of 3 runs)">
+    <span class="rk r1">1</span><span class="mk" title="OpenAI"></span>
+    <span class="lbh-name"><span class="lbh-nl"><b>GPT-6 Astra</b><span class="lbh-set">Codex · xhigh</span></span></span>
+    <span class="lbh-track"><span class="lbh-s" style="--w:42.6%;--k:100%"></span></span>
+    <span class="lbh-val" style="--k:100%"><b>42.6<small>%</small></b><em>±5.1</em></span></div><div class="lbh-row" style="--i:2" title="GPT-6.1 Sol, standard: 34.8 % ± 5.0 (mean ± s.d. of 3 runs)">
+    <span class="rk r2">2</span><span class="mk" title="OpenAI"></span>
+    <span class="lbh-name"><span class="lbh-nl"><b>GPT-6.1 Sol</b><span class="lbh-set">Codex · xhigh</span></span></span>
+    <span class="lbh-track"><span class="lbh-s" style="--w:34.8%;--k:89%"></span></span>
+    <span class="lbh-val" style="--k:89%"><b>34.8<small>%</small></b><em>±5.0</em></span></div><div class="lbh-row" style="--i:3" title="Gemini 4 Argon, standard: 30.7 % ± 4.6 (mean ± s.d. of 3 runs)">
+    <span class="rk r3">3</span><span class="mk" title="Google"></span>
+    <span class="lbh-name"><span class="lbh-nl"><b>Gemini 4 Argon</b><span class="lbh-set">Antigravity · high</span></span></span>
+    <span class="lbh-track"><span class="lbh-s" style="--w:30.7%;--k:83%"></span></span>
+    <span class="lbh-val" style="--k:83%"><b>30.7<small>%</small></b><em>±4.6</em></span></div><div class="lbh-row" style="--i:4" title="Claude Opus 5.5, standard: 29.3 % ± 1.7 (mean ± s.d. of 3 runs)">
+    <span class="rk r4">4</span><span class="mk" title="Anthropic"></span>
+    <span class="lbh-name"><span class="lbh-nl"><b>Claude Opus 5.5</b><span class="lbh-set">Claude Code · xhigh</span></span></span>
+    <span class="lbh-track"><span class="lbh-s" style="--w:29.3%;--k:81%"></span></span>
+    <span class="lbh-val" style="--k:81%"><b>29.3<small>%</small></b><em>±1.7</em></span></div><div class="lbh-row" style="--i:5" title="Kimi 3.1 Pro, standard: 7.0 % ± 1.7 (mean ± s.d. of 3 runs)">
+    <span class="rk r5">5</span><span class="mk" title="Moonshot AI"></span>
+    <span class="lbh-name"><span class="lbh-nl"><b>Kimi 3.1 Pro</b><span class="lbh-set">Kimi Code · max</span></span></span>
+    <span class="lbh-track"><span class="lbh-s" style="--w:7.0%;--k:48%"></span></span>
+    <span class="lbh-val" style="--k:48%"><b>7.0<small>%</small></b><em>±1.7</em></span></div><div class="lbh-row" style="--i:6" title="DeepSeek v4.1 Flash, standard: 5.6 % ± 1.9 (mean ± s.d. of 3 runs)">
+    <span class="rk r6">6</span><span class="mk" title="DeepSeek"></span>
+    <span class="lbh-name"><span class="lbh-nl"><b>DeepSeek v4.1 Flash</b><span class="lbh-set">DeepSeek Harness · high</span></span></span>
+    <span class="lbh-track"><span class="lbh-s" style="--w:5.6%;--k:46%"></span></span>
+    <span class="lbh-val" style="--k:46%"><b>5.6<small>%</small></b><em>±1.9</em></span></div><div class="lbh-row" style="--i:7" title="GLM 5.3 Flash, standard: 4.1 % ± 2.8 (mean ± s.d. of 3 runs)">
+    <span class="rk r7">7</span><span class="mk" title="Zhipu AI"></span>
+    <span class="lbh-name"><span class="lbh-nl"><b>GLM 5.3 Flash</b><span class="lbh-set">Claude Code · high</span></span></span>
+    <span class="lbh-track"><span class="lbh-s" style="--w:4.1%;--k:44%"></span></span>
+    <span class="lbh-val" style="--k:44%"><b>4.1<small>%</small></b><em>±2.8</em></span></div></div></div><!--/pre:lb-agents--></div>
+    <div class="lbh" id="lb-vla" role="tabpanel" aria-label="VLA policies, a reference" hidden data-pre><!--pre:lb-vla--><div class="lbh-top"><div class="seg lb-set" role="tablist"><button role="tab" data-set="all" class="on" aria-selected="true">Solved</button><button role="tab" data-set="touched" aria-selected="false">Touched the object</button></div></div><div class="lbh-chart"><div class="lbh-axis"><span></span><span class="lbh-ticks" aria-hidden="true"><i style="left:0%">0%</i><i style="left:25%">25%</i><i style="left:50%">50%</i><i style="left:75%">75%</i><i style="left:100%">100%</i></span><span class="lbh-n">18 puzzles</span></div><div class="lbh-rows"><div class="lbh-row" style="--i:1" title="π0.5: solved 0 %, touched the task object in 33.3 % of the episodes (3 runs per puzzle)">
+    <span class="rk r0">·</span><span class="mk txt">VLA</span>
+    <span class="lbh-name"><span class="lbh-nl"><b>π<sub>0.5</sub></b><span class="lbh-set">Standard · zero-shot</span></span></span>
+    <span class="lbh-track"><span class="lbh-s" style="--w:0.0%;--k:38%"></span></span>
+    <span class="lbh-val" style="--k:38%"><b>0<small>%</small></b><em></em></span></div><div class="lbh-row" style="--i:1" title="MolmoAct2: solved 0 %, touched the task object in 35.2 % of the episodes (3 runs per puzzle)">
+    <span class="rk r0">·</span><span class="mk txt">VLA</span>
+    <span class="lbh-name"><span class="lbh-nl"><b>MolmoAct2</b><span class="lbh-set">Standard · zero-shot</span></span></span>
+    <span class="lbh-track"><span class="lbh-s" style="--w:0.0%;--k:38%"></span></span>
+    <span class="lbh-val" style="--k:38%"><b>0<small>%</small></b><em></em></span></div><div class="lbh-row" style="--i:1" title="GR00T N1.7: solved 0 %, touched the task object in 31.5 % of the episodes (3 runs per puzzle)">
+    <span class="rk r0">·</span><span class="mk txt">VLA</span>
+    <span class="lbh-name"><span class="lbh-nl"><b>GR00T N1.7</b><span class="lbh-set">Standard · zero-shot</span></span></span>
+    <span class="lbh-track"><span class="lbh-s" style="--w:0.0%;--k:38%"></span></span>
+    <span class="lbh-val" style="--k:38%"><b>0<small>%</small></b><em></em></span></div><div class="lbh-row" style="--i:1" title="Cosmos3-Nano-Policy: solved 0 %, touched the task object in 61.1 % of the episodes (3 runs per puzzle)">
+    <span class="rk r0">·</span><span class="mk txt">VLA</span>
+    <span class="lbh-name"><span class="lbh-nl"><b>Cosmos3-Nano-Policy</b><span class="lbh-set">Standard · zero-shot</span></span></span>
+    <span class="lbh-track"><span class="lbh-s" style="--w:0.0%;--k:38%"></span></span>
+    <span class="lbh-val" style="--k:38%"><b>0<small>%</small></b><em></em></span></div></div></div><!--/pre:lb-vla--></div>
     <details class="bytype reveal" id="bytype">
       <summary>Per constraint type</summary>
-      <div class="frame table-scroll"><table class="rt" id="results-table"></table></div>
+      <div class="frame table-scroll"><table class="rt" id="results-table" data-pre><!--pre:results-table--><thead>
+      <tr><th class="l" rowspan="2">Agent</th><th class="l harness" rowspan="2">Harness (effort)</th><th class="regime standard" colspan="7">Standard</th><th class="regime privileged" colspan="7">Privileged</th></tr>
+      <tr><th class="standard"><abbr title="Interlocking">Interl.</abbr></th><th class="standard"><abbr title="Narrow passage">Passage</abbr></th><th class="standard"><abbr title="Assembly">Assem.</abbr></th><th class="standard"><abbr title="Untangling">Untang.</abbr></th><th class="standard"><abbr title="Threading">Thread.</abbr></th><th class="standard"><abbr title="Shape control">Shape</abbr></th><th class="standard all"><abbr title="All 90 tasks">All</abbr></th><th class="privileged"><abbr title="Interlocking">Interl.</abbr></th><th class="privileged"><abbr title="Narrow passage">Passage</abbr></th><th class="privileged"><abbr title="Assembly">Assem.</abbr></th><th class="privileged"><abbr title="Untangling">Untang.</abbr></th><th class="privileged"><abbr title="Threading">Thread.</abbr></th><th class="privileged"><abbr title="Shape control">Shape</abbr></th><th class="privileged all"><abbr title="All 90 tasks">All</abbr></th></tr>
+    </thead>
+    <tbody><tr class="group"><td class="l" colspan="16">proprietary</td></tr>
+      <tr><th class="l" scope="row">GPT-6 Astra<span class="sub">Codex (xhigh)</span></th><td class="l harness">Codex <span class="effort">(xhigh)</span></td><td class="standard" style="--p:24.9%"><b>59.4</b></td><td class="standard" style="--p:23.7%"><b>56.4</b></td><td class="standard" style="--p:4.2%"><b>10.0</b></td><td class="standard" style="--p:21.5%">51.3</td><td class="standard" style="--p:12.7%"><b>30.3</b></td><td class="standard" style="--p:22.4%"><b>53.3</b></td><td class="standard all" style="--p:17.9%"><b>42.6</b><small>±5.1</small></td><td class="privileged" style="--p:39.6%">94.2</td><td class="privileged" style="--p:35.5%">84.6</td><td class="privileged" style="--p:35.7%"><b>85.0</b></td><td class="privileged" style="--p:25.8%">61.5</td><td class="privileged" style="--p:36.9%"><b>87.9</b></td><td class="privileged" style="--p:40.6%">96.7</td><td class="privileged all" style="--p:36.0%"><b>85.6</b><small>±4.4</small></td></tr>
+      <tr><th class="l" scope="row">GPT-6.1 Sol<span class="sub">Codex (xhigh)</span></th><td class="l harness">Codex <span class="effort">(xhigh)</span></td><td class="standard" style="--p:21.9%">52.2</td><td class="standard" style="--p:21.5%">51.3</td><td class="standard" style="--p:3.5%">8.3</td><td class="standard" style="--p:19.4%">46.2</td><td class="standard" style="--p:6.4%">15.2</td><td class="standard" style="--p:14.0%">33.3</td><td class="standard all" style="--p:14.6%">34.8<small>±5.0</small></td><td class="privileged" style="--p:38.3%">91.3</td><td class="privileged" style="--p:39.9%"><b>94.9</b></td><td class="privileged" style="--p:28.7%">68.3</td><td class="privileged" style="--p:26.9%">64.1</td><td class="privileged" style="--p:31.8%">75.8</td><td class="privileged" style="--p:39.2%">93.3</td><td class="privileged all" style="--p:34.1%">81.1<small>±1.1</small></td></tr>
+      <tr><th class="l" scope="row">Claude Opus 5.5<span class="sub">Claude Code (xhigh)</span></th><td class="l harness">Claude Code <span class="effort">(xhigh)</span></td><td class="standard" style="--p:18.9%">44.9</td><td class="standard" style="--p:16.2%">38.5</td><td class="standard" style="--p:0.7%">1.7</td><td class="standard" style="--p:21.5%">51.3</td><td class="standard" style="--p:5.1%">12.1</td><td class="standard" style="--p:11.2%">26.7</td><td class="standard all" style="--p:12.3%">29.3<small>±1.7</small></td><td class="privileged" style="--p:40.2%"><b>95.7</b></td><td class="privileged" style="--p:35.5%">84.6</td><td class="privileged" style="--p:25.9%">61.7</td><td class="privileged" style="--p:28.0%"><b>66.7</b></td><td class="privileged" style="--p:34.4%">81.8</td><td class="privileged" style="--p:40.6%">96.7</td><td class="privileged all" style="--p:33.9%">80.7<small>±0.6</small></td></tr>
+      <tr><th class="l" scope="row">Gemini 4 Argon<span class="sub">Antigravity (high)</span></th><td class="l harness">Antigravity <span class="effort">(high)</span></td><td class="standard" style="--p:15.8%">37.7</td><td class="standard" style="--p:18.3%">43.6</td><td class="standard" style="--p:0.7%">1.7</td><td class="standard" style="--p:22.6%"><b>53.8</b></td><td class="standard" style="--p:5.1%">12.1</td><td class="standard" style="--p:19.6%">46.7</td><td class="standard all" style="--p:12.9%">30.7<small>±4.6</small></td><td class="privileged" style="--p:37.1%">88.4</td><td class="privileged" style="--p:25.8%">61.5</td><td class="privileged" style="--p:21.0%">50.0</td><td class="privileged" style="--p:26.9%">64.1</td><td class="privileged" style="--p:35.6%">84.8</td><td class="privileged" style="--p:42.0%"><b>100.0</b></td><td class="privileged all" style="--p:30.8%">73.3<small>±4.0</small></td></tr><tr class="group"><td class="l" colspan="16">open-weight</td></tr>
+      <tr><th class="l" scope="row">Kimi 3.1 Pro<span class="sub">Kimi Code (max)</span></th><td class="l harness">Kimi Code <span class="effort">(max)</span></td><td class="standard" style="--p:3.7%">8.7</td><td class="standard" style="--p:1.1%">2.6</td><td class="standard" style="--p:0.0%">0</td><td class="standard" style="--p:8.6%">20.5</td><td class="standard" style="--p:1.3%">3.0</td><td class="standard" style="--p:4.2%">10.0</td><td class="standard all" style="--p:2.9%">7.0<small>±1.7</small></td><td class="privileged" style="--p:17.6%">42.0</td><td class="privileged" style="--p:10.8%">25.6</td><td class="privileged" style="--p:7.0%">16.7</td><td class="privileged" style="--p:16.2%">38.5</td><td class="privileged" style="--p:1.3%">3.0</td><td class="privileged" style="--p:28.0%">66.7</td><td class="privileged all" style="--p:13.2%">31.5<small>±3.6</small></td></tr>
+      <tr><th class="l" scope="row">DeepSeek v4.1 Flash<span class="sub">DeepSeek Harness (high)</span></th><td class="l harness"><abbr title="DeepSeek Harness">DSH</abbr> <span class="effort">(high)</span></td><td class="standard" style="--p:4.9%">11.6</td><td class="standard" style="--p:0.0%">0</td><td class="standard" style="--p:0.0%">0</td><td class="standard" style="--p:6.5%">15.4</td><td class="standard" style="--p:0.0%">0</td><td class="standard" style="--p:1.4%">3.3</td><td class="standard all" style="--p:2.4%">5.6<small>±1.9</small></td><td class="privileged" style="--p:6.7%">15.9</td><td class="privileged" style="--p:3.2%">7.7</td><td class="privileged" style="--p:0.7%">1.7</td><td class="privileged" style="--p:7.5%">17.9</td><td class="privileged" style="--p:0.0%">0</td><td class="privileged" style="--p:9.8%">23.3</td><td class="privileged all" style="--p:4.5%">10.7<small>±1.3</small></td></tr>
+      <tr><th class="l" scope="row">GLM 5.3 Flash<span class="sub">Claude Code (high)</span></th><td class="l harness">Claude Code <span class="effort">(high)</span></td><td class="standard" style="--p:2.4%">5.8</td><td class="standard" style="--p:1.1%">2.6</td><td class="standard" style="--p:0.0%">0</td><td class="standard" style="--p:3.2%">7.7</td><td class="standard" style="--p:0.0%">0</td><td class="standard" style="--p:4.2%">10.0</td><td class="standard all" style="--p:1.7%">4.1<small>±2.8</small></td><td class="privileged" style="--p:2.4%">5.8</td><td class="privileged" style="--p:0.0%">0</td><td class="privileged" style="--p:2.1%">5.0</td><td class="privileged" style="--p:2.1%">5.1</td><td class="privileged" style="--p:0.0%">0</td><td class="privileged" style="--p:4.2%">10.0</td><td class="privileged all" style="--p:1.8%">4.4<small>±2.2</small></td></tr></tbody><!--/pre:results-table--></table></div>
     </details>
   </section>
 

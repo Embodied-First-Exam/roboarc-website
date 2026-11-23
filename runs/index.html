@@ -19,6 +19,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/site.css?v=2026-11-22-scenes2">
   <link rel="stylesheet" href="../assets/css/runs.css?v=1">
+  <!-- page metadata: the page's address and its preview where the link is shared -->
+  <link rel="canonical" href="https://roboarc.embodied-first-exam.ai/runs/">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RoboARC">
+  <meta property="og:url" content="https://roboarc.embodied-first-exam.ai/runs/">
+  <meta property="og:title" content="Agent runs · RoboARC">
+  <meta property="og:description" content="Every coding-agent run behind the RoboARC results table, step by step: what the agent wrote, ran and saw, and what the verifier decided.">
+  <meta property="og:image" content="https://roboarc.embodied-first-exam.ai/assets/media/roboarc/teaser.jpg">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="A two-arm robot separating two interlocked claws">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Agent runs · RoboARC">
+  <meta name="twitter:description" content="Every coding-agent run behind the RoboARC results table, step by step: what the agent wrote, ran and saw, and what the verifier decided.">
+  <meta name="twitter:image" content="https://roboarc.embodied-first-exam.ai/assets/media/roboarc/teaser.jpg">
+  <meta name="twitter:image:alt" content="A two-arm robot separating two interlocked claws">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "CollectionPage", "@id": "https://roboarc.embodied-first-exam.ai/runs/#page", "url": "https://roboarc.embodied-first-exam.ai/runs/", "name": "Agent runs · RoboARC", "inLanguage": "en", "description": "Every coding-agent run behind the RoboARC results table, step by step: what the agent wrote, ran and saw, and what the verifier decided. Seven coding agents on the 90 puzzles of RoboARC, in the Standard and Privileged regimes.", "isPartOf": {"@id": "https://roboarc.embodied-first-exam.ai/#website"}, "about": {"@id": "https://roboarc.embodied-first-exam.ai/#dataset"}, "mainEntity": {"@id": "https://roboarc.embodied-first-exam.ai/runs/#runs"}}, {"@type": "Dataset", "@id": "https://roboarc.embodied-first-exam.ai/runs/#runs", "name": "RoboARC-runs", "description": "Every coding-agent run behind the RoboARC results table, step by step: what the agent wrote, ran and saw, and what the verifier decided. Seven coding agents on the 90 puzzles of RoboARC, in the Standard and Privileged regimes.", "url": "https://roboarc.embodied-first-exam.ai/runs/", "sameAs": "https://huggingface.co/datasets/RoboARC/RoboARC-runs", "isAccessibleForFree": true, "isBasedOn": {"@id": "https://roboarc.embodied-first-exam.ai/#dataset"}}]}</script>
 </head>
 <body class="runs-page">
   <nav class="nav" aria-label="Sections">
@@ -41,9 +59,276 @@
     </button>
   </nav>
   <main class="runs-main">
-    <header class="runs-head" id="runs-head"></header>
-    <div id="runs-body"></div>
+    <header class="runs-head" id="runs-head" data-pre><!--pre:runs-head--><p class="kicker">Agent runs</p><h1>Watch an agent work</h1><p class="lead" id="ri-lead">3,780 runs: 7 coding agents on 90 puzzles, in the Standard and Privileged regimes. Open one to read what the agent wrote, ran and saw.</p><!--/pre:runs-head--></header>
+    <div id="runs-body" data-pre><!--pre:runs-body--><div class="ri-tools">
+      <input type="search" id="f-q" placeholder="Search puzzles" aria-label="Search puzzles" value="">
+      <select id="f-agent" aria-label="Agent"><option value="" selected="">All agents</option><option value="GPT-6 Astra">GPT-6 Astra</option><option value="GPT-6.1 Sol">GPT-6.1 Sol</option><option value="Claude Opus 5.5">Claude Opus 5.5</option><option value="Gemini 4 Argon">Gemini 4 Argon</option><option value="Kimi 3.1 Pro">Kimi 3.1 Pro</option><option value="DeepSeek v4.1 Flash">DeepSeek v4.1 Flash</option><option value="GLM 5.3 Flash">GLM 5.3 Flash</option></select>
+      <select id="f-constraint" aria-label="Constraint type"><option value="" selected="">All constraint types</option><option value="interlocking">Interlocking</option><option value="narrow_passage">Narrow passage</option><option value="assembly">Fitting &amp; assembly</option><option value="untangling">Untangling</option><option value="threading">Threading &amp; routing</option><option value="shape_control">Shape control</option></select>
+      <select id="f-family" aria-label="Family"><option value="" selected="">All families</option><option value="buzz-wire-3d">3D buzz wire</option><option value="battery-replacement">Battery replacement</option><option value="bed-bolt">Bed bolt</option><option value="blanket-flatten">Blanket flatten</option><option value="blanket-fold">Blanket fold</option><option value="caliper-sorting">Caliper sorting</option><option value="cast-coil">Cast coil</option><option value="cast-keyhole">Cast keyhole</option><option value="clock-assembling">Clock assembling</option><option value="fiber-bundling">Fiber bundling</option><option value="hedgehog-in-cage">Hedgehog in cage</option><option value="horseshoe-ring">Horseshoe ring</option><option value="ikea">IKEA furniture</option><option value="interlocked-claws">Interlocked claws</option><option value="knot-untying">Knot untying</option><option value="lock-picking">Lock picking</option><option value="orbits">Orbits</option><option value="rope-threading">Rope threading</option><option value="slotted-post-ring">Slotted post ring</option><option value="wire-splicing">Wire splicing</option></select>
+      <select id="f-regime" aria-label="Regime"><option value="" selected="">Both regimes</option><option value="Standard">Standard</option><option value="Privileged">Privileged</option></select>
+    </div>
+    <div class="ri-sub"><button type="button" class="chip on" data-out="">All</button><button type="button" class="chip" data-out="ok">Solved</button><button type="button" class="chip" data-out="no">Not solved</button><span class="ri-count" id="ri-count">1–50 of 3,780 runs</span></div>
+    <div class="ri-list" id="ri-list"><div class="rr rr-head"><span></span><span>Puzzle</span><span>Agent</span><span>Regime</span><span class="rr-n">Run</span><span>Verdict</span><span class="rr-n">Agent time</span><span class="rr-n">Steps</span><span>Actions</span></div><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--gpt-6-astra-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6 Astra</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">1</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:50:38</span><span class="rr-n">355</span><span class="bars"><span class="k-robot" style="flex:381" title="Robot: 381"></span><span class="k-look" style="flex:107" title="Pictures: 107"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:225" title="Shell: 225"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--gpt-6-astra-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6 Astra</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">2</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:58:55</span><span class="rr-n">519</span><span class="bars"><span class="k-robot" style="flex:301" title="Robot: 301"></span><span class="k-look" style="flex:101" title="Pictures: 101"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:264" title="Shell: 264"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--gpt-6-astra-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6 Astra</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">3</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:56:14</span><span class="rr-n">485</span><span class="bars"><span class="k-robot" style="flex:298" title="Robot: 298"></span><span class="k-look" style="flex:164" title="Pictures: 164"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:312" title="Shell: 312"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--gpt-6-astra-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6 Astra</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">1</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">1:55:04</span><span class="rr-n">301</span><span class="bars"><span class="k-robot" style="flex:4" title="Robot: 4"></span><span class="k-look" style="flex:5" title="Pictures: 5"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:293" title="Shell: 293"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--gpt-6-astra-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6 Astra</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">2</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">55:20</span><span class="rr-n">176</span><span class="bars"><span class="k-robot" style="flex:0" title="Robot: 0"></span><span class="k-look" style="flex:3" title="Pictures: 3"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:185" title="Shell: 185"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--gpt-6-astra-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6 Astra</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">3</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">1:08:07</span><span class="rr-n">167</span><span class="bars"><span class="k-robot" style="flex:2" title="Robot: 2"></span><span class="k-look" style="flex:4" title="Pictures: 4"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:223" title="Shell: 223"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--gpt-6-1-sol-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6.1 Sol</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">1</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:50:00</span><span class="rr-n">596</span><span class="bars"><span class="k-robot" style="flex:449" title="Robot: 449"></span><span class="k-look" style="flex:139" title="Pictures: 139"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:368" title="Shell: 368"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--gpt-6-1-sol-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6.1 Sol</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">2</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">2:45:16</span><span class="rr-n">576</span><span class="bars"><span class="k-robot" style="flex:330" title="Robot: 330"></span><span class="k-look" style="flex:156" title="Pictures: 156"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:392" title="Shell: 392"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--gpt-6-1-sol-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6.1 Sol</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">3</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:55:28</span><span class="rr-n">435</span><span class="bars"><span class="k-robot" style="flex:333" title="Robot: 333"></span><span class="k-look" style="flex:155" title="Pictures: 155"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:267" title="Shell: 267"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--gpt-6-1-sol-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6.1 Sol</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">1</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">1:07:53</span><span class="rr-n">175</span><span class="bars"><span class="k-robot" style="flex:5" title="Robot: 5"></span><span class="k-look" style="flex:5" title="Pictures: 5"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:275" title="Shell: 275"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--gpt-6-1-sol-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6.1 Sol</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">2</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">1:54:21</span><span class="rr-n">254</span><span class="bars"><span class="k-robot" style="flex:3" title="Robot: 3"></span><span class="k-look" style="flex:8" title="Pictures: 8"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:365" title="Shell: 365"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--gpt-6-1-sol-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6.1 Sol</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">3</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:54:37</span><span class="rr-n">372</span><span class="bars"><span class="k-robot" style="flex:5" title="Robot: 5"></span><span class="k-look" style="flex:5" title="Pictures: 5"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:586" title="Shell: 586"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--claude-opus-5-5-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Claude Opus 5.5</span><small>Claude Code · xhigh</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">1</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">1:55:27</span><span class="rr-n">237</span><span class="bars"><span class="k-robot" style="flex:90" title="Robot: 90"></span><span class="k-look" style="flex:72" title="Pictures: 72"></span><span class="k-edit" style="flex:1" title="Edits: 1"></span><span class="k-shell" style="flex:76" title="Shell: 76"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--claude-opus-5-5-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Claude Opus 5.5</span><small>Claude Code · xhigh</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">2</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:30:01</span><span class="rr-n">219</span><span class="bars"><span class="k-robot" style="flex:119" title="Robot: 119"></span><span class="k-look" style="flex:56" title="Pictures: 56"></span><span class="k-edit" style="flex:1" title="Edits: 1"></span><span class="k-shell" style="flex:69" title="Shell: 69"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--claude-opus-5-5-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Claude Opus 5.5</span><small>Claude Code · xhigh</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">3</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:20:01</span><span class="rr-n">383</span><span class="bars"><span class="k-robot" style="flex:240" title="Robot: 240"></span><span class="k-look" style="flex:69" title="Pictures: 69"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:72" title="Shell: 72"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--claude-opus-5-5-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Claude Opus 5.5</span><small>Claude Code · xhigh</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">1</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">58:26</span><span class="rr-n">148</span><span class="bars"><span class="k-robot" style="flex:4" title="Robot: 4"></span><span class="k-look" style="flex:2" title="Pictures: 2"></span><span class="k-edit" style="flex:1" title="Edits: 1"></span><span class="k-shell" style="flex:140" title="Shell: 140"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--claude-opus-5-5-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Claude Opus 5.5</span><small>Claude Code · xhigh</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">2</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">1:30:51</span><span class="rr-n">118</span><span class="bars"><span class="k-robot" style="flex:16" title="Robot: 16"></span><span class="k-look" style="flex:3" title="Pictures: 3"></span><span class="k-edit" style="flex:3" title="Edits: 3"></span><span class="k-shell" style="flex:96" title="Shell: 96"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--claude-opus-5-5-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Claude Opus 5.5</span><small>Claude Code · xhigh</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">3</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">1:10:21</span><span class="rr-n">148</span><span class="bars"><span class="k-robot" style="flex:1" title="Robot: 1"></span><span class="k-look" style="flex:8" title="Pictures: 8"></span><span class="k-edit" style="flex:1" title="Edits: 1"></span><span class="k-shell" style="flex:139" title="Shell: 139"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--gemini-4-argon-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Gemini 4 Argon</span><small>Antigravity · high</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">1</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">3:10:02</span><span class="rr-n">367</span><span class="bars"><span class="k-robot" style="flex:60" title="Robot: 60"></span><span class="k-look" style="flex:94" title="Pictures: 94"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:254" title="Shell: 254"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--gemini-4-argon-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Gemini 4 Argon</span><small>Antigravity · high</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">2</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">3:10:03</span><span class="rr-n">337</span><span class="bars"><span class="k-robot" style="flex:42" title="Robot: 42"></span><span class="k-look" style="flex:80" title="Pictures: 80"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:241" title="Shell: 241"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--gemini-4-argon-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Gemini 4 Argon</span><small>Antigravity · high</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">3</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">3:10:02</span><span class="rr-n">380</span><span class="bars"><span class="k-robot" style="flex:87" title="Robot: 87"></span><span class="k-look" style="flex:137" title="Pictures: 137"></span><span class="k-edit" style="flex:3" title="Edits: 3"></span><span class="k-shell" style="flex:182" title="Shell: 182"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--gemini-4-argon-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Gemini 4 Argon</span><small>Antigravity · high</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">1</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">1:21:56</span><span class="rr-n">357</span><span class="bars"><span class="k-robot" style="flex:1" title="Robot: 1"></span><span class="k-look" style="flex:0" title="Pictures: 0"></span><span class="k-edit" style="flex:85" title="Edits: 85"></span><span class="k-shell" style="flex:125" title="Shell: 125"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--gemini-4-argon-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Gemini 4 Argon</span><small>Antigravity · high</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">2</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">1:34:00</span><span class="rr-n">358</span><span class="bars"><span class="k-robot" style="flex:13" title="Robot: 13"></span><span class="k-look" style="flex:0" title="Pictures: 0"></span><span class="k-edit" style="flex:3" title="Edits: 3"></span><span class="k-shell" style="flex:168" title="Shell: 168"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--gemini-4-argon-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Gemini 4 Argon</span><small>Antigravity · high</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">3</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">2:14:16</span><span class="rr-n">456</span><span class="bars"><span class="k-robot" style="flex:3" title="Robot: 3"></span><span class="k-look" style="flex:3" title="Pictures: 3"></span><span class="k-edit" style="flex:51" title="Edits: 51"></span><span class="k-shell" style="flex:154" title="Shell: 154"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--kimi-3-1-pro-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Kimi 3.1 Pro</span><small>Kimi Code · max</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">1</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">3:10:02</span><span class="rr-n">380</span><span class="bars"><span class="k-robot" style="flex:147" title="Robot: 147"></span><span class="k-look" style="flex:198" title="Pictures: 198"></span><span class="k-edit" style="flex:11" title="Edits: 11"></span><span class="k-shell" style="flex:226" title="Shell: 226"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--kimi-3-1-pro-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Kimi 3.1 Pro</span><small>Kimi Code · max</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">2</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">3:09:54</span><span class="rr-n">426</span><span class="bars"><span class="k-robot" style="flex:111" title="Robot: 111"></span><span class="k-look" style="flex:360" title="Pictures: 360"></span><span class="k-edit" style="flex:109" title="Edits: 109"></span><span class="k-shell" style="flex:225" title="Shell: 225"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--kimi-3-1-pro-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Kimi 3.1 Pro</span><small>Kimi Code · max</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">3</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">3:10:02</span><span class="rr-n">299</span><span class="bars"><span class="k-robot" style="flex:135" title="Robot: 135"></span><span class="k-look" style="flex:105" title="Pictures: 105"></span><span class="k-edit" style="flex:19" title="Edits: 19"></span><span class="k-shell" style="flex:128" title="Shell: 128"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--kimi-3-1-pro-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Kimi 3.1 Pro</span><small>Kimi Code · max</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">1</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:59:39</span><span class="rr-n">389</span><span class="bars"><span class="k-robot" style="flex:0" title="Robot: 0"></span><span class="k-look" style="flex:84" title="Pictures: 84"></span><span class="k-edit" style="flex:114" title="Edits: 114"></span><span class="k-shell" style="flex:291" title="Shell: 291"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--kimi-3-1-pro-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Kimi 3.1 Pro</span><small>Kimi Code · max</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">2</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">3:10:02</span><span class="rr-n">409</span><span class="bars"><span class="k-robot" style="flex:0" title="Robot: 0"></span><span class="k-look" style="flex:5" title="Pictures: 5"></span><span class="k-edit" style="flex:70" title="Edits: 70"></span><span class="k-shell" style="flex:361" title="Shell: 361"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--kimi-3-1-pro-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>Kimi 3.1 Pro</span><small>Kimi Code · max</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">3</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">3:09:46</span><span class="rr-n">745</span><span class="bars"><span class="k-robot" style="flex:0" title="Robot: 0"></span><span class="k-look" style="flex:14" title="Pictures: 14"></span><span class="k-edit" style="flex:107" title="Edits: 107"></span><span class="k-shell" style="flex:523" title="Shell: 523"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--deepseek-v4-1-flash-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>DeepSeek v4.1 Flash</span><small>DSH · high</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">1</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:34:16</span><span class="rr-n">331</span><span class="bars"><span class="k-robot" style="flex:6" title="Robot: 6"></span><span class="k-look" style="flex:44" title="Pictures: 44"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:150" title="Shell: 150"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--deepseek-v4-1-flash-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>DeepSeek v4.1 Flash</span><small>DSH · high</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">2</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:29:42</span><span class="rr-n">311</span><span class="bars"><span class="k-robot" style="flex:6" title="Robot: 6"></span><span class="k-look" style="flex:52" title="Pictures: 52"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:139" title="Shell: 139"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--deepseek-v4-1-flash-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>DeepSeek v4.1 Flash</span><small>DSH · high</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">3</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">1:48:14</span><span class="rr-n">419</span><span class="bars"><span class="k-robot" style="flex:49" title="Robot: 49"></span><span class="k-look" style="flex:66" title="Pictures: 66"></span><span class="k-edit" style="flex:1" title="Edits: 1"></span><span class="k-shell" style="flex:129" title="Shell: 129"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--deepseek-v4-1-flash-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>DeepSeek v4.1 Flash</span><small>DSH · high</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">1</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">1:51:01</span><span class="rr-n">348</span><span class="bars"><span class="k-robot" style="flex:37" title="Robot: 37"></span><span class="k-look" style="flex:0" title="Pictures: 0"></span><span class="k-edit" style="flex:10" title="Edits: 10"></span><span class="k-shell" style="flex:161" title="Shell: 161"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--deepseek-v4-1-flash-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>DeepSeek v4.1 Flash</span><small>DSH · high</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">2</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">1:10:26</span><span class="rr-n">254</span><span class="bars"><span class="k-robot" style="flex:2" title="Robot: 2"></span><span class="k-look" style="flex:0" title="Pictures: 0"></span><span class="k-edit" style="flex:34" title="Edits: 34"></span><span class="k-shell" style="flex:123" title="Shell: 123"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--deepseek-v4-1-flash-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>DeepSeek v4.1 Flash</span><small>DSH · high</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">3</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:26:03</span><span class="rr-n">402</span><span class="bars"><span class="k-robot" style="flex:8" title="Robot: 8"></span><span class="k-look" style="flex:11" title="Pictures: 11"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:244" title="Shell: 244"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--glm-5-3-flash-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GLM 5.3 Flash</span><small>Claude Code · high</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">1</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:50:24</span><span class="rr-n">424</span><span class="bars"><span class="k-robot" style="flex:105" title="Robot: 105"></span><span class="k-look" style="flex:39" title="Pictures: 39"></span><span class="k-edit" style="flex:26" title="Edits: 26"></span><span class="k-shell" style="flex:156" title="Shell: 156"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--glm-5-3-flash-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GLM 5.3 Flash</span><small>Claude Code · high</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">2</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:39:55</span><span class="rr-n">266</span><span class="bars"><span class="k-robot" style="flex:100" title="Robot: 100"></span><span class="k-look" style="flex:43" title="Pictures: 43"></span><span class="k-edit" style="flex:46" title="Edits: 46"></span><span class="k-shell" style="flex:84" title="Shell: 84"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-standard--glm-5-3-flash-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GLM 5.3 Flash</span><small>Claude Code · high</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">3</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">1:36:06</span><span class="rr-n">1,145</span><span class="bars"><span class="k-robot" style="flex:537" title="Robot: 537"></span><span class="k-look" style="flex:55" title="Pictures: 55"></span><span class="k-edit" style="flex:62" title="Edits: 62"></span><span class="k-shell" style="flex:487" title="Shell: 487"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--glm-5-3-flash-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GLM 5.3 Flash</span><small>Claude Code · high</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">1</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">1:14:07</span><span class="rr-n">235</span><span class="bars"><span class="k-robot" style="flex:13" title="Robot: 13"></span><span class="k-look" style="flex:9" title="Pictures: 9"></span><span class="k-edit" style="flex:4" title="Edits: 4"></span><span class="k-shell" style="flex:208" title="Shell: 208"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--glm-5-3-flash-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GLM 5.3 Flash</span><small>Claude Code · high</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">2</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:41:53</span><span class="rr-n">486</span><span class="bars"><span class="k-robot" style="flex:56" title="Robot: 56"></span><span class="k-look" style="flex:3" title="Pictures: 3"></span><span class="k-edit" style="flex:33" title="Edits: 33"></span><span class="k-shell" style="flex:308" title="Shell: 308"></span></span></a><a class="rr" href="?r=roboarc-battery-replacement-01-i01-privileged--glm-5-3-flash-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Battery Replacement 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GLM 5.3 Flash</span><small>Claude Code · high</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">3</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:55:34</span><span class="rr-n">193</span><span class="bars"><span class="k-robot" style="flex:69" title="Robot: 69"></span><span class="k-look" style="flex:13" title="Pictures: 13"></span><span class="k-edit" style="flex:10" title="Edits: 10"></span><span class="k-shell" style="flex:105" title="Shell: 105"></span></span></a><a class="rr" href="?r=roboarc-bed-bolt-01-i01-standard--gpt-6-astra-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Bed Bolt 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6 Astra</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">1</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:50:48</span><span class="rr-n">352</span><span class="bars"><span class="k-robot" style="flex:158" title="Robot: 158"></span><span class="k-look" style="flex:110" title="Pictures: 110"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:202" title="Shell: 202"></span></span></a><a class="rr" href="?r=roboarc-bed-bolt-01-i01-standard--gpt-6-astra-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Bed Bolt 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6 Astra</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">2</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:57:28</span><span class="rr-n">346</span><span class="bars"><span class="k-robot" style="flex:176" title="Robot: 176"></span><span class="k-look" style="flex:113" title="Pictures: 113"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:191" title="Shell: 191"></span></span></a><a class="rr" href="?r=roboarc-bed-bolt-01-i01-standard--gpt-6-astra-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Bed Bolt 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6 Astra</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">3</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:53:18</span><span class="rr-n">318</span><span class="bars"><span class="k-robot" style="flex:186" title="Robot: 186"></span><span class="k-look" style="flex:83" title="Pictures: 83"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:194" title="Shell: 194"></span></span></a><a class="rr" href="?r=roboarc-bed-bolt-01-i01-privileged--gpt-6-astra-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Bed Bolt 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6 Astra</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">1</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">2:06:54</span><span class="rr-n">233</span><span class="bars"><span class="k-robot" style="flex:8" title="Robot: 8"></span><span class="k-look" style="flex:9" title="Pictures: 9"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:315" title="Shell: 315"></span></span></a><a class="rr" href="?r=roboarc-bed-bolt-01-i01-privileged--gpt-6-astra-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Bed Bolt 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6 Astra</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">2</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">1:22:07</span><span class="rr-n">192</span><span class="bars"><span class="k-robot" style="flex:2" title="Robot: 2"></span><span class="k-look" style="flex:3" title="Pictures: 3"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:197" title="Shell: 197"></span></span></a><a class="rr" href="?r=roboarc-bed-bolt-01-i01-privileged--gpt-6-astra-r3">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Bed Bolt 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6 Astra</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Privileged</span><span class="rr-n">3</span><span class="verdict ok">Solved</span>
+      <span class="rr-n">1:33:22</span><span class="rr-n">236</span><span class="bars"><span class="k-robot" style="flex:4" title="Robot: 4"></span><span class="k-look" style="flex:5" title="Pictures: 5"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:292" title="Shell: 292"></span></span></a><a class="rr" href="?r=roboarc-bed-bolt-01-i01-standard--gpt-6-1-sol-r1">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Bed Bolt 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6.1 Sol</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">1</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:49:49</span><span class="rr-n">395</span><span class="bars"><span class="k-robot" style="flex:214" title="Robot: 214"></span><span class="k-look" style="flex:75" title="Pictures: 75"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:213" title="Shell: 213"></span></span></a><a class="rr" href="?r=roboarc-bed-bolt-01-i01-standard--gpt-6-1-sol-r2">
+      <span class="rr-pic"></span>
+      <span class="rr-task"><b>Bed Bolt 01</b><small>Fitting &amp; assembly</small></span>
+      <span class="rr-agent"><span>GPT-6.1 Sol</span><small>Codex · xhigh</small></span>
+      <span class="rr-reg">Standard</span><span class="rr-n">2</span><span class="verdict no">Not solved</span>
+      <span class="rr-n">2:49:16</span><span class="rr-n">411</span><span class="bars"><span class="k-robot" style="flex:246" title="Robot: 246"></span><span class="k-look" style="flex:81" title="Pictures: 81"></span><span class="k-edit" style="flex:0" title="Edits: 0"></span><span class="k-shell" style="flex:196" title="Shell: 196"></span></span></a></div><nav class="ri-pager" id="ri-pager" aria-label="Pages"><button data-p="0" disabled="" aria-label="Previous page">←</button><button data-p="1" class="on">1</button><button data-p="2" class="">2</button><span>…</span><button data-p="76" class="">76</button><button data-p="2" aria-label="Next page">→</button></nav><!--/pre:runs-body--></div>
   </main>
+  <script>
+    // the list in #runs-head and #runs-body is written into this file for the bare address (scripts/prerender.py);
+    // a single run or a filtered list starts empty instead, as before, until runs.js draws it
+    (function () {
+      var q = new URLSearchParams(location.search);
+      q.delete('theme');
+      if (q.toString()) ['runs-head', 'runs-body'].forEach(function (id) { document.getElementById(id).textContent = ''; });
+    })();
+  </script>
   <footer class="runs-foot">
     <a href="../">RoboARC</a>
     <a href="https://github.com/mll-lab-nu/RoboARC" target="_blank" rel="noopener">Code</a>

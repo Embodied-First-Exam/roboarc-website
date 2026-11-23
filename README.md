@@ -26,7 +26,31 @@ teaser reel under Figure 1; `?palette=paper` draws the leaderboard's Standard ba
 python3 scripts/check_site.py --readme <code release>/README.md
 ```
 Every local file the page refers to, the paper's counts in the task index, the "Get started" commands against the code
-release's README line by line, and no leftover placeholder. It ends with `0 finding(s)`.
+release's README line by line, no leftover placeholder, and the page metadata below (title and description lengths,
+JSON-LD, the written-in text, `robots.txt` and `sitemap.xml`). It ends with `0 finding(s)`.
+
+## Text for readers without JavaScript
+The filters, the puzzle wall, the leaderboards and the table per constraint type (home), and the head and first page
+of the agent runs (`runs/`), are drawn by `site.js` and `runs.js`. A copy of that text is written into the HTML, between
+`<!--pre:ID-->` and `<!--/pre:ID-->`, so that crawlers and assistants that read the HTML without running it find the
+content. In the browser the scripts draw the same elements again, so the page looks the same. After any change to
+`assets/data/`, to `site.js` or `runs.js`, or to those elements, write it again (headless Chrome, about 5 s):
+```bash
+uv run --with playwright python scripts/prerender.py
+```
+Never edit inside a `<!--pre:...-->` block by hand. If an element is not drawn (for instance when the runs cannot be
+loaded from Hugging Face), the script leaves that page as it was and exits with 1: run it again later.
+
+## Page metadata
+- `robots.txt` lets every crawler in, AI crawlers named one by one, and points to `sitemap.xml` (the home page and
+  `runs/`; raise `<lastmod>` when a page's text changes).
+- Each page's head: `<title>` of at most 70 characters (the home title is also set by the inline script, keep the two
+  the same), `<meta name="description">` of 25 to 160 characters, the canonical address, the Open Graph and X card
+  preview (the teaser poster `assets/media/roboarc/teaser.jpg`), and JSON-LD: the paper, the benchmark as a dataset and
+  the code on the home page, the agent runs on `runs/`. The home page also has `citation_*` tags for reference managers.
+- `llms.txt` (summary) and `llms-full.txt` (questions and answers) for language models, with the numbers of
+  `assets/data/*.json` written out by hand: when the tasks or the results change, change them there too, with the
+  JSON-LD descriptions.
 
 ## The look
 The Embodied First Exam series look: cool exam paper (`#f4f6f9`; night `#121417`), white cards with a hairline, rounded
@@ -104,7 +128,8 @@ heading, no abstract, no figure caption and no difficulty rating (`scripts/check
 
 ## Open items
 - The arXiv link and the BibTeX entry's `eprint`: when the paper has its arXiv identifier (`ARXIV LINK` in
-  `index.html`).
+  `index.html`, three places: the two buttons and the page metadata), and the same address in `llms.txt` and
+  `llms-full.txt`.
 - Clips for 16 tasks that have none: bed bolt 01-05, clock assembling 01, battery replacement 01, caliper sorting 01,
   wire splicing 01, the IKEA scenes BURVIK, KYRRE, STENERIK and UPPSTÅ, interlocked claws 13, knot untying 07,
   orbits 02. Fiber bundling 05 shows its start state (an orbit) and needs a clip of its reference solution.

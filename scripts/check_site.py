@@ -9,9 +9,13 @@ usage: check_site.py [--readme <code release>/README.md]
 - the page stays a page of pictures: no paragraph under a section heading, no figure caption, no difficulty rating;
 - with --readme: every command line of "Get started" is a command line of the code release's README, character for
   character up to that line's trailing comment, which the page leaves out;
-- no leftover of the preview page, no placeholder link, no name that belongs to our own workspace.
+- no leftover of the preview page, no placeholder link, no name that belongs to our own workspace;
+- page metadata: each page's title (at most 70 characters) and description (25 to 160), its canonical address, JSON-LD
+  that parses, the text written in by scripts/prerender.py (every block there and not empty), robots.txt, sitemap.xml
+  (every address a page of this repository), llms.txt and llms-full.txt.
 """
 import html, json, re, sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -83,6 +87,55 @@ if re.search(r'<a\b[^>]*>\s*arXiv', live) and "arxiv.org/abs/" not in live:
 for name in ("Privileged", "Standard"):                  # the leaderboard's legend and the table's column groups
     if f"'{name}'" not in site_js:
         note(f"regime name missing from the leaderboard: {name}")
+
+# ---- page metadata and the text written in for readers without JavaScript (scripts/prerender.py)
+SITE = "https://roboarc.embodied-first-exam.ai/"
+WRITTEN = {"index.html": ("filters", "wall", "lb-agents", "lb-vla", "results-table"), "runs/index.html": ("runs-head", "runs-body")}
+for rel, ids in WRITTEN.items():
+    t = (ROOT / rel).read_text()
+    title = html.unescape(re.search(r"<title>(.*?)</title>", t, re.S).group(1).strip())
+    desc = re.search(r'<meta name="description" content="([^"]*)">', t)
+    desc = html.unescape(desc.group(1)) if desc else ""
+    if len(title) > 70:
+        note(f"{rel}: title of {len(title)} characters (at most 70)")
+    if not 25 <= len(desc) <= 160:
+        note(f"{rel}: description of {len(desc)} characters (25 to 160)")
+    canon = re.findall(r'<link rel="canonical" href="([^"]+)">', t)
+    if canon != [SITE + rel[: -len("index.html")]]:
+        note(f"{rel}: canonical address {canon}")
+    if "noindex" in t:
+        note(f"{rel}: noindex")
+    blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', t, re.S)
+    if not blocks:
+        note(f"{rel}: no JSON-LD")
+    for b in blocks:
+        try:
+            json.loads(b)
+        except ValueError as e:
+            note(f"{rel}: JSON-LD does not parse: {e}")
+    for el in ids:
+        m = re.search(r"<!--pre:%s-->(.*?)<!--/pre:%s-->" % (el, el), t, re.S)
+        if not m or not re.sub(r"<[^>]+>|\s", "", m.group(1)):
+            note(f"{rel}: no text written into #{el} (scripts/prerender.py)")
+script_title = re.search(r"document\.title = window\.BRANDS\[window\.BRAND\]\[0\] \+ '([^']*)'", page)
+if not script_title or "RoboARC" + script_title.group(1) != html.unescape(re.search(r"<title>(.*?)</title>", page).group(1)):
+    note("index.html: the title set by the inline script differs from <title>")
+robots = (ROOT / "robots.txt").read_text() if (ROOT / "robots.txt").exists() else ""
+if f"Sitemap: {SITE}sitemap.xml" not in robots or re.search(r"(?mi)^Disallow:\s*/", robots):
+    note("robots.txt: no sitemap line, or a path disallowed")
+try:
+    locs = [e.text for e in ET.parse(ROOT / "sitemap.xml").getroot().iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
+except (OSError, ET.ParseError) as e:
+    locs = []
+    note(f"sitemap.xml: {e}")
+for loc in locs:
+    if not loc.startswith(SITE) or not (ROOT / loc[len(SITE):] / "index.html").exists():
+        note(f"sitemap.xml: not a page of this repository: {loc}")
+if sorted(locs) != sorted(SITE + rel[: -len("index.html")] for rel in WRITTEN):
+    note(f"sitemap.xml: lists {locs}")
+for name in ("llms.txt", "llms-full.txt"):
+    if not (ROOT / name).exists():
+        note(f"{name} is missing")
 
 for f in findings:
     print("FINDING", f)
