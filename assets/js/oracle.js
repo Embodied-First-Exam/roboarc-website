@@ -10,12 +10,13 @@ import { createStage } from './stage.js';
 import { PLAYABLE, makePuzzle } from './play.js';
 
 const BASE = new URL('../oracle/', import.meta.url);
+const VER = '2026-11-22-scenes2';                      // new data under the same file names: bump it, a browser may keep the old files
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const meshCache = new Map();
 
 /** A library mesh: int16 positions over its box, int8 normals, 16- or 32-bit indices. */
 function loadMesh(id) {
-  if (!meshCache.has(id)) meshCache.set(id, fetch(new URL(`m/${id}.bin`, BASE)).then((r) => r.arrayBuffer()).then((buf) => {
+  if (!meshCache.has(id)) meshCache.set(id, fetch(new URL(`m/${id}.bin?v=${VER}`, BASE)).then((r) => r.arrayBuffer()).then((buf) => {
     const [, nv, nf, big] = new Uint32Array(buf, 0, 4);
     const box = new Float32Array(buf, 16, 6);
     let off = 40;
@@ -42,7 +43,7 @@ function loadMesh(id) {
 function materialFor(part, robot) {
   const [r, g, b, a] = part.rgba, c = new THREE.Color().setRGB(r / 255, g / 255, b / 255, THREE.SRGBColorSpace);
   const sat = (Math.max(r, g, b) - Math.min(r, g, b)) / 255;
-  if (part.role === 'goal') return new THREE.MeshStandardMaterial({ color: c, transparent: true, opacity: 0.22, depthWrite: false, roughness: 0.6 });
+  if (part.role === 'goal') return new THREE.MeshStandardMaterial({ color: c, transparent: true, opacity: 0.62, depthWrite: false, roughness: 0.6 });
   if (part.role === 'robot') {
     return robot === 'aloha' ? new THREE.MeshStandardMaterial({ color: 0x3b3e43, roughness: 0.62, metalness: 0.1 })
       : new THREE.MeshStandardMaterial({ color: (r + g + b) / 3 > 128 ? 0xeceeef : 0x34373b, roughness: 0.6, metalness: 0.05 });
@@ -89,6 +90,21 @@ class Tube {
   }
 }
 
+/** The cloth's look in the reference videos (cycles_studio.py): a light blue with a lighter grid, 10 x 8 cells over its
+ *  UV square, lines 5 % of a cell wide. The studio light lifts the cloth's blue to about rgb(204, 219, 238). */
+let clothTexture = null;
+function clothGrid() {
+  if (clothTexture) return clothTexture;
+  const W = 1000, H = 800, cv = Object.assign(document.createElement('canvas'), { width: W, height: H }), x = cv.getContext('2d');
+  x.fillStyle = 'rgb(112, 152, 212)'; x.fillRect(0, 0, W, H);
+  x.fillStyle = 'rgb(196, 216, 244)';
+  for (let i = 0; i <= 10; i++) x.fillRect(i * W / 10 - 3, 0, 6, H);
+  for (let j = 0; j <= 8; j++) x.fillRect(0, j * H / 8 - 3, W, 6);
+  clothTexture = new THREE.CanvasTexture(cv);
+  clothTexture.colorSpace = THREE.SRGBColorSpace; clothTexture.anisotropy = 4;
+  return clothTexture;
+}
+
 /** A cloth grid, re-shaped every frame. */
 function clothMesh(rows, cols, material) {
   const idx = [];
@@ -98,6 +114,9 @@ function clothMesh(rows, cols, material) {
   }
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(rows * cols * 3), 3));
+  const uv = new Float32Array(rows * cols * 2);
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { uv[2 * (r * cols + c)] = c / (cols - 1); uv[2 * (r * cols + c) + 1] = r / (rows - 1); }
+  g.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
   g.setIndex(idx);
   const mesh = new THREE.Mesh(g, material);
   mesh.castShadow = true; mesh.frustumCulled = false;
@@ -107,8 +126,8 @@ function clothMesh(rows, cols, material) {
 /** One task's replay: its pieces in the scene and how to pose them at a video frame. */
 export async function loadReplay(base) {
   const [meta, buf] = await Promise.all([
-    fetch(new URL(`${base}.json`, BASE)).then((r) => { if (!r.ok) throw new Error(`${base}: ${r.status}`); return r.json(); }),
-    fetch(new URL(`${base}.bin`, BASE)).then((r) => r.arrayBuffer()),
+    fetch(new URL(`${base}.json?v=${VER}`, BASE)).then((r) => { if (!r.ok) throw new Error(`${base}: ${r.status}`); return r.json(); }),
+    fetch(new URL(`${base}.bin?v=${VER}`, BASE)).then((r) => r.arrayBuffer()),
   ]);
   const geoms = await Promise.all(meta.parts.map((p) => loadMesh(p.mesh)));
   const root = new THREE.Group();
@@ -133,6 +152,8 @@ export async function loadReplay(base) {
   const deform = meta.deform.map((d) => {
     const data = new Int16Array(buf, d.offset, d.bytes / 2), n = d.kind === 'rope' ? d.points : d.rows * d.cols;
     const material = new THREE.MeshStandardMaterial({ color: new THREE.Color().setRGB(...d.rgba.slice(0, 3).map((x) => x / 255), THREE.SRGBColorSpace), roughness: d.kind === 'rope' ? 0.7 : 0.85, side: THREE.DoubleSide });
+    if (d.kind === 'rope') material.color.setRGB(236 / 255, 190 / 255, 146 / 255, THREE.SRGBColorSpace);   // the rope as the videos' studio light shows it
+    if (d.kind === 'cloth') { material.color.set(0xffffff); material.map = clothGrid(); material.roughness = 0.9; }
     const view = d.kind === 'rope' ? new Tube(n, d.radius, material) : { mesh: clothMesh(d.rows, d.cols, material) };
     root.add(view.mesh);
     return { d, data, n, view, buf: new Float32Array(n * 3) };
@@ -177,15 +198,11 @@ export async function loadReplay(base) {
 }
 
 const fmt = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
-const WATCH_TIPS = ['Drag to turn the view, scroll or pinch to zoom, right-drag to pan.',
-  '1× is the pace of the video on the card: a time-lapse that slows down while the pieces move. The clock shows simulated time.'];
-const PLAY_TIPS = ['Drag an arrow to move the highlighted piece, a ring to turn it. It stops wherever it would pass through another piece.',
-  'Drag the background to turn the view, scroll or pinch to zoom.',
-  'Show me how plays the reference solution\'s own motion of that piece, through the same check.'];
+const HINT = { watch: 'drag to turn · scroll to zoom', play: 'drag an arrow to move the piece · a ring to turn it' };   // one line in the viewer, gone after the first drag
 const GOAL_TEXT = { apart: 'Get the highlighted piece free of the rest.', reach: 'Bring the highlighted piece to where the reference put it.', rail: 'Guide the loop along the whole wire to its end.' };
 const STEP_M = 0.002, STEP_RAD = 0.025, MAX_STEPS = 150;
 
-export async function initOracle({ section, canvas, ui, families, tasks }) {
+export async function initOracle({ section, canvas, ui, families, tasks, robots = { aloha2: 'ALOHA 2', franka_robotiq: 'Franka + Robotiq 2F-85' } }) {
   const stage = createStage(canvas, { span: 1.0, cell: 0.05, every: 5, surface: true });
   const { scene, camera, renderer } = stage;
   stage.resize();
@@ -195,22 +212,75 @@ export async function initOracle({ section, canvas, ui, families, tasks }) {
   gizmo.setSize(0.8); gizmo.setSpace('local');
   scene.add(gizmo.getHelper());
   gizmo.addEventListener('dragging-changed', (e) => { orbit.enabled = !e.value; if (e.value && game) game.moves++; });
+  renderer.domElement.addEventListener('pointerdown', () => ui.hint.classList.add('gone'));
 
   let replay = null, fam = null, index = 0, f = 0, playing = true, speed = 1, showRobot = true, visible = false, token = 0;
   let mode = 'watch', game = null;                     // play: the puzzle, its last clear pose, the demo playing
   const playable = (fid) => (tasks[fid] || []).filter((e) => e.oracle);
   const canPlay = () => !!(replay && fam && PLAYABLE[replay.meta.base] !== undefined);
 
-  function frameView([lo, hi]) {                        // a box, z-up, about the table-top centre
+  const vc = new THREE.Vector3();
+  function frameView([lo, hi], pts = null) {            // a box, z-up, about the table-top centre; pts: [point, radius] the picture must hold
     const c = new THREE.Vector3((lo[0] + hi[0]) / 2, Math.max(0.02, (lo[2] + hi[2]) / 2), -(lo[1] + hi[1]) / 2);
     const span = Math.max(0.12, 0.5 * Math.hypot(hi[0] - lo[0], hi[1] - lo[1], hi[2] - lo[2]));
     const fit = Math.min(2.2, Math.max(1, 1.25 / camera.aspect));
-    const dist = 1.25 * fit * span / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    let dist = 1.25 * fit * span / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
     const dir = new THREE.Vector3(0.18, 0.62, 0.77).normalize();
+    if (pts) {                                          // the nearest camera on this line of sight that still holds every point, with a border
+      const ty = 0.84 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)), tx = ty * camera.aspect;
+      const right = new THREE.Vector3().crossVectors(camera.up, dir).normalize(), up = new THREE.Vector3().crossVectors(dir, right);
+      dist = 0;
+      for (const [p, r] of pts) {
+        const q = vc.copy(p).sub(c), d = q.dot(dir);
+        dist = Math.max(dist, d + (Math.abs(q.dot(right)) + r) / tx, d + (Math.abs(q.dot(up)) + r) / ty);
+      }
+    }
     camera.position.copy(c).addScaledVector(dir, dist);
     orbit.target.copy(c);
     orbit.minDistance = 0.25 * span; orbit.maxDistance = 4 * dist;
     orbit.update(); orbit.saveState();
+  }
+
+  /** The reference video's own camera at its first frame (meta.view, from the render rig), so the replay opens on the
+   *  picture the wall's clip shows. The distance keeps the video's whole frame in this canvas, whatever its shape. */
+  function videoView() {
+    const V = replay.meta.view;
+    if (!V) return false;
+    const zup = (v) => new THREE.Vector3(v[0], v[2], -v[1]);          // the replay's z-up frame -> the page's y-up
+    const look = zup(V.look), dir = zup(V.dir).normalize();
+    const lens = V.lens || 1, D = V.d * lens;                            // the render: camera at d * lens, its vertical fov narrowed by lens
+    const tv = Math.tan(THREE.MathUtils.degToRad(V.vfov / 2)) / lens, th = tv * V.aspect;   // the video's half extents, per unit of distance
+    const ty = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)), tx = ty * camera.aspect;
+    const dist = D * Math.max(th / tx, tv / ty);
+    camera.position.copy(look).addScaledVector(dir, dist);
+    orbit.target.copy(look);
+    orbit.minDistance = 0.15 * dist; orbit.maxDistance = 4 * dist;
+    orbit.update(); orbit.saveState();
+    return true;
+  }
+
+  function watchView() {                               // the puzzle's box; where an arm would reach in from outside the picture, the view that holds the robot too
+    const M = replay.meta, lo = M.box[0].slice(), hi = M.box[1].slice();
+    if (!replay.robotParts.length) return [M.box];
+    frameView(M.box);
+    camera.updateMatrixWorld(true);
+    const pts = [];
+    let cropped = false;
+    for (let k = 0; k <= 24; k++) {
+      replay.pose(k / 24 * (M.frames - 1));
+      replay.root.updateMatrixWorld(true);
+      for (const m of replay.robotParts) {
+        if (!m.geometry.boundingSphere) m.geometry.computeBoundingSphere();
+        const s = m.geometry.boundingSphere, w = s.center.clone().applyMatrix4(m.matrixWorld);
+        pts.push([w, s.radius]);
+        vc.copy(w).project(camera);
+        if (Math.abs(vc.x) > 1 || Math.abs(vc.y) > 1) cropped = true;
+        replay.root.worldToLocal(vc.copy(w)).toArray().forEach((x, i) => { lo[i] = Math.min(lo[i], x); hi[i] = Math.max(hi[i], x); });   // the replay's own z-up frame
+      }
+    }
+    if (!cropped) return [M.box];
+    for (let i = 0; i < 8; i++) pts.push([replay.root.localToWorld(new THREE.Vector3(M.box[i & 1][0], M.box[(i >> 1) & 1][1], M.box[(i >> 2) & 1][2])), 0]);
+    return [[lo, hi], pts];
   }
 
   /* ---- play ---- */
@@ -286,13 +356,11 @@ export async function initOracle({ section, canvas, ui, families, tasks }) {
       playReset();
     } else {
       ui.goal.textContent = fam.text;
-      frameView(replay.meta.box);
+      if (!videoView()) frameView(...watchView());
       f = 0; playing = true; ui.play.textContent = 'Pause';
       replay.pose(0);
     }
-    const tips = play ? [...PLAY_TIPS] : WATCH_TIPS;
-    if (play && game.pz.anchorTrack >= 0) tips.splice(1, 0, `The robot held both pieces; here the other one holds still${game.pz.lift > 0.01 ? ', lifted clear of the table,' : ''} and only how the two move against each other counts.`);
-    ui.tips.innerHTML = tips.map((t) => `<li>${t}</li>`).join('');
+    ui.hint.textContent = HINT[mode] + (play && game.pz.anchorTrack >= 0 ? ' · the other piece is held still' : ''); ui.hint.classList.remove('gone');   // two-piece puzzles: only the relative motion counts
   }
   function setGizmo(m) { gizmo.setMode(m); ui.move.classList.toggle('on', m === 'translate'); ui.turn.classList.toggle('on', m === 'rotate'); }
 
@@ -300,12 +368,12 @@ export async function initOracle({ section, canvas, ui, families, tasks }) {
     const list = playable(fid);
     if (!list.length) return;
     fam = families.find((x) => x.id === fid);
-    if (i == null) { const m = list.findIndex((e) => e.difficulty === 'medium'); i = m >= 0 ? m : 0; }
+    if (i == null) i = Math.max(0, list.findIndex((e) => e.nn === fam.start));     // the task the family's card opens on
     index = (i + list.length) % list.length;
     const e = list[index], my = ++token;
     ui.picker.querySelectorAll('[data-fam]').forEach((b) => b.classList.toggle('on', b.dataset.fam === fid));
     ui.name.textContent = fam.name;
-    ui.step.textContent = `${e.nn} · ${e.level}`;
+    ui.step.textContent = e.nn;
     ui.stepper.hidden = list.length < 2;
     ui.loading.hidden = false; ui.loading.textContent = 'loading';
     let next;
@@ -316,8 +384,7 @@ export async function initOracle({ section, canvas, ui, families, tasks }) {
     replay = next;
     scene.add(replay.root);
     ui.loading.hidden = true;
-    ui.robot.textContent = replay.meta.robot === 'panda' ? '(one Panda arm)' : '(two ALOHA arms)';
-    ui.base.textContent = e.base.replace('roboarc-', '');
+    ui.robot.textContent = `(${replay.meta.robot === 'panda' ? robots.franka_robotiq : robots.aloha2})`;
     ui.modes.hidden = !canPlay();
     setMode(keepMode && canPlay() ? mode : 'watch');
     draw(performance.now(), 0);

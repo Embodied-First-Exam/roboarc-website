@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RoboARC · Spatial-constraint puzzles for robot manipulation</title>
-  <meta name="description" content="A benchmark of physical puzzles for robots: pieces hooked, threaded, knotted or caged, where only the right sequence of moves gets them apart.">
+  <title>RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints</title>
+  <meta name="description" content="RoboARC is a benchmark of 90 physical puzzles for robotic manipulation under spatial constraints: six constraint types over rigid and soft materials, on three robots in MuJoCo.">
   <meta name="theme-color" content="#f4f6f9">
   <script>
     // Day or night, and which name the page wears (?name=robobind ...): set before anything paints.
@@ -18,29 +18,32 @@
         robounstuck: ['RoboUnstuck', 'Can your robot get unstuck?'],
         robounravel: ['RoboUnravel', 'Can your robot unravel it?'],
         inabind: ['In a Bind', 'Get your robot out of a bind.'],
-        roboarc: ['RoboARC', 'Spatial reasoning, with robot hands.']
+        roboarc: ['RoboARC', 'Physical Puzzles for Robotic Manipulation under Spatial Constraints']
       };
       var key = (q.get('name') || 'roboarc').toLowerCase().replace(/[^a-z]/g, '');
       window.BRAND = window.BRANDS[key] ? key : 'roboarc';
-      document.title = window.BRANDS[window.BRAND][0] + ' · Spatial-constraint puzzles for robot manipulation';
+      document.title = window.BRANDS[window.BRAND][0] + ': Physical Puzzles for Robotic Manipulation under Spatial Constraints';
     })();
   </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M6 10h12a5 5 0 0 1 0 10H11' fill='none' stroke='%23d2683f' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M26 22H14a5 5 0 0 1 0-10h7' fill='none' stroke='%232f93a6' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css">
+  <!-- ?v=: raise it with every release, so no visitor pairs a new page with a cached stylesheet or script -->
+  <link rel="stylesheet" href="assets/css/site.css?v=2026-11-22-scenes2">
   <script type="importmap">{"imports": {"three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/addons/", "three-mesh-bvh": "./vendor/three-mesh-bvh/index.module.js"}}</script>
 </head>
 <body>
   <nav class="nav" aria-label="Sections">
     <a class="wordmark" href="#top"><span class="mark" aria-hidden="true"></span><span data-brand="name">RoboARC</span></a>
-    <span class="preview-note"><span class="preview-tag">Preview</span><span class="preview-text">Full benchmark coming soon</span></span>
     <div class="nav-links">
       <a href="#puzzles">Puzzles</a>
       <a href="#in3d">In 3D</a>
-      <a href="#modes">Modes</a>
-      <a href="#results">Results</a>
+      <a href="#modes">Regimes</a>
+      <a href="#results">Leaderboard</a>
+      <a href="runs/">Agent runs</a>
+      <a href="#start">Get started</a>
+      <a class="ext" href="https://github.com/mll-lab-nu/RoboARC" target="_blank" rel="noopener">Code</a>
     </div>
     <button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -56,20 +59,21 @@
     <div class="hero-sticky">
       <canvas id="hero-canvas" aria-label="A two-arm robot separating two interlocked claws"></canvas>
       <div class="hero-copy">
-        <p class="hero-kicker" data-hero="kicker">A benchmark of spatial-constraint puzzles for robot manipulation</p>
+        <p class="hero-kicker" data-hero="kicker">A benchmark of physical puzzles for robotic manipulation under spatial constraints</p>
         <p class="hero-line" data-hero="l1">Two claws, hooked through each other.</p>
         <p class="hero-line" data-hero="l2">Pulling only jams them. They come apart when turned in the right order.</p>
         <p class="hero-line" data-hero="l3">Here two robot arms do it in simulation, replaying the motion they planned.</p>
         <div class="hero-title" data-hero="title">
           <h1 data-brand="name">RoboARC</h1>
-          <p class="hero-tagline" data-brand="tagline">Spatial reasoning, with robot hands.</p>
-          <p class="hero-sub">98 physical puzzles in 14 families: pieces hooked, threaded, knotted, caged or folded, where only the right sequence of moves solves them.</p>
+          <p class="hero-tagline" data-brand="tagline">Physical Puzzles for Robotic Manipulation under Spatial Constraints</p>
           <div class="cta">
             <a class="btn primary" href="#puzzles">See the puzzles</a>
-            <a class="btn" href="#modes">How it is graded</a>
-            <a class="btn" href="#results">Results</a>
-            <a class="btn ghost" aria-disabled="true" href="#">Paper <small>soon</small></a>
-            <a class="btn ghost" aria-disabled="true" href="#">Code <small>soon</small></a>
+            <a class="btn" href="#results">Leaderboard</a>
+            <!-- ARXIV LINK: the paper has no arXiv identifier yet, so this is a label, not a link. When it has one, replace
+                 the span by: <a class="btn ext" href="https://arxiv.org/abs/ARXIV_ID" target="_blank" rel="noopener">arXiv</a> -->
+            <span class="btn soon" aria-disabled="true" title="coming soon">arXiv <small>coming soon</small></span>
+            <a class="btn" href="https://github.com/mll-lab-nu/RoboARC" target="_blank" rel="noopener"><svg class="logo" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>Code</a>
+            <a class="btn" href="runs/">Agent runs</a>
           </div>
         </div>
         <p class="scroll-cue" data-hero="cue">Scroll</p>
@@ -82,24 +86,49 @@
   </section>
 
   <section class="section intro" id="about" aria-label="About">
-    <p class="lead reveal"><span data-brand="name">RoboARC</span> is a benchmark of physical puzzles for robots: interlocked
-      claws, cast-metal brainteasers, a caged hedgehog, a lock, a buzz wire, fibers, knots, threaded rope, chains, and a
-      blanket to flatten or fold.</p>
-    <div class="intro-cols reveal">
-      <p>Each task is a frozen simulation instance that always starts from the same state, on MuJoCo for the rigid, rope and
-        chain puzzles and a deterministic GPU cloth solver for the blankets. An agent gets three hours and drives a
-        simulated robot, two ALOHA arms or one Franka Panda arm, by writing code. An attempt counts only if its recorded
-        motion solves the puzzle again when it is replayed in a fresh simulator.</p>
-      <dl class="figures">
-        <div><dt>14</dt><dd>puzzle families</dd></div>
-        <div><dt>98</dt><dd>frozen tasks, very easy to hard</dd></div>
-        <div><dt>2</dt><dd>evaluation modes, 196 tasks in all</dd></div>
-        <div><dt>3 h</dt><dd>per attempt</dd></div>
-      </dl>
-    </div>
-    <figure class="teaser reveal">
-      <div class="teaser-frame frame"><video id="teaser" muted loop playsinline preload="none" poster="assets/media/roboarc/teaser.jpg" src="assets/media/roboarc/teaser.mp4" aria-label="Reference solutions of the puzzle families, one after another"></video></div>
-      <figcaption>Reference solutions of the families, one after another, sped up.</figcaption>
+    <!-- the paper: title, authors, affiliations and contribution marks as in the arXiv version; then its research
+         question and its Figure 1. No running text on this page: a heading is followed by its picture. -->
+    <header class="paper-head reveal">
+      <h2 class="paper-title">RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints</h2>
+      <p class="authors">
+        <a href="https://qinengwang-aiden.github.io/" target="_blank" rel="noopener">Qineng Wang</a>*<sup>1</sup>,
+        <a href="https://www.linkedin.com/in/jianwen-lyu-ba9a11329/" target="_blank" rel="noopener">Jianwen Lyu</a>*<sup>1</sup>,
+        <a href="https://williamzhangsjtu.github.io/" target="_blank" rel="noopener">Pingyue Zhang</a>*<sup>1</sup>,
+        <a href="https://www.microsoft.com/en-us/research/people/tanreuben/" target="_blank" rel="noopener">Reuben Tan</a><sup>2†</sup>,
+        <a href="https://whoknowsssss.github.io/al-folio/" target="_blank" rel="noopener">Xiaoyu Huang</a><sup>3†</sup>,
+        <a href="https://tonghezhang.com/" target="_blank" rel="noopener">Tonghe Zhang</a><sup>4†</sup>,
+        <a href="https://jameskrw.github.io/" target="_blank" rel="noopener">Kangrui Wang</a><sup>1</sup>,
+        <a href="https://scholar.google.com/citations?user=S6OFEFEAAAAJ" target="_blank" rel="noopener">Yelong Shen</a><sup>2</sup>,
+        <a href="https://www.microsoft.com/en-us/research/people/jfgao/" target="_blank" rel="noopener">Jianfeng Gao</a><sup>2</sup>,
+        <a href="https://www.gshi.me/" target="_blank" rel="noopener">Guanya Shi</a><sup>4</sup>,
+        <a href="https://ruohanzhang.com/" target="_blank" rel="noopener">Ruohan Zhang</a><sup>1</sup>,
+        <a href="https://limanling.github.io/" target="_blank" rel="noopener">Manling Li</a><sup>1</sup>
+      </p>
+      <p class="affils"><span><sup>1</sup>Northwestern University</span> <span><sup>2</sup>Microsoft</span> <span><sup>3</sup>UC Berkeley</span> <span><sup>4</sup>Carnegie Mellon University</span> <span class="marks">* Equal contribution; † Core contributor.</span></p>
+      <div class="cta">
+        <!-- ARXIV LINK: the paper has no arXiv identifier yet, so this is a label, not a link. When it has one, replace
+             the span by: <a class="btn ext" href="https://arxiv.org/abs/ARXIV_ID" target="_blank" rel="noopener">arXiv</a> -->
+        <span class="btn soon" aria-disabled="true" title="coming soon">arXiv <small>coming soon</small></span>
+        <a class="btn" href="https://github.com/mll-lab-nu/RoboARC" target="_blank" rel="noopener"><svg class="logo" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>Code</a>
+        <a class="btn" href="runs/">Agent runs</a>
+      </div>
+    </header>
+
+    <p class="lead question reveal">When manipulation hinges on <span>spatial constraints</span>, can robots reason out the right motions?</p>
+
+    <figure class="fig1 reveal">
+      <a class="fig1-frame frame" href="assets/media/paper/figure1.png" target="_blank" rel="noopener" aria-label="Figure 1 of the paper, full size">
+        <img class="fig-wide" src="assets/media/paper/figure1.png" width="3000" height="1200" loading="lazy" alt="Figure 1 of the RoboARC paper. Left: one task, unlock the claws, from the initial to the separated state. Middle: success rates of coding agents per constraint type in the Standard regime, and the result of four VLA policies. Right: twelve of the 90 tasks.">
+        <span class="fig-stack" aria-hidden="true">
+          <img src="assets/media/paper/figure1_a.png" width="910" height="1200" loading="lazy" alt="">
+          <img src="assets/media/paper/figure1_b.png" width="1053" height="1200" loading="lazy" alt="">
+          <img src="assets/media/paper/figure1_c.png" width="1037" height="1200" loading="lazy" alt="">
+        </span>
+      </a>
+    </figure>
+    <!-- the teaser reel: off the page for now (the wall below plays the same clips); ?reel=1 shows it -->
+    <figure class="teaser reveal" id="reel" hidden>
+      <div class="teaser-frame frame"><video id="teaser" muted loop playsinline preload="none" poster="assets/media/roboarc/teaser.jpg" src="assets/media/roboarc/teaser.mp4" aria-label="Reference solutions of several puzzle families, one after another"></video></div>
     </figure>
   </section>
 
@@ -109,10 +138,8 @@
       <span class="sec-index">01</span>
       <div class="sec-title">
         <h2>Puzzles</h2>
-        <p>Each card plays a reference solution: a trajectory that solves the task, replayed in a fresh simulator and
-          sped up. Step through a family's tasks on its card, from very easy to hard.</p>
       </div>
-      <div class="filters" id="filters" role="toolbar" aria-label="Filter puzzles"></div>
+      <div class="filters" id="filters" role="toolbar" aria-label="Filter puzzles by constraint type"></div>
     </header>
     <div class="wall" id="wall"></div>
   </section>
@@ -123,9 +150,6 @@
       <span class="sec-index">02</span>
       <div class="sec-title">
         <h2>In 3D</h2>
-        <p>The same reference solutions, redrawn in 3D from the replays the videos show: every piece, the robot, the
-          rope and the cloth where the simulator had them, frame by frame. Turn the view, zoom in, scrub through the run,
-          or hide the robot to see the pieces.</p>
       </div>
     </header>
     <div class="picker reveal" id="o-picker" role="tablist" aria-label="Choose a family"></div>
@@ -137,6 +161,7 @@
           <span class="pill" id="o-loading">loading</span>
           <span class="pill blocked" id="o-blocked">blocked · the pieces touch</span>
         </div>
+        <span class="pill hint" id="o-hint"></span>
         <div class="freedom" id="o-progress" hidden>
           <div class="freedom-label"><span id="o-from"></span><span id="o-to"></span></div>
           <div class="freedom-track"><i id="o-bar"></i></div>
@@ -184,88 +209,104 @@
           </div>
         </div>
         <button class="toggle on" id="o-robot" type="button" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span>Show the robot <span id="o-robot-kind"></span></span></button>
-        <ul class="tips" id="o-tips"></ul>
         <div class="panel-actions">
           <button class="btn" id="o-solution" hidden>Show me how</button>
           <button class="btn" id="o-restart">Restart</button>
         </div>
-        <p class="fineprint"><span id="o-base"></span></p>
       </aside>
     </div>
   </section>
 
-  <!-- 03 modes -->
+  <!-- 03 the two regimes (the section keeps its id): the top strip of the paper's overview figure -->
   <section class="section" id="modes">
     <header class="sec-head reveal">
       <span class="sec-index">03</span>
-      <div class="sec-title">
-        <h2>Two modes</h2>
-        <p>Every task is posed twice. In both, the agent's recorded motion is replayed in a fresh simulator, and only a
-          replay that solves the puzzle counts.</p>
-      </div>
+      <div class="sec-title"><h2>Two regimes</h2></div>
     </header>
-    <div class="modes reveal">
-      <article class="mode frame">
-        <div class="mode-head"><span class="tag-mono">privileged</span><h3>Code with the simulator open</h3></div>
-        <ul>
-          <li>Object poses, bounds and the scene's state can be read at any time.</li>
-          <li>Resets and replays are unlimited within the three hours.</li>
-          <li>The agent submits one trajectory, replayed open-loop in a fresh process and graded.</li>
-        </ul>
-        <pre class="code"><span class="k">from</span> rcb_topogym <span class="k">import</span> Session
-s = Session(<span class="s">"cast_keyhole"</span>, instance=<span class="s">"/app/instance.json"</span>)
-s.reset()                      <span class="c"># back to the frozen start, any time</span>
-s.object_pose(<span class="s">"keyhole_silver"</span>)   <span class="c"># one object's pose</span>
-s.record_start()
-s.step(action)                 <span class="c"># joints + grippers, one 1/40 s step</span>
-actions = s.record_stop()
-s.replay(actions)              <span class="c"># self-check, as the grader will</span>
-s.save_trajectory(actions, <span class="s">"/app/output/trajectory.npz"</span>)</pre>
-      </article>
-      <article class="mode frame">
-        <div class="mode-head"><span class="tag-mono">standard</span><h3>The robot as a remote service</h3></div>
-        <ul>
-          <li>Camera images (RGB, depth on request) and the robot's own state, nothing else.</li>
-          <li>One episode, no object poses and no resets: like real hardware.</li>
-          <li>The service records the episode, which is then replayed and graded.</li>
-        </ul>
-        <div class="cams">
-          <figure><img src="assets/media/cams/cam_high.jpg" alt="Overhead camera view of a cast keyhole puzzle" loading="lazy"><figcaption>overhead</figcaption></figure>
-          <figure><img src="assets/media/cams/cam_left_wrist.jpg" alt="Left wrist camera view" loading="lazy"><figcaption>left wrist</figcaption></figure>
-          <figure><img src="assets/media/cams/cam_right_wrist.jpg" alt="Right wrist camera view" loading="lazy"><figcaption>right wrist</figcaption></figure>
-        </div>
-      </article>
-    </div>
+    <figure class="fig1 strip reveal">
+      <a class="fig1-frame frame" href="assets/media/paper/regimes.png" target="_blank" rel="noopener" aria-label="The two regimes, full size">
+        <img class="fig-wide" src="assets/media/paper/regimes.png" width="3000" height="608" loading="lazy" alt="The two regimes. Standard: a coding agent sends action chunks and receives RGB-D images, joint readings and the instruction, without resets. Privileged: it sends actions, may reset, and receives the full simulator state. VLA policies send action chunks and receive RGB images, joint readings and the instruction. One grader replays the physics of every run.">
+        <span class="fig-stack" aria-hidden="true">
+          <img src="assets/media/paper/regimes_rows.png" width="1518" height="356" loading="lazy" alt="">
+        </span>
+      </a>
+    </figure>
   </section>
 
-  <!-- 04 results -->
+  <!-- 04 leaderboard: one row per model, sorted by its Standard rate (the All columns of the paper's main table); the
+       VLA policies in a tab of their own, a reference; the table per constraint type behind one toggle. Numbers:
+       assets/data/results.json -->
   <section class="section" id="results">
     <header class="sec-head reveal">
       <span class="sec-index">04</span>
-      <div class="sec-title">
-        <h2>Results</h2>
-        <p>No results for RoboARC 0.1.0 yet. The first evaluation of coding agents, each model inside its harness, will be
-          posted here, with VLA policies ranked on their own.</p>
+      <div class="sec-title"><h2>Leaderboard</h2></div>
+      <div class="seg lb-tabs" id="lb-tabs" role="tablist" aria-label="Policy class">
+        <button role="tab" data-tab="agents" class="on" aria-selected="true">Coding agents</button>
+        <button role="tab" data-tab="vla" aria-selected="false">VLA policies · reference</button>
       </div>
     </header>
+    <div class="lbh reveal" id="lb-agents" role="tabpanel" aria-label="Coding agents"></div>
+    <div class="lbh" id="lb-vla" role="tabpanel" aria-label="VLA policies, a reference" hidden></div>
+    <details class="bytype reveal" id="bytype">
+      <summary>Per constraint type</summary>
+      <div class="frame table-scroll"><table class="rt" id="results-table"></table></div>
+    </details>
   </section>
 
-  <!-- the close: this page is a preview -->
-  <section class="section coming" id="coming-soon" aria-label="Full benchmark">
-    <p class="coming-line reveal"><span class="preview-tag">Preview</span><span>Full benchmark coming soon</span></p>
+  <!-- 05 get started: three steps of the code release's README (RoboARC 2.2.1), its own command lines without their
+       trailing comments. The check, the reference trial, the self-test and the full protocol are in the README. -->
+  <section class="section" id="start">
+    <header class="sec-head reveal">
+      <span class="sec-index">05</span>
+      <div class="sec-title">
+        <h2>Get started</h2>
+      </div>
+      <a class="btn ext" href="https://github.com/mll-lab-nu/RoboARC#readme" target="_blank" rel="noopener">Full guide</a>
+    </header>
+    <ol class="steps frame reveal">
+      <li class="step">
+        <div class="step-text"><span class="step-n">1</span><h3>Install</h3></div>
+        <pre class="code">git clone https://github.com/mll-lab-nu/RoboARC.git
+cd RoboARC
+pip install -e .
+uv tool install harbor</pre>
+      </li>
+      <li class="step">
+        <div class="step-text"><span class="step-n">2</span><h3>Pull the images</h3></div>
+        <pre class="code">roboarc doctor
+roboarc images pull --accept-licences</pre>
+      </li>
+      <li class="step">
+        <div class="step-text"><span class="step-n">3</span><h3>Evaluate an agent</h3></div>
+        <pre class="code">cp .env.example .env
+roboarc eval mybatch orbits-02 cast-coil-06 --agent codex --model openai/&lt;model&gt; --effort high --env-file .env
+roboarc results summary mybatch</pre>
+      </li>
+    </ol>
+  </section>
+
+  <!-- 06 citation: the BibTeX entry of the code release's README. At release: add eprint, archivePrefix and the arXiv url -->
+  <section class="section" id="cite">
+    <header class="sec-head reveal">
+      <span class="sec-index">06</span>
+      <div class="sec-title"><h2>Citation</h2></div>
+    </header>
+    <pre class="code bib frame reveal" id="bib">@misc{wang2026roboarc,
+  title  = {RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints},
+  author = {Wang, Qineng and Lyu, Jianwen and Zhang, Pingyue and Tan, Reuben and Huang, Xiaoyu
+            and Zhang, Tonghe and Wang, Kangrui and Shen, Yelong and Gao, Jianfeng
+            and Shi, Guanya and Zhang, Ruohan and Li, Manling},
+  year   = {2026},
+  url    = {https://roboarc.embodied-first-exam.ai}
+}</pre>
   </section>
 
   <footer class="footer">
     <div class="footer-grid">
       <div>
         <a class="wordmark" href="#top"><span class="mark" aria-hidden="true"></span><span data-brand="name">RoboARC</span></a>
-        <p>Physics from MuJoCo and a deterministic GPU cloth solver, rendering by Nyx. The paper, code and full results will be released together.</p>
+        <p class="footer-links"><a href="https://github.com/mll-lab-nu/RoboARC" target="_blank" rel="noopener">Code</a><a href="runs/">Agent runs</a></p>
       </div>
-      <pre class="code bib" id="bib">@misc{roboarc2026,
-  title  = {RoboARC: Spatial-Constraint Puzzles for Robot Manipulation},
-  note   = {Paper coming soon},
-  year   = {2026}
-}</pre>
     </div>
   </footer>
 
@@ -280,10 +321,8 @@ s.save_trajectory(actions, <span class="s">"/app/output/trajectory.npz"</span>)<
       var b = window.BRANDS[window.BRAND];
       document.querySelectorAll('[data-brand="name"]').forEach(function (el) { el.textContent = b[0]; });
       document.querySelectorAll('[data-brand="tagline"]').forEach(function (el) { el.textContent = b[1]; });
-      var key = b[0].replace(/\s+/g, '').toLowerCase();
-      document.getElementById('bib').textContent = '@misc{' + key + '2026,\n  title  = {' + b[0] + ': Spatial-Constraint Puzzles for Robot Manipulation},\n  note   = {Paper coming soon},\n  year   = {2026}\n}';
     })();
   </script>
-  <script type="module" src="assets/js/site.js"></script>
+  <script type="module" src="assets/js/site.js?v=2026-11-22-scenes2"></script>
 </body>
 </html>
