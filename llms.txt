@@ -6,7 +6,7 @@ The question RoboARC asks: when manipulation hinges on spatial constraints, can 
 
 ## Key facts
 
-- RoboARC is one of the nine new suites of the Embodied First Exam (https://www.embodied-first-exam.ai/, arXiv 2611.12177), an agentic robotics benchmark in which coding agents control robots; RoboARC is its spatial-constraint puzzle suite (https://www.embodied-first-exam.ai/suite/?id=roboarc).
+- RoboARC is one of the nine new suites of the Embodied First Exam (https://www.embodied-first-exam.ai/, arXiv 2611.12177), an agentic robotics benchmark in which coding agents control robots; RoboARC is its spatial-constraint puzzle suite (https://www.embodied-first-exam.ai/suite/roboarc/).
 - Scale: 90 tasks: 78 puzzles in 19 families, and 12 IKEA furniture scenes.
 - Six constraint types. Rigid materials: Interlocking (23 tasks), Narrow passage (13), Assembly (20, including the 12 IKEA scenes). Soft materials: Untangling (13), Threading (11), Shape control (10).
 - Three robots, simulated in MuJoCo: ALOHA 2 (two arms), a Franka arm with a Robotiq 2F-85 gripper, and two Franka Pandas.

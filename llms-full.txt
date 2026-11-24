@@ -160,7 +160,7 @@ The full guide is in the code release's README: https://github.com/mll-lab-nu/Ro
 
 ## How does RoboARC relate to the Embodied First Exam and agentic robotics?
 
-RoboARC is one of the nine new suites in the Embodied First Exam (https://www.embodied-first-exam.ai/, arXiv 2611.12177), an agentic robotics benchmark and embodied evaluation framework in which coding agents control robots by direct control, by writing code, or by training a policy. Within the Embodied First Exam, RoboARC is the suite of physical puzzles under spatial constraints (https://www.embodied-first-exam.ai/suite/?id=roboarc). Like the Embodied First Exam, RoboARC treats the coding agent as the system under test: in its Standard regime the agent sees only RGB-D images, joint readings and the instruction, and cannot reset the scene.
+RoboARC is one of the nine new suites in the Embodied First Exam (https://www.embodied-first-exam.ai/, arXiv 2611.12177), an agentic robotics benchmark and embodied evaluation framework in which coding agents control robots by direct control, by writing code, or by training a policy. Within the Embodied First Exam, RoboARC is the suite of physical puzzles under spatial constraints (https://www.embodied-first-exam.ai/suite/roboarc/). Like the Embodied First Exam, RoboARC treats the coding agent as the system under test: in its Standard regime the agent sees only RGB-D images, joint readings and the instruction, and cannot reset the scene.
 
 ## Who made RoboARC?
 
