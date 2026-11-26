@@ -1,6 +1,6 @@
 # RoboARC: questions and answers
 
-> RoboARC is a benchmark of 90 physical puzzles for robotic manipulation under spatial constraints, from the paper "RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints" (2026; arXiv version coming soon). Project page: https://roboarc.embodied-first-exam.ai/ . Code: https://github.com/mll-lab-nu/RoboARC
+> RoboARC is a benchmark of 90 physical puzzles for robotic manipulation under spatial constraints, from the paper "RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints" (2026; arXiv 2611.33390, https://arxiv.org/abs/2611.33390). Project page: https://roboarc.embodied-first-exam.ai/ . Code: https://github.com/mll-lab-nu/RoboARC
 
 ## What is RoboARC?
 
@@ -175,6 +175,9 @@ Qineng Wang*, Jianwen Lyu*, Pingyue Zhang*, Reuben Tan†, Xiaoyu Huang†, Tong
             and Zhang, Tonghe and Wang, Kangrui and Shen, Yelong and Gao, Jianfeng
             and Shi, Guanya and Zhang, Ruohan and Li, Manling},
   year   = {2026},
-  url    = {https://roboarc.embodied-first-exam.ai}
+  eprint = {2611.33390},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO},
+  url    = {https://arxiv.org/abs/2611.33390}
 }
 ```

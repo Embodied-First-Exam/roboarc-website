@@ -1,6 +1,6 @@
 # RoboARC
 
-> RoboARC is a benchmark of 90 physical puzzles for robotic manipulation under spatial constraints: six constraint types over rigid and soft materials, on three robots in MuJoCo, each task in a Privileged and a Standard regime. Paper: "RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints" (2026; arXiv version coming soon), from Northwestern University, Microsoft, UC Berkeley and Carnegie Mellon University. Project page: https://roboarc.embodied-first-exam.ai/
+> RoboARC is a benchmark of 90 physical puzzles for robotic manipulation under spatial constraints: six constraint types over rigid and soft materials, on three robots in MuJoCo, each task in a Privileged and a Standard regime. Paper: "RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints" (2026; arXiv 2611.33390, https://arxiv.org/abs/2611.33390), from Northwestern University, Microsoft, UC Berkeley and Carnegie Mellon University. Project page: https://roboarc.embodied-first-exam.ai/
 
 The question RoboARC asks: when manipulation hinges on spatial constraints, can robots reason out the right motions? Each task is a physical puzzle. In one, two claws are hooked through each other: pulling only jams them, and they come apart only when turned in the right order. Others ask a robot to bring a spiky ball out of a cage, untie a knot, thread a rope through rings in order, assemble IKEA furniture or fold a blanket.
 
@@ -42,7 +42,7 @@ The question RoboARC asks: when manipulation hinges on spatial constraints, can 
 - Agent runs dataset on Hugging Face: https://huggingface.co/datasets/RoboARC/RoboARC-runs
 - Code: https://github.com/mll-lab-nu/RoboARC
 - Full guide (install, images, evaluating an agent): https://github.com/mll-lab-nu/RoboARC#readme
-- Paper (arXiv): coming soon
+- Paper (arXiv): https://arxiv.org/abs/2611.33390
 - Questions and answers for language models: https://roboarc.embodied-first-exam.ai/llms-full.txt
 
 ## Authors
@@ -58,6 +58,9 @@ Qineng Wang*, Jianwen Lyu*, Pingyue Zhang* (Northwestern University), Reuben Tan
             and Zhang, Tonghe and Wang, Kangrui and Shen, Yelong and Gao, Jianfeng
             and Shi, Guanya and Zhang, Ruohan and Li, Manling},
   year   = {2026},
-  url    = {https://roboarc.embodied-first-exam.ai}
+  eprint = {2611.33390},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO},
+  url    = {https://arxiv.org/abs/2611.33390}
 }
 ```

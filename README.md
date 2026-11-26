@@ -62,8 +62,7 @@ heading, no abstract, no figure caption and no difficulty rating (`scripts/check
 ## What is on the page
 1. **Opening (scroll-driven, real-time WebGL).** A two-arm ALOHA robot takes two interlocked claws apart, played back
    from its recorded plan (`hero.js`, `robot.js`, `stage.js`). At the end the paper's title comes in with the buttons:
-   arXiv (a label that says "coming soon", not a link, until the paper has its identifier: the line to change is
-   marked `ARXIV LINK` in `index.html`), Code (with the GitHub mark) and Agent runs.
+   arXiv (https://arxiv.org/abs/2611.33390), Code (with the GitHub mark) and Agent runs.
 2. **Intro.** The paper's title, its authors (every name linked to a homepage, underlined on hover) with affiliations
    and contribution marks as in the arXiv version, the same three buttons, the research question as one big line, and
    Figure 1 (`assets/media/paper/figure1.png`; on phones its three panels stacked, `figure1_a/b/c.png`; a tap opens
@@ -133,8 +132,5 @@ heading, no abstract, no figure caption and no difficulty rating (`scripts/check
   pieces and the recorded joint motion).
 
 ## Open items
-- The arXiv link and the BibTeX entry's `eprint`: when the paper has its arXiv identifier (`ARXIV LINK` in
-  `index.html`, three places: the two buttons and the page metadata), and the same address in `llms.txt` and
-  `llms-full.txt`.
 - No IKEA scene has a 3D replay.
 - Clips and 3D replays of tasks outside the paper's 90 are still in `assets/` and are no longer referenced.

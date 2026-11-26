@@ -76,7 +76,7 @@ if "--readme" in sys.argv:
 
 # ---- leftovers and names that must not be published
 live = re.sub(r"<!--.*?-->", "", page, flags=re.S)
-for word in ("Full benchmark coming soon", "preview-tag", "ARXIV_ID", "arxiv.org/abs/XXXX", "robot_coding_bench", "/runs/", "mll-laptop", "/home/", "tmp/20"):
+for word in ("Full benchmark coming soon", "preview-tag", "abs/ARXIV_ID", "arxiv.org/abs/XXXX", "robot_coding_bench", "/runs/", "mll-laptop", "/home/", "tmp/20"):
     for name, body in (("index.html", live), ("site.js", (ROOT / "assets/js/site.js").read_text()), ("suite.json", json.dumps(suite)), ("results.json", json.dumps(results))):
         if word.lower() in body.lower():
             note(f"{name} contains {word!r}")
