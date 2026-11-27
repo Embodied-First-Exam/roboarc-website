@@ -448,3 +448,7 @@ kbd { margin-left: 6px; padding: 2px 5px; border-radius: 4px; border: 1px solid 
 
 /* the citation: the last section of the page, above the footer */
 #cite .code.bib { padding: clamp(16px, 2vw, 24px) clamp(18px, 2.4vw, 30px); font-size: 13.5px; }
+#cite .bib-wrap { position: relative; }
+#cite .copy-bib { position: absolute; top: 12px; right: 12px; z-index: 1; padding: 7px 13px; font-size: 13px; background: var(--surface); }
+#cite .copy-bib.done { border-color: var(--ink); }
+@media (max-width: 640px) { #cite .copy-bib { top: 8px; right: 8px; padding: 6px 10px; } }

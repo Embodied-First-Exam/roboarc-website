@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <!-- ?v=: raise it with every release, so no visitor pairs a new page with a cached stylesheet or script -->
-  <link rel="stylesheet" href="assets/css/site.css?v=2026-11-22-clips">
+  <link rel="stylesheet" href="assets/css/site.css?v=2026-11-26-copy">
   <script type="importmap">{"imports": {"three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/addons/", "three-mesh-bvh": "./vendor/three-mesh-bvh/index.module.js"}}</script>
   <!-- page metadata: the page's address, its preview where the link is shared, the paper for reference managers
        (citation_* with the arXiv identifier; the arXiv address is the paper's "sameAs" in the JSON-LD). -->
@@ -658,7 +658,9 @@ roboarc results summary mybatch</pre>
       <span class="sec-index">06</span>
       <div class="sec-title"><h2>Citation</h2></div>
     </header>
-    <pre class="code bib frame reveal" id="bib">@misc{wang2026roboarc,
+    <div class="bib-wrap reveal">
+    <button class="btn copy-bib" type="button" id="copy-bib" aria-label="Copy the BibTeX entry"><svg class="logo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 5.5V3.5A1.5 1.5 0 0 0 9 2H3.5A1.5 1.5 0 0 0 2 3.5V9a1.5 1.5 0 0 0 1.5 1.5h2"/></svg><span>Copy</span></button>
+    <pre class="code bib frame" id="bib">@misc{wang2026roboarc,
   title  = {RoboARC: Physical Puzzles for Robotic Manipulation under Spatial Constraints},
   author = {Wang, Qineng and Lyu, Jianwen and Zhang, Pingyue and Tan, Reuben and Huang, Xiaoyu
             and Zhang, Tonghe and Wang, Kangrui and Shen, Yelong and Gao, Jianfeng
@@ -669,6 +671,7 @@ roboarc results summary mybatch</pre>
   primaryClass  = {cs.RO},
   url    = {https://arxiv.org/abs/2611.33390}
 }</pre>
+    </div>
   </section>
 
   <footer class="footer">
@@ -694,5 +697,22 @@ roboarc results summary mybatch</pre>
     })();
   </script>
   <script type="module" src="assets/js/site.js?v=2026-11-22-clips"></script>
+  <script>
+    // one-click copy of the BibTeX entry
+    (function () {
+      var b = document.getElementById('copy-bib'), pre = document.getElementById('bib');
+      if (!b || !pre) return;
+      var label = b.querySelector('span');
+      b.addEventListener('click', function () {
+        var text = pre.textContent;
+        var done = function () { label.textContent = 'Copied'; b.classList.add('done'); setTimeout(function () { label.textContent = 'Copy'; b.classList.remove('done'); }, 1600); };
+        if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done, fallback); } else { fallback(); }
+        function fallback() {
+          var t = document.createElement('textarea'); t.value = text; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+          document.body.appendChild(t); t.select(); try { document.execCommand('copy'); done(); } catch (e) {} document.body.removeChild(t);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
